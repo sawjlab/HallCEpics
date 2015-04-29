@@ -1,0 +1,404 @@
+# Macros:
+#   H - Crate Number [0-99]
+#   V - Channel Number [0-63]
+########################################
+record(ao, "$(P):$(H)_X:V0_SET") {
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+    field(FLNK, "$(P):$(H)_X1:V0_SET")
+}
+record(dfanout, "$(P):$(H)_X1:V0_SET") {
+    field(DOL,  "$(P):$(H)_X:V0_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:V0_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:V0_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:V0_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:V0_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:V0_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:V0_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:V0_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:V0_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:V0_SET")
+}
+record(dfanout, "$(P):$(H)_X2:V0_SET") {
+    field(DOL,  "$(P):$(H)_X:V0_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:V0_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:V0_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:V0_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:V0_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:V0_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:V0_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:V0_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:V0_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:V1_SET") {
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+    field(FLNK, "$(P):$(H)_X1:V1_SET")
+}
+record(dfanout, "$(P):$(H)_X1:V1_SET") {
+    field(DOL,  "$(P):$(H)_X:V1_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:V1_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:V1_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:V1_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:V1_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:V1_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:V1_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:V1_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:V1_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:V1_SET")
+}
+record(dfanout, "$(P):$(H)_X2:V1_SET") {
+    field(DOL,  "$(P):$(H)_X:V1_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:V1_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:V1_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:V1_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:V1_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:V1_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:V1_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:V1_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:V1_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:VMAX_SET") {
+    field(DRVH, "3000")
+    field(DRVL, "0")
+    field(HOPR, "3000")
+	field(EGU,  "V")
+    field(FLNK, "$(P):$(H)_X1:VMAX_SET")
+}
+record(dfanout, "$(P):$(H)_X1:VMAX_SET") {
+    field(DOL,  "$(P):$(H)_X:VMAX_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:VMAX_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:VMAX_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:VMAX_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:VMAX_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:VMAX_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:VMAX_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:VMAX_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:VMAX_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:VMAX_SET")
+}
+record(dfanout, "$(P):$(H)_X2:VMAX_SET") {
+    field(DOL,  "$(P):$(H)_X:VMAX_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:VMAX_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:VMAX_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:VMAX_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:VMAX_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:VMAX_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:VMAX_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:VMAX_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:VMAX_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:I0_SET") {
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+	field(EGU,  "uA")
+    field(FLNK, "$(P):$(H)_X1:I0_SET")
+}
+record(dfanout, "$(P):$(H)_X1:I0_SET") {
+    field(DOL,  "$(P):$(H)_X:I0_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:I0_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:I0_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:I0_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:I0_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:I0_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:I0_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:I0_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:I0_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:I0_SET")
+}
+record(dfanout, "$(P):$(H)_X2:I0_SET") {
+    field(DOL,  "$(P):$(H)_X:I0_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:I0_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:I0_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:I0_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:I0_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:I0_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:I0_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:I0_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:I0_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:I1_SET") {
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+	field(EGU,  "uA")
+    field(FLNK, "$(P):$(H)_X1:I1_SET")
+}
+record(dfanout, "$(P):$(H)_X1:I1_SET") {
+    field(DOL,  "$(P):$(H)_X:I1_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:I1_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:I1_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:I1_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:I1_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:I1_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:I1_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:I1_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:I1_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:I1_SET")
+}
+record(dfanout, "$(P):$(H)_X2:I1_SET") {
+    field(DOL,  "$(P):$(H)_X:I1_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:I1_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:I1_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:I1_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:I1_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:I1_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:I1_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:I1_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:I1_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:RAMPUP_SET") {
+	field(EGU,  "V/s")
+	field(DRVH, "999")
+	field(DRVL, "1")
+	field(HOPR, "999")
+	field(LOPR, "1")
+    field(FLNK, "$(P):$(H)_X1:RAMPUP_SET")
+}
+record(dfanout, "$(P):$(H)_X1:RAMPUP_SET") {
+    field(DOL,  "$(P):$(H)_X:RAMPUP_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:RAMPUP_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:RAMPUP_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:RAMPUP_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:RAMPUP_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:RAMPUP_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:RAMPUP_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:RAMPUP_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:RAMPUP_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:RAMPUP_SET")
+}
+record(dfanout, "$(P):$(H)_X2:RAMPUP_SET") {
+    field(DOL,  "$(P):$(H)_X:RAMPUP_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:RAMPUP_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:RAMPUP_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:RAMPUP_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:RAMPUP_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:RAMPUP_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:RAMPUP_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:RAMPUP_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:RAMPUP_SET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:RAMPDWN_SET") {
+	field(EGU,  "V/s")
+	field(DRVH, "999")
+	field(DRVL, "1")
+	field(HOPR, "999")
+	field(LOPR, "1")
+    field(FLNK, "$(P):$(H)_X1:RAMPDWN_SET")
+}
+record(dfanout, "$(P):$(H)_X1:RAMPDWN_SET") {
+    field(DOL,  "$(P):$(H)_X:RAMPDWN_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:RAMPDWN_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:RAMPDWN_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:RAMPDWN_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:RAMPDWN_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:RAMPDWN_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:RAMPDWN_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:RAMPDWN_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:RAMPDWN_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:RAMPDWN_SET")
+}
+record(dfanout, "$(P):$(H)_X2:RAMPDWN_SET") {
+    field(DOL,  "$(P):$(H)_X:RAMPDWN_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:RAMPDWN_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:RAMPDWN_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:RAMPDWN_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:RAMPDWN_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:RAMPDWN_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:RAMPDWN_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:RAMPDWN_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:RAMPDWN_SET.VAL PP")
+}
+
+record(bo, "$(P):$(H)_X:HV_SET") {
+	field(ZNAM, "Off")
+	field(ONAM, "On")
+	field(FLNK, "$(P):$(H)_X1:HV_SET")
+}
+record(dfanout, "$(P):$(H)_X1:HV_SET") {
+    field(DOL,  "$(P):$(H)_X:HV_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:HV_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:HV_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:HV_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:HV_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:HV_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:HV_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:HV_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:HV_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:HV_SET")
+}
+record(dfanout, "$(P):$(H)_X2:HV_SET") {
+    field(DOL,  "$(P):$(H)_X:HV_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:HV_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:HV_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:HV_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:HV_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:HV_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:HV_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:HV_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:HV_SET.VAL PP")
+}
+
+record(bo, "$(P):$(H)_X:RESET") {
+	field(HIGH, "1")
+	field(FLNK, "$(P):$(H)_X1:RESET")
+}
+record(dfanout, "$(P):$(H)_X1:RESET") {
+    field(DOL,  "$(P):$(H)_X:RESET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:RESET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:RESET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:RESET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:RESET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:RESET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:RESET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:RESET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:RESET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:RESET")
+}
+record(dfanout, "$(P):$(H)_X2:RESET") {
+    field(DOL,  "$(P):$(H)_X:RESET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:RESET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:RESET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:RESET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:RESET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:RESET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:RESET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:RESET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:RESET.VAL PP")
+}
+
+record(ao, "$(P):$(H)_X:TRIP_SET") {
+	field(PREC, "1")
+	field(DRVH, "1000")
+	field(DRVL, "0")
+	field(HOPR, "1000")
+	field(LOPR, "0")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+	field(EGU,  "sec")
+    field(FLNK, "$(P):$(H)_X1:TRIP_SET")
+}
+record(dfanout, "$(P):$(H)_X1:TRIP_SET") {
+    field(DOL,  "$(P):$(H)_X:TRIP_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:TRIP_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:TRIP_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:TRIP_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:TRIP_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:TRIP_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:TRIP_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:TRIP_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:TRIP_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:TRIP_SET")
+}
+record(dfanout, "$(P):$(H)_X2:TRIP_SET") {
+    field(DOL,  "$(P):$(H)_X:TRIP_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:TRIP_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:TRIP_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:TRIP_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:TRIP_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:TRIP_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:TRIP_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:TRIP_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:TRIP_SET.VAL PP")
+}
+
+record(bo, "$(P):$(H)_X:PON_SET") {
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(FLNK, "$(P):$(H)_X1:PON_SET")
+}
+record(dfanout, "$(P):$(H)_X1:PON_SET") {
+    field(DOL,  "$(P):$(H)_X:PON_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:PON_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:PON_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:PON_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:PON_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:PON_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:PON_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:PON_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:PON_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:PON_SET")
+}
+record(dfanout, "$(P):$(H)_X2:PON_SET") {
+    field(DOL,  "$(P):$(H)_X:PON_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:PON_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:PON_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:PON_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:PON_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:PON_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:PON_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:PON_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:PON_SET.VAL PP")
+}
+
+record(bo, "$(P):$(H)_X:PDWN_SET") {
+    field(ZNAM, "Kill")
+    field(ONAM, "Rdwn")
+    field(FLNK, "$(P):$(H)_X1:PDWN_SET")
+}
+record(dfanout, "$(P):$(H)_X1:PDWN_SET") {
+    field(DOL,  "$(P):$(H)_X:PDWN_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:PDWN_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:PDWN_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:PDWN_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:PDWN_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:PDWN_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:PDWN_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:PDWN_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:PDWN_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:PDWN_SET")
+}
+record(dfanout, "$(P):$(H)_X2:PDWN_SET") {
+    field(DOL,  "$(P):$(H)_X:PDWN_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:PDWN_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:PDWN_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:PDWN_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:PDWN_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:PDWN_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:PDWN_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:PDWN_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:PDWN_SET.VAL PP")
+}
+

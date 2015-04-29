@@ -1,0 +1,12 @@
+*~
+O.*
+src/bkup/*
+src/new/*
+src/snc/*
+
+# Ignore some old stuff
+db/HV_old.db
+db/HV_g0ioc1.db
+db/HVChan.template.bkup
+db/HVChan.template.few
+db/HVChan_v0.db

@@ -1,0 +1,30 @@
+# Macros:
+#   H - Crate Number [0-99]
+#   V - Channel Number [0-63]
+########################################
+record(dfanout, "$(P):$(H)_X1:$(PV)_SET") {
+    field(DOL,  "$(P):$(H)_X:$(PV)_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_0:$(PV)_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_1:$(PV)_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_2:$(PV)_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_3:$(PV)_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_4:$(PV)_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_5:$(PV)_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_6:$(PV)_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_7:$(PV)_SET.VAL PP")
+    field(FLNK, "$(P):$(H)_X2:$(PV)_SET")
+}
+record(dfanout, "$(P):$(H)_X2:$(PV)_SET") {
+    field(DOL,  "$(P):$(H)_X:$(PV)_SET")
+    field(OMSL, "closed_loop")
+    field(OUTA, "$(P):$(H)_8:$(PV)_SET.VAL PP")
+    field(OUTB, "$(P):$(H)_9:$(PV)_SET.VAL PP")
+    field(OUTC, "$(P):$(H)_10:$(PV)_SET.VAL PP")
+    field(OUTD, "$(P):$(H)_11:$(PV)_SET.VAL PP")
+    field(OUTE, "$(P):$(H)_12:$(PV)_SET.VAL PP")
+    field(OUTF, "$(P):$(H)_13:$(PV)_SET.VAL PP")
+    field(OUTG, "$(P):$(H)_14:$(PV)_SET.VAL PP")
+    field(OUTH, "$(P):$(H)_15:$(PV)_SET.VAL PP")
+}
+

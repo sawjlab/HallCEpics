@@ -1,0 +1,7 @@
+device(ai, INST_IO, devAiCaen, "CAEN HV")
+device(ao, INST_IO, devAoCaen, "CAEN HV")
+device(bi, INST_IO, devBiCaen, "CAEN HV")
+device(bo, INST_IO, devBoCaen, "CAEN HV")
+
+function(statSubInit)
+function(statSub)
