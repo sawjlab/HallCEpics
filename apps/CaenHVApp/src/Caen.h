@@ -57,7 +57,7 @@ extern void CAEN_get_cache_param_ptr();
 /*extern int  CAEN_init();*/
 extern int  CAEN_init_table();
 extern int  CAEN_init_task();
-extern int CAEN_init_channle(int crate, int channel);
+extern int CAEN_init_channel(int crate, int chan);
 
 /* Caen.c */
 extern int CAEN_send_raw_command();
@@ -314,6 +314,7 @@ extern int CAEN_NUM_RX;
 #define CAEN_READ_ISF_B3_POS     23
 #define CAEN_READ_BSY_POS         0
 
+#define CHANNEL(slot,chan) ((slot)*16+(chan))
 
 /* Message structure between Dev Sup and Asyn task */
 typedef struct   caen_tx_msg_type {

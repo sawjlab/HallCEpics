@@ -217,7 +217,8 @@ static long init_record(struct boRecord	*pbo)
 {
     char    *parm;
     int     parms;
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     short   buffer[8];
     short   result;
     int     status;
@@ -234,7 +235,8 @@ static long init_record(struct boRecord	*pbo)
     case (INST_IO) :
         parm = pbo->out.value.instio.string;
         debug("\tparm = %s\n", parm);
-        parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+	parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+	channel = CHANNEL(slot,chaninslot);
 
         debug("\tCrate %hd, Channel %hd, Cmd %hd\n",
               crate, channel, command);
@@ -321,7 +323,8 @@ static long write_bo(struct boRecord *pbo)
 {
     char    *parm;
     int     parms;
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     int     status;
 
     /* If no CAEN interface is present, do not write */
@@ -330,7 +333,8 @@ static long write_bo(struct boRecord *pbo)
     }
 
     parm = pbo->out.value.instio.string;
-    parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+    parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+    channel = CHANNEL(slot,chaninslot);
 
     status = CAEN_send_command(crate, channel, command, (short)pbo->rval);
 

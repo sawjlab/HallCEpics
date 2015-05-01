@@ -4,9 +4,9 @@
 ########################################
 # Voltage Controls
 ########################################
-record(ai, "$(P):$(H)_$(V):VMON") {
+record(ai, "$(P)$(H):$(S):$(V):VMON") {
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C21")
+    field(INP,  "@H$(H) S$(S) V$(V) C21")
     field(SCAN, "2 second")
     field(PINI, "YES")
     field(PREC, "1")
@@ -16,9 +16,9 @@ record(ai, "$(P):$(H)_$(V):VMON") {
     field(EGU,  "V")
     field(HOPR, "3000")
 }
-record(ao, "$(P):$(H)_$(V):V0_SET") {
+record(ao, "$(P)$(H):$(S):$(V):V0_SET") {
     field(DTYP, "CAEN HV")
-    field(OUT, "@H$(H) V$(V) C1")
+    field(OUT, "@H$(H) S$(S) V$(V) C1")
     field(LINR, "LINEAR")
     field(EGUF, "0.1")
     field(EGUL, "0.0")
@@ -27,18 +27,18 @@ record(ao, "$(P):$(H)_$(V):V0_SET") {
     field(DRVL, "0.00")
     field(HOPR, "3000")
 }
-record(ai, "$(P):$(H)_$(V):V0") {
+record(ai, "$(P)$(H):$(S):$(V):V0") {
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C25")
+    field(INP,  "@H$(H) S$(S) V$(V) C25")
     field(SCAN, "2 second")
     field(LINR, "LINEAR")
     field(EGUF, "0.1")
     field(EGUL, "0.0")
     field(EGU,  "V")
 }
-record(ao, "$(P):$(H)_$(V):V1_SET") {
+record(ao, "$(P)$(H):$(S):$(V):V1_SET") {
     field(DTYP, "CAEN HV")
-    field(OUT,  "@H$(H) V$(V) C2")
+    field(OUT,  "@H$(H) S$(S) V$(V) C2")
     field(PREC, "0")
     field(LINR, "LINEAR")
     field(EGUF, "0.1")
@@ -48,27 +48,27 @@ record(ao, "$(P):$(H)_$(V):V1_SET") {
     field(DRVL, "0.00")
     field(HOPR, "3000")
 }
-record(ai, "$(P):$(H)_$(V):V1") {
+record(ai, "$(P)$(H):$(S):$(V):V1") {
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C26")
+    field(INP,  "@H$(H) S$(S) V$(V) C26")
     field(SCAN, "2 second")
     field(LINR, "LINEAR")
     field(EGUF, "0.1")
     field(EGUL, "0.0")
     field(EGU,  "V")
 }
-record(ao, "$(P):$(H)_$(V):VMAX_SET") {
+record(ao, "$(P)$(H):$(S):$(V):VMAX_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C5")
+	field(OUT,  "@H$(H) S$(S) V$(V) C5")
 	field(PREC, "0")
     field(DRVH, "3000")
     field(DRVL, "0")
     field(HOPR, "3000")
 	field(EGU,  "V")
 }
-record(ai, "$(P):$(H)_$(V):VMAX") {
+record(ai, "$(P)$(H):$(S):$(V):VMAX") {
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C29")
+    field(INP,  "@H$(H) S$(S) V$(V) C29")
     field(SCAN, "2 second")
     field(PINI, "YES")
     field(PREC, "0")
@@ -77,48 +77,48 @@ record(ai, "$(P):$(H)_$(V):VMAX") {
 ########################################
 # Current Controls
 ########################################
-record(ai, "$(P):$(H)_$(V):IMON") {
+record(ai, "$(P)$(H):$(S):$(V):IMON") {
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C22")
+    field(INP,  "@H$(H) S$(S) V$(V) C22")
     field(SCAN, "2 second")
     field(PINI, "YES")
     field(PREC, "0")
     field(EGU,  "uA")
 }
-record(ao, "$(P):$(H)_$(V):I0_SET") {
+record(ao, "$(P)$(H):$(S):$(V):I0_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C3")
+	field(OUT,  "@H$(H) S$(S) V$(V) C3")
     field(DRVH, "3000")
     field(DRVL, "0.00")
     field(HOPR, "3000")
 	field(EGU,  "uA")
 }
-record(ai, "$(P):$(H)_$(V):I0") {
+record(ai, "$(P)$(H):$(S):$(V):I0") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C27")
+	field(INP,  "@H$(H) S$(S) V$(V) C27")
 	field(SCAN, "2 second")
 	field(EGU,  "uA")
 }
-record(ao, "$(P):$(H)_$(V):I1_SET") {
+record(ao, "$(P)$(H):$(S):$(V):I1_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C4")
+	field(OUT,  "@H$(H) S$(S) V$(V) C4")
     field(DRVH, "3000")
     field(DRVL, "0.00")
     field(HOPR, "3000")
 	field(EGU,  "uA")
 }
-record(ai, "$(P):$(H)_$(V):I1") {
+record(ai, "$(P)$(H):$(S):$(V):I1") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C28")
+	field(INP,  "@H$(H) S$(S) V$(V) C28")
 	field(SCAN, "2 second")
 	field(EGU,  "uA")
 }
 ########################################
 # Ramp Controls
 ########################################
-record(ao, "$(P):$(H)_$(V):RAMPUP_SET") {
+record(ao, "$(P)$(H):$(S):$(V):RAMPUP_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C6")
+	field(OUT,  "@H$(H) S$(S) V$(V) C6")
 	field(PREC, "0")
 	field(EGU,  "V/s")
 	field(DRVH, "999")
@@ -126,17 +126,17 @@ record(ao, "$(P):$(H)_$(V):RAMPUP_SET") {
 	field(HOPR, "999")
 	field(LOPR, "1")
 }
-record(ai, "$(P):$(H)_$(V):RAMPUP") {
+record(ai, "$(P)$(H):$(S):$(V):RAMPUP") {
     field(SCAN, "2 second")
     field(PINI, "YES")
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C30")
+    field(INP,  "@H$(H) S$(S) V$(V) C30")
     field(PREC, "0")
     field(EGU,  "V/s")
 }
-record(ao, "$(P):$(H)_$(V):RAMPDWN_SET") {
+record(ao, "$(P)$(H):$(S):$(V):RAMPDWN_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C7")
+	field(OUT,  "@H$(H) S$(S) V$(V) C7")
 	field(PREC, "0")
 	field(EGU,  "V/s")
 	field(DRVH, "999")
@@ -144,32 +144,32 @@ record(ao, "$(P):$(H)_$(V):RAMPDWN_SET") {
 	field(HOPR, "999")
 	field(LOPR, "1")
 }
-record(ai, "$(P):$(H)_$(V):RAMPDWN") {
+record(ai, "$(P)$(H):$(S):$(V):RAMPDWN") {
     field(SCAN, "2 second")
     field(PINI, "YES")
     field(DTYP, "CAEN HV")
-    field(INP,  "@H$(H) V$(V) C31")
+    field(INP,  "@H$(H) S$(S) V$(V) C31")
     field(PREC, "0")
     field(EGU,  "V/s")
 }
 ########################################
 # Channel Status
 ########################################
-record(ai, "$(P):$(H)_$(V):STAT") {
+record(ai, "$(P)$(H):$(S):$(V):STAT") {
     field(DTYP, "CAEN HV")
     field(SCAN, "2 second")
     field(PINI, "YES")
-    field(FLNK, "$(P):$(H)_$(V):STAT_SUB")
-    field(INP,  "@H$(H) V$(V) C23")
+    field(FLNK, "$(P)$(H):$(S):$(V):STAT_SUB")
+    field(INP,  "@H$(H) S$(S) V$(V) C23")
 }
-record(sub, "$(P):$(H)_$(V):STAT_SUB") {
-    field(INPA, "$(P):$(H)_$(V):STAT")
+record(sub, "$(P)$(H):$(S):$(V):STAT_SUB") {
+    field(INPA, "$(P)$(H):$(S):$(V):STAT")
     field(INAM, "statSubInit")
     field(SNAM, "statSub")
-    field(FLNK, "$(P):$(H)_$(V):STATUS")
+    field(FLNK, "$(P)$(H):$(S):$(V):STATUS")
 }
-record(mbbo, "$(P):$(H)_$(V):STATUS") {
-    field(DOL,  "$(P):$(H)_$(V):STAT_SUB.VAL")
+record(mbbo, "$(P)$(H):$(S):$(V):STATUS") {
+    field(DOL,  "$(P)$(H):$(S):$(V):STAT_SUB.VAL")
     field(OMSL, "closed_loop")
     field(ZRST, "OFF")
     field(ZRSV, "MAJOR")
@@ -195,27 +195,27 @@ record(mbbo, "$(P):$(H)_$(V):STATUS") {
 ########################################
 # HV
 ########################################
-record(bo, "$(P):$(H)_$(V):HV_SET") {
+record(bo, "$(P)$(H):$(S):$(V):HV_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C9")
+	field(OUT,  "@H$(H) S$(S) V$(V) C9")
 	field(ZNAM, "Off")
 	field(ONAM, "On")
 }
-record(bi, "$(P):$(H)_$(V):HV") {
+record(bi, "$(P)$(H):$(S):$(V):HV") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C33")
+	field(INP,  "@H$(H) S$(S) V$(V) C33")
 	field(SCAN, "2 second")
 	field(ZSV,  "MAJOR")
 	field(OSV,  "NO_ALARM")
 }
-record(bo, "$(P):$(H)_$(V):RESET") {
+record(bo, "$(P)$(H):$(S):$(V):RESET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C15")
+	field(OUT,  "@H$(H) S$(S) V$(V) C15")
 	field(HIGH, "1")
 }
-record(ao, "$(P):$(H)_$(V):TRIP_SET") {
+record(ao, "$(P)$(H):$(S):$(V):TRIP_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C8")
+	field(OUT,  "@H$(H) S$(S) V$(V) C8")
 	field(PREC, "1")
 	field(DRVH, "1000")
 	field(DRVL, "0")
@@ -226,9 +226,9 @@ record(ao, "$(P):$(H)_$(V):TRIP_SET") {
     field(EGUL, "0.0")
 	field(EGU,  "sec")
 }
-record(ai, "$(P):$(H)_$(V):TRIP") {
+record(ai, "$(P)$(H):$(S):$(V):TRIP") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C32")
+	field(INP,  "@H$(H) S$(S) V$(V) C32")
 	field(SCAN, "2 second")
 	field(EGU,  "sec")
 	field(PREC, "1")
@@ -236,26 +236,26 @@ record(ai, "$(P):$(H)_$(V):TRIP") {
     field(EGUF, "0.1")
     field(EGUL, "0.0")
 }
-record(bo, "$(P):$(H)_$(V):PON_SET") {
+record(bo, "$(P)$(H):$(S):$(V):PON_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C13")
+	field(OUT,  "@H$(H) S$(S) V$(V) C13")
     field(ZNAM, "Off")
     field(ONAM, "On")
 }
-record(bi, "$(P):$(H)_$(V):PON") {
+record(bi, "$(P)$(H):$(S):$(V):PON") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C37")
+	field(INP,  "@H$(H) S$(S) V$(V) C37")
 	field(SCAN, "2 second")
 }
-record(bo, "$(P):$(H)_$(V):PDWN_SET") {
+record(bo, "$(P)$(H):$(S):$(V):PDWN_SET") {
 	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) V$(V) C11")
+	field(OUT,  "@H$(H) S$(S) V$(V) C11")
     field(ZNAM, "Kill")
     field(ONAM, "Rdwn")
 }
-record(bi, "$(P):$(H)_$(V):PDWN") {
+record(bi, "$(P)$(H):$(S):$(V):PDWN") {
 	field(DTYP, "CAEN HV")
-	field(INP,  "@H$(H) V$(V) C35")
+	field(INP,  "@H$(H) S$(S) V$(V) C35")
 	field(SCAN, "2 second")
 }
 

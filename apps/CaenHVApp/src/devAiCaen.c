@@ -227,7 +227,8 @@ static long init_record(struct aiRecord	*pai)
 {
     char    *parm;      /* parameters from INP */
     int     parms;      /* parameter count */
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     short   buffer[8];
     short   result;
     int     status;
@@ -244,13 +245,15 @@ static long init_record(struct aiRecord	*pai)
     case (INST_IO):
         parm = pai->inp.value.instio.string;
         debug("\tparm = %s\n", parm);
-        parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+        parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+	channel = CHANNEL(slot,chaninslot);
 
         debug("\tCrate %hd, Channel %hd, Cmd %hd\n",
               crate, channel, command);
+
         if (REC_CHK_HW) {
             /* Check HV channel exists */
-            status = CAEN_send_raw_command(crate,
+	  status = CAEN_send_raw_command(crate,
                                            channel,
                                            CAEN_READ_STATUS_CMD,
                                            (short)0);
@@ -332,7 +335,8 @@ static long read_ai(struct aiRecord	*pai)
 {
     char    *parm;
     int     parms;
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     int     status;
 
     /* If no CAEN interface is present, do not write */
@@ -341,7 +345,8 @@ static long read_ai(struct aiRecord	*pai)
     }
 
     parm = pai->inp.value.instio.string;
-    parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+    parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+    channel = CHANNEL(slot,chaninslot);
 
     /* For starters, only allow CAEN_READ_STATUS_CMD  */
     /* and CAEN_READ_V_MON_CMD */

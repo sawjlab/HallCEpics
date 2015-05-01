@@ -217,7 +217,8 @@ static long init_record(struct biRecord	*pbi)
 {
     char    *parm;
     int     parms;
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     short   buffer[8];
     short   result;
     int     status;
@@ -234,7 +235,8 @@ static long init_record(struct biRecord	*pbi)
     case (INST_IO) :
         parm = pbi->inp.value.instio.string;
         debug("\tparm = %s\n", parm);
-        parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+	parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+	channel = CHANNEL(slot,chaninslot);
 
         debug("\tCrate %hd, Channel %hd, Cmd %hd\n",
               crate, channel, command);
@@ -323,7 +325,8 @@ static long read_bi(struct biRecord	*pbi)
 {
     char    *parm;
     int     parms;
-    short   crate, channel, command;
+    short   crate, slot, chaninslot, command;
+    short   channel;
     int     status;
 
     /* If no CAEN interface is present, do not write */
@@ -332,7 +335,8 @@ static long read_bi(struct biRecord	*pbi)
     }
 
     parm = pbi->inp.value.instio.string;
-    parms = sscanf(parm, "H%hd V%hd C%hd", &crate, &channel, &command);
+    parms = sscanf(parm, "H%hd S%hd V%hd C%hd", &crate, &slot, &chaninslot, &command);
+    channel = CHANNEL(slot,chaninslot);
 
     status = CAEN_read_data(crate, channel, command, &(pbi->rval));
     debug("devBiCaen read_bi: pbi->rval %d\n", pbi->rval);
