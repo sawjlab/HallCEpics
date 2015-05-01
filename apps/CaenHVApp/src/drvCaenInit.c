@@ -82,7 +82,137 @@ void CAEN_dev_sup_respawn(epicsThreadId tid)
 /*    Copyright, 1994, SURA CEBAF.                                      */
 /*                                                                      */
 /************************************************************************/
-int CAEN_init()
+int CAEN_init_table()
+{
+  /* This is the initialisation procedure for the CAEN Device */
+  /* Support. It initializes a data cache of HV data.         */
+  /* The data cache will be filled in as records are initialized */
+  /* Note, this procedure should be called once, and once only. */
+
+
+  if(CAEN_TABLE_INITIALISED==TRUE) {
+    /* already initialised */
+    if(DEBUG)printf("drvCaenInit: abort init, already done.\n");
+    return(CAEN_OK);
+  }
+
+  /* Init the table */
+  /* Should probably do this with a linked list */
+  caen_table[0].crate = -1;
+  CAEN_TABLE_INITIALISED=TRUE;
+  return(CAEN_OK);
+}
+int CAEN_init_channel(int crate, int channel)
+{
+  int tindex=0;
+  int channel_found=0;
+
+  for(tindex=0;tindex<MAX_NUMBER_OF_HV_CHANNELS;tindex++) {
+    if(caen_table[tindex].crate < 0) {
+      break;
+    }
+    if((caen_table[tindex].crate == crate) &&
+       (caen_table[tindex].channel == channel)) {
+      channel_found == 1;
+      break;
+    }
+  }
+  if(!channel_found) {
+    if(MAX_NUMBER_OF_HV_CHANNELS-tindex>=2) {
+      caen_table[tindex].crate = crate;
+      caen_table[tindex].channel = channel;
+      caen_table[tindex+1].crate = -1;
+    } else {
+      printf("CAEN Dev Sup: Maximum number of channels, %d, exceeded\n",
+	     MAX_NUMBER_OF_HV_CHANNELS-1);
+      return(CAEN_ERROR);
+    }
+  }
+  return(CAEN_OK);
+}
+int CAEN_init_task()
+{
+  int result;
+  int fd;
+
+  if(CAEN_INITIALISED==TRUE) {
+    /* already initialised */
+    if(DEBUG)printf("drvCaenInit: abort init, already done.\n");
+    return(CAEN_OK);
+  }
+
+  /* Create the two pipes which send the transmit messages */
+  /* to the asynchronous task. */
+  /* HV OFF message Tx pipe */
+  result = pipeDevCreate(HV_OFF_TX_PIPE_NAME,
+			 HV_OFF_PIPE_MAX_MSG,
+			 sizeof(CAEN_TX_MSG));
+  if(result != OK) {	
+    /* error, abort initialisation */
+    printf("CAEN Dev Sup: Error in creating pipe %s\n",
+	   HV_OFF_TX_PIPE_NAME);
+    CAEN_INITIALISED=TRUE;
+    return(CAEN_ERROR);
+  }
+
+  /* HV other message Tx pipe */
+  result = pipeDevCreate(HV_TX_PIPE_NAME,
+			 HV_TX_PIPE_MAX_MSG,
+			 sizeof(CAEN_TX_MSG));
+  if(result != OK) {
+    /* error, abort initialisation */
+    printf("CAEN Dev Sup: Error in creating pipe %s\n",
+	   HV_TX_PIPE_NAME);
+    CAEN_INITIALISED=TRUE;
+    return(CAEN_ERROR);
+  }
+
+  /* Open the pipes for read/write */
+  fd = open(HV_OFF_TX_PIPE_NAME,O_RDWR,0);
+  if (fd==ERROR) {
+    /* error, abort initialisation */
+    printf("CAEN Dev Sup: Error in opening pipe %s\n",
+	   HV_OFF_TX_PIPE_NAME);
+    CAEN_INITIALISED=TRUE;
+    return(CAEN_ERROR);
+  }
+  HV_OFF_TX_PIPE_FD = fd;
+
+  fd = open(HV_TX_PIPE_NAME,O_RDWR,0);
+  if (fd==ERROR) {
+    /* error, abort initialisation */
+    printf("CAEN Dev Sup: Error in opening pipe %s\n",
+	   HV_TX_PIPE_NAME);
+    CAEN_INITIALISED=TRUE;
+    return(CAEN_ERROR);
+  }
+  HV_TX_PIPE_FD = fd;
+
+  CAEN_INITIALISED=TRUE;
+
+  if(SPAWN_ASYN_TASK) {
+        /* Spawn the asychronous task */
+        debug("drvCaenInit: Spawning task\n");
+        result = taskSpawn(CAEN_DEV_SUP_TASK_NAME,
+                           CAEN_DEV_SUP_TASK_PRI,
+                           CAEN_DEV_SUP_TASK_OPT,
+                           CAEN_DEV_SUP_TASK_SS,
+                           (FUNCPTR)CAEN_DEV_SUP_TASK_ENTRY,0,1,2,3,4,5,6,7,8,9);
+        if(result == ERROR) {
+            printf("CAEN Dev Sup: Error in spawning task %s\n",
+                   CAEN_DEV_SUP_TASK_NAME);
+            CAEN_INITIALISED=TRUE;
+            return(CAEN_ERROR);
+        }
+    } else {
+        taskwdInsert((epicsThreadId)result, (VOIDFUNCPTR)CAEN_dev_sup_respawn, (void *)result);
+    }
+
+    CAEN_INITIALISED=TRUE;
+    return(CAEN_OK);
+}
+#if 0
+int CAEN_init_old()
 {
     struct status_data_type *status_data_ptr;
     struct param_data_type  *param_data_ptr;
@@ -292,7 +422,7 @@ int CAEN_init()
     return(CAEN_OK);
 }
 
-
+#endif
 
 
 

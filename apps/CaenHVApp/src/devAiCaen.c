@@ -178,7 +178,7 @@ static long init(int after)
 
                         /* Now initialise the Tx pipes, Rx cache and start */
                         /* the Asynchronous Device Support Task. */
-                        CAEN_init();
+                        CAEN_init_table();
                     } else {
                         /* Wrong board in place */
                         debug("devAiCaen: Incorrect board detected!\n");
@@ -192,7 +192,7 @@ static long init(int after)
                 /* do not read mod id */
                 CAEN_reset();
                 hardware_present = TRUE;
-                CAEN_init();
+                CAEN_init_table();
             }
 
         } /* end if memprobe */
@@ -200,7 +200,9 @@ static long init(int after)
             /* mem probe failed. */
             printf("devAiCaen: init: vxMemProbe failed.\n");
         }
-    }   /* end after==0 */
+    } else {  /* end after==0 */
+      CAEN_init_task();
+    }
     return(0);
 }
 
@@ -295,6 +297,12 @@ static long init_record(struct aiRecord	*pai)
         }
         /* For this dev support, only allow lin conv scaling */
         if (pai->eguf > 0) pai->eslo = pai->eguf;
+
+	result = CAEN_init_channel(crate, channel);
+	if(result != CAEN_OK) { 
+	  debug("devAiCaen: rec_init CAEN_init_channel error %d \n",result);
+	  return(1);
+	}
         break;
     default:
         recGblRecordError(S_db_badField,(void *)pai,

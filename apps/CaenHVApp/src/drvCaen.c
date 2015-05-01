@@ -35,6 +35,7 @@
 /* External variables declared in this module */
 struct caen_table_type caen_table[MAX_NUMBER_OF_HV_CHANNELS];
 int    CAEN_INITIALISED = FALSE;
+int    CAEN_TABLE_INITIALISED = FALSE;
 int    HV_OFF_TX_PIPE_FD;
 int    HV_TX_PIPE_FD;
 

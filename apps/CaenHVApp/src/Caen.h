@@ -54,7 +54,10 @@ extern void CAEN_get_cache_status_ptr();
 extern void CAEN_get_cache_param_ptr();
 
 /* devCaenInit.c */
-extern int  CAEN_init();
+/*extern int  CAEN_init();*/
+extern int  CAEN_init_table();
+extern int  CAEN_init_task();
+extern int CAEN_init_channle(int crate, int channel);
 
 /* Caen.c */
 extern int CAEN_send_raw_command();
@@ -68,6 +71,7 @@ extern void CAEN_dev_sup();
 extern int HV_OFF_TX_PIPE_FD;
 extern int HV_TX_PIPE_FD;
 extern int CAEN_INITIALISED;
+extern int CAEN_TABLE_INITIALISED;
 extern int CAEN_DEBUG;
 extern int CAEN_RECORD_DEBUG;
 extern int CAEN_TX_TO;

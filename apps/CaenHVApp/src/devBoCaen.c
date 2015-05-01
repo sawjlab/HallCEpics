@@ -171,7 +171,7 @@ static long init(int after)
 
                         /* Now initialise the Tx pipes, Rx cache and start */
                         /* the Asynchronous Device Support Task. */
-                        CAEN_init();
+                        CAEN_init_table();
 
                     } else {
                         /* Wrong board in place */
@@ -185,13 +185,15 @@ static long init(int after)
             } else {
                 hardware_present=TRUE;
                 CAEN_reset();
-                CAEN_init();
+                CAEN_init_table();
             }
         } /* end if memprobe */
         else {
             printf("devBoCaen: init: vxMemProbe failed\n");
         }
-    }   /* end after==0 */
+    } else {  /* end after==0 */
+      CAEN_init_task();
+    }
     return(0);
 }
 
@@ -285,6 +287,11 @@ static long init_record(struct boRecord	*pbo)
                               "devBoCaen (init_record) CAEN access violation");
             return(S_db_badField);
         }
+	result = CAEN_init_channel(crate, channel);
+	if(result != CAEN_OK) { 
+	  debug("devAiCaen: rec_init CAEN_init_channel error %d \n",result);
+	  return(1);
+	}
         break;
     default :
         recGblRecordError(S_db_badField,(void *)pbo,
