@@ -13,6 +13,7 @@ include $(TOP)/configure/CONFIG
 DB += AS503_Chan.template
 DB += HVgroup.template
 DB += CaenHV_vmec7.substitutions
+DB += CaenHV_Test.substitutions
 
 USES_TEMPLATE += AS503_Chan.template
 USES_TEMPLATE += HVgroup.template
