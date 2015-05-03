@@ -106,6 +106,8 @@ int CAEN_init_channel(int crate, int channel)
 {
   int tindex=0;
   int channel_found=0;
+  struct status_data_type *status_data_ptr;
+  struct param_data_type  *param_data_ptr;
 
   for(tindex=0;tindex<MAX_NUMBER_OF_HV_CHANNELS;tindex++) {
     if(caen_table[tindex].crate < 0) {
@@ -121,6 +123,71 @@ int CAEN_init_channel(int crate, int channel)
     if(MAX_NUMBER_OF_HV_CHANNELS-tindex>=2) {
       caen_table[tindex].crate = crate;
       caen_table[tindex].channel = channel;
+      caen_table[tindex].group = 0;
+
+      /* allocate memory for status data */
+      status_data_ptr =
+	(struct status_data_type *)malloc(sizeof(CAEN_STATUS_DATA));
+      if(status_data_ptr == NULL) {
+	/* Error: could not malloc */
+	printf("CAEN Dev Sup: Error in malloc\n");
+	/* do not try again */
+	CAEN_INITIALISED=TRUE;
+	return(CAEN_ERROR);
+      }
+
+      /* zero the data */
+      status_data_ptr->v_mon  = 0;
+      status_data_ptr->i_mon  = 0;
+      status_data_ptr->status = 0;
+
+      /* attache cache data to the table */
+      caen_table[tindex].status_ptr=
+	(struct status_data_type *)status_data_ptr;
+
+      /* zero the time stamp and set LAM */
+      caen_table[tindex].status_time_stamp=0;
+      caen_table[tindex].status_stale_out_period=
+	CAEN_STATUS_LONG_STALE_OUT_PERIOD;
+      caen_table[tindex].status_LAM=5;
+
+      /* allocate memory for param data */
+      param_data_ptr =
+	(struct param_data_type *)malloc(sizeof(CAEN_PARAM_DATA));
+      if(param_data_ptr == NULL) {
+	/* Error: could not malloc */
+	printf("CAEN Dev Sup: Error in malloc\n");
+	/* do not try again */
+	CAEN_INITIALISED=TRUE;
+	return(CAEN_ERROR);
+      }
+
+      /* zero the data */
+      param_data_ptr->name[0]= '\0';
+      param_data_ptr->v0_set = 0;
+      param_data_ptr->v1_set = 0;
+      param_data_ptr->i0_set = 0;
+      param_data_ptr->i1_set = 0;
+      param_data_ptr->v_max  = 0;
+      param_data_ptr->ramp_up = 0;
+      param_data_ptr->ramp_down = 0;
+      param_data_ptr->trip   = 0;
+      param_data_ptr->hv     = 0;
+      param_data_ptr->passwd = 0;
+      param_data_ptr->power_down = 0;
+      param_data_ptr->on_enable = 0;
+      param_data_ptr->pon = 0;
+
+      /* attache cache data to the table */
+      caen_table[tindex].param_ptr=
+	(struct param_data_type *)param_data_ptr;
+
+      /* zero the time stamp and LAM */
+      caen_table[tindex].param_time_stamp=0;
+      caen_table[tindex].param_stale_out_period=
+	CAEN_PARAM_LONG_STALE_OUT_PERIOD;
+      caen_table[tindex].param_LAM=5;
+
       caen_table[tindex+1].crate = -1;
     } else {
       printf("CAEN Dev Sup: Maximum number of channels, %d, exceeded\n",
