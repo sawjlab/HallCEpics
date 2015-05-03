@@ -30,8 +30,11 @@
 /*_end                                                                  */
 
 #define DEBUG2 0
+#define DEBUG3 0
 
 #define ASYN_DEV_LOOP_DELAY  1
+double sleep_time=0.001;
+double spin_time=0.0001;
 
 int SOS_CAEN_IDLE;		/* One of these gets set by a vxWorks Variable */
 int HMS_CAEN_IDLE;		/* binary output record. */
@@ -902,6 +905,8 @@ void CAEN_dev_sup()
     long DogVal=1;
     int watchdog_counter=0;
 #endif
+    int loops=0;
+    unsigned long lastlooptime=0;
     read_count=0;
     chan_loop =0;
     last_LAM = 0;
@@ -1189,8 +1194,17 @@ void CAEN_dev_sup()
                     read_channel++;
                     if (caen_table[read_channel].crate<0) {
                         /* end of table */
-                        read_channel=0;
+		        read_channel=0;
+			if(DEBUG3>0) {
+			  int newtime=current_time();
+			  loops++;
+			  printf("%f\n",(newtime-lastlooptime)/1000.0);
+			  lastlooptime=newtime;
+			}
                     }
+		    if(DEBUG3>1) {
+		      printf("%d ",read_channel);
+		    }
 
                     /* Check if status data is stale. */
                     if (caen_table[read_channel].status_time_stamp +
@@ -1240,7 +1254,8 @@ void CAEN_dev_sup()
                 } /* end of channel read processing. */
             } /* End if Tx. */
         } /* End if HV OFF TX */
-        taskDelay(ASYN_DEV_LOOP_DELAY);
+	/*        taskDelay(ASYN_DEV_LOOP_DELAY);*/
+	epicsThreadSleep(sleep_time);
     } /* End inf loop */
 }
 
@@ -1449,8 +1464,9 @@ void CAEN_spin(int iterations)
 {
     int i,j;
 
-    for (j=0; j<iterations; j++) {
+    /*    for (j=0; j<iterations; j++) {
         for (i=0; i<800; i++);
-    }
+	}*/
+    epicsThreadSleep(spin_time*iterations);
 }
 
