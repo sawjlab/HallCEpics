@@ -149,6 +149,26 @@ int   *ptr;
             /* invalid address */
             return(result);
         }
+	switch(command) {
+	case CAEN_READ_V_MON_CMD:
+	  /* read v mon, two words, MSW first */
+	  *ptr = (int)status_ptr->v_mon;
+	  break;
+
+	case CAEN_READ_I_MON_CMD:
+	  /* read i mon, one word */
+	  *ptr=(int)(status_ptr->i_mon);
+	  break;
+
+	case CAEN_READ_STATUS_CMD:
+	  /* read status, one word */
+	  *ptr=(int)(status_ptr->status);
+	  break;
+
+	default:
+	  return(CAEN_ERROR);
+	  break;
+	}
     } else if( (command>CAEN_READ_STATUS_CMD)&&(command<CAEN_READ_VMAX_B0_CMD)) {
         /* required data is in param part of cache */
         CAEN_get_cache_param_ptr(crate,
@@ -160,106 +180,93 @@ int   *ptr;
             /* invalid address */
             return(result);
         }
+    /* cache present, copy word(s) from cache to buffer */
+
+	switch (command) {
+      
+	case CAEN_READ_NAME_CMD:
+	  /* read channel name ,pointer to string, 12 characters */
+	  bcopy(param_ptr->name,(char *)ptr,12);
+	  break;
+
+	case CAEN_READ_V0_CMD:
+	  /* read V0 set, two words, MSW first */
+	  *ptr=(int)(param_ptr->v0_set);
+	  /*	  printf("%d %d %d: (%lx) %d\n",crate, channel, table_index, &(param_ptr->v0_set), *ptr);*/
+	  break;
+
+	case CAEN_READ_V1_CMD:
+	  /* read V1 set, two words, MSW first */
+	  *ptr=(int)(param_ptr->v1_set);
+	  break;
+
+	case CAEN_READ_I0_CMD:
+	  /* read I0 set, one word */
+	  *ptr=(int)(param_ptr->i0_set);
+	  break;
+
+	case CAEN_READ_I1_CMD:
+	  /* read I1 set, one word */
+	  *ptr=(int)(param_ptr->i1_set);
+	  break;
+
+	case CAEN_READ_VMAX_CMD:
+	  /* read V max, one word */
+	  *ptr=(int)(param_ptr->v_max);
+	  break;
+
+	case CAEN_READ_RUP_CMD:
+	  /* read ramp up, one word */
+	  *ptr=(int)(param_ptr->ramp_up);
+	  break;
+
+	case CAEN_READ_RDWN_CMD:
+	  /* read ramp down, one word */
+	  *ptr=(int)(param_ptr->ramp_down);
+	  break;
+
+	case CAEN_READ_TRIP_CMD:
+	  /* read trip, one word */
+	  *ptr=(int)(param_ptr->trip);
+	  break;
+
+	case CAEN_READ_HV_CMD:
+	  /* read hv status (on,off), one word*/
+	  *ptr=(int)(param_ptr->hv);
+	  break;
+
+	case CAEN_READ_PASSWD_CMD:
+	  /* read passwd required, one word*/
+	  *ptr=(int)(param_ptr->passwd);
+	  break;
+
+	case CAEN_READ_PDWN_CMD:
+	  /* read power down mode, one word*/
+	  *ptr=(int)(param_ptr->power_down);
+	  break;
+
+	case CAEN_READ_ON_EN_CMD:
+	  /* read on enable, one word*/
+	  *ptr=(int)(param_ptr->on_enable);
+	  break;
+
+	case CAEN_READ_PON_CMD:
+	  /* read pon, one word*/
+	  *ptr=(int)(param_ptr->pon);
+	  break;
+
+	default:
+	  return(CAEN_ERROR);
+	  break;
+
+	} /* end case */
+
     } else {
         /* invalid command */
         printf("CAEN_read_data: Invalid command type %d\n",command);
         return(CAEN_ERROR);
     }
 
-    /* cache present, copy word(s) from cache to buffer */
-
-    switch (command) {
-
-    case CAEN_READ_V_MON_CMD:
-        /* read v mon, two words, MSW first */
-        *ptr = (int)status_ptr->v_mon;
-        break;
-
-    case CAEN_READ_I_MON_CMD:
-        /* read i mon, one word */
-        *ptr=(int)(status_ptr->i_mon);
-        break;
-
-    case CAEN_READ_STATUS_CMD:
-        /* read status, one word */
-        *ptr=(int)(status_ptr->status);
-        break;
-
-    case CAEN_READ_NAME_CMD:
-        /* read channel name ,pointer to string, 12 characters */
-        bcopy(param_ptr->name,(char *)ptr,12);
-        break;
-
-    case CAEN_READ_V0_CMD:
-        /* read V0 set, two words, MSW first */
-        *ptr=(int)(param_ptr->v0_set);
-        break;
-
-    case CAEN_READ_V1_CMD:
-        /* read V1 set, two words, MSW first */
-        *ptr=(int)(param_ptr->v1_set);
-        break;
-
-    case CAEN_READ_I0_CMD:
-        /* read I0 set, one word */
-        *ptr=(int)(param_ptr->i0_set);
-        break;
-
-    case CAEN_READ_I1_CMD:
-        /* read I1 set, one word */
-        *ptr=(int)(param_ptr->i1_set);
-        break;
-
-    case CAEN_READ_VMAX_CMD:
-        /* read V max, one word */
-        *ptr=(int)(param_ptr->v_max);
-        break;
-
-    case CAEN_READ_RUP_CMD:
-        /* read ramp up, one word */
-        *ptr=(int)(param_ptr->ramp_up);
-        break;
-
-    case CAEN_READ_RDWN_CMD:
-        /* read ramp down, one word */
-        *ptr=(int)(param_ptr->ramp_down);
-        break;
-
-    case CAEN_READ_TRIP_CMD:
-        /* read trip, one word */
-        *ptr=(int)(param_ptr->trip);
-        break;
-
-    case CAEN_READ_HV_CMD:
-        /* read hv status (on,off), one word*/
-        *ptr=(int)(param_ptr->hv);
-        break;
-
-    case CAEN_READ_PASSWD_CMD:
-        /* read passwd required, one word*/
-        *ptr=(int)(param_ptr->passwd);
-        break;
-
-    case CAEN_READ_PDWN_CMD:
-        /* read power down mode, one word*/
-        *ptr=(int)(param_ptr->power_down);
-        break;
-
-    case CAEN_READ_ON_EN_CMD:
-        /* read on enable, one word*/
-        *ptr=(int)(param_ptr->on_enable);
-        break;
-
-    case CAEN_READ_PON_CMD:
-        /* read pon, one word*/
-        *ptr=(int)(param_ptr->pon);
-        break;
-
-    default:
-        return(CAEN_ERROR);
-        break;
-
-    } /* end case */
 
     return(CAEN_OK);
 
@@ -458,7 +465,7 @@ void CAEN_cache()
     printf("        (Ptr    TS   SO    LAM)   (Ptr    TS   SO   LAM)\n");
     index=0;
     while(caen_table[index].crate >=0) {
-        printf("%3d %2d %2d %2d 0x%6x %8d %5d %d  0x%6x %8d %5d %d\n",
+        printf("%3d %2d %2d %2d 0x%8x %8d %5d %d  0x%8x %8d %5d %d\n",
                index,
                caen_table[index].crate,
                caen_table[index].channel,
