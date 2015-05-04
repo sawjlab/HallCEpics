@@ -12,7 +12,8 @@ include $(TOP)/configure/CONFIG
 # databases, templates, substitutions like this
 DB += AS503_Chan.template
 DB += HVgroup.template
-DB += CaenHV_vmec7.substitutions
+DB += CaenHV_crate2.substitutions
+DB += CaenHV_crate4.substitutions
 DB += CaenHV_Test.substitutions
 
 USES_TEMPLATE += AS503_Chan.template
