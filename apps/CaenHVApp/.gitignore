@@ -5,8 +5,8 @@ src/new/*
 src/snc/*
 
 # Ignore some old stuff
-db/HV_old.db
-db/HV_g0ioc1.db
-db/HVChan.template.bkup
-db/HVChan.template.few
-db/HVChan_v0.db
+Db/HV_old.db
+Db/HV_g0ioc1.db
+Db/HVChan.template.bkup
+Db/HVChan.template.few
+Db/HVChan_v0.db
