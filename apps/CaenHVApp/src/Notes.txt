@@ -1,0 +1,41 @@
+2015
+Resurrecting Caen HV code.
+
+Wesley Moore did some code cleanup and organized the code to compile
+within the directory structure created by makeBaseApp.pl.
+
+He wrote template files and provided example substitution files so
+that database records are created at run time.
+
+Showed how to create an "ioc" application so that all apps on an IOC
+are linked into a single munch file.  This leads to much cleaner boot
+scripts.
+
+SAW configured an instance of the code for a vx5100, called vmec7.  Setup
+substitution file to configure two full crates.  Started modifying
+template files so that the EPICS names are close to the names in the built
+in EPICS on the SY4527.  Goal is to be able to build GUIs that have
+channels from both types of crates.
+
+5/4 Speed tests
+
+With 2 full crates, 30 seconds to read everything.
+Driven by stale out times.
+Try:
+
+#define  CAEN_STATUS_LONG_STALE_OUT_PERIOD   1000  /* 1 Sec */
+#define  CAEN_STATUS_SHORT_STALE_OUT_PERIOD  500   /* 0.5 Sec */
+#define  CAEN_PARAM_LONG_STALE_OUT_PERIOD    1000  /* 1 Sec */
+#define  CAEN_PARAM_SHORT_STALE_OUT_PERIOD   500   /* 0.5 Sec */
+
+Two crates now takes 10.85 seconds.
+One crate 5.38 seconds
+
+Fast readback only seems to work with parameters, not status (which
+includes vmon and imon).
+
+Try setting long param staleout and short status stale out.
+30000,10000
+
+Then status speeds up to 6.5 second for two crates.
+

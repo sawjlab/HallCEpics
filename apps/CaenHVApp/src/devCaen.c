@@ -33,8 +33,8 @@
 #define DEBUG3 0
 
 #define ASYN_DEV_LOOP_DELAY  1
-double sleep_time=0.001;
-double spin_time=0.0001;
+double CAEN_sleep_time=0.001;	/* 1 ms */
+double CAEN_spin_time=0.0001;	/* 100 ns */
 
 int SOS_CAEN_IDLE;		/* One of these gets set by a vxWorks Variable */
 int HMS_CAEN_IDLE;		/* binary output record. */
@@ -471,6 +471,8 @@ short *result;
     int   i;
     int   res;
     int   table_index;
+    static int slastlooptime=0;
+    static int plastlooptime=0;
     struct status_data_type *status_ptr;
     struct param_data_type  *param_ptr;
 
@@ -548,6 +550,11 @@ short *result;
         }
 
         /* update cache data */
+	if(DEBUG3==2&&crate==2&&channel==0) {
+	  int newtime=current_time();
+	  printf("S%f\n",(newtime-slastlooptime)/1000.0);
+	  slastlooptime=newtime;
+	}	
         (status_ptr->v_mon) =(int)((rx_data[0]<<16)+rx_data[1]);
         (status_ptr->i_mon) =rx_data[2];
         (status_ptr->status)=rx_data[3];
@@ -594,6 +601,11 @@ short *result;
             return(ERROR);
         }
 
+	if(DEBUG3==2&&crate==2&&channel==0) {
+	  int newtime=current_time();
+	  printf("P%f\n",(newtime-plastlooptime)/1000.0);
+	  plastlooptime=newtime;
+	}	
         /* update param data */
         for (i=0; i<6; i++) {
             (param_ptr->name[2*i])=(char)(rx_data[i]&0xff);
@@ -1195,16 +1207,13 @@ void CAEN_dev_sup()
                     if (caen_table[read_channel].crate<0) {
                         /* end of table */
 		        read_channel=0;
-			if(DEBUG3>0) {
+			if(DEBUG3==1) {
 			  int newtime=current_time();
 			  loops++;
 			  printf("%f\n",(newtime-lastlooptime)/1000.0);
 			  lastlooptime=newtime;
 			}
                     }
-		    if(DEBUG3>1) {
-		      printf("%d ",read_channel);
-		    }
 
                     /* Check if status data is stale. */
                     if (caen_table[read_channel].status_time_stamp +
@@ -1255,7 +1264,7 @@ void CAEN_dev_sup()
             } /* End if Tx. */
         } /* End if HV OFF TX */
 	/*        taskDelay(ASYN_DEV_LOOP_DELAY);*/
-	epicsThreadSleep(sleep_time);
+	epicsThreadSleep(CAEN_sleep_time);
     } /* End inf loop */
 }
 
@@ -1462,11 +1471,6 @@ void CAEN_read_status_reg(short *data)
 /************************************************************************/
 void CAEN_spin(int iterations)
 {
-    int i,j;
-
-    /*    for (j=0; j<iterations; j++) {
-        for (i=0; i<800; i++);
-	}*/
-    epicsThreadSleep(spin_time*iterations);
+    epicsThreadSleep(CAEN_spin_time*iterations);
 }
 

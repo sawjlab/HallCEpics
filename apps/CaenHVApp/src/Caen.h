@@ -92,11 +92,12 @@ extern int CAEN_NUM_RX;
 #define  CAEN_PARAM_DATA_TYPE         1
 
 /* Cache stale out periods */
-#define  CAEN_STATUS_LONG_STALE_OUT_PERIOD   30000  /* 30 Sec */
-#define  CAEN_STATUS_SHORT_STALE_OUT_PERIOD  1000   /* 1 Sec */
+/* #define  CAEN_STATUS_LONG_STALE_OUT_PERIOD   30000 */ /* 30 Sec */
+/* #define  CAEN_STATUS_SHORT_STALE_OUT_PERIOD  1000  */ /* 1 Sec */
+#define  CAEN_STATUS_LONG_STALE_OUT_PERIOD   1000  /* 1 Sec */
+#define  CAEN_STATUS_SHORT_STALE_OUT_PERIOD  500   /* 0.5 Sec */
 #define  CAEN_PARAM_LONG_STALE_OUT_PERIOD    30000  /* 30 Sec */
 #define  CAEN_PARAM_SHORT_STALE_OUT_PERIOD   5000   /* 5 Sec */
-
 
 /* CAEN Dev Sup Task definitions */
 #define  CAEN_DEV_SUP_TASK_NAME    "CAEN"
