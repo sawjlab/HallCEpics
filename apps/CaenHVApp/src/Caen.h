@@ -104,7 +104,8 @@ extern int CAEN_NUM_RX;
 
 /* CAEN Dev Sup Task definitions */
 #define  CAEN_DEV_SUP_TASK_NAME    "CAEN"
-#define  CAEN_DEV_SUP_TASK_PRI     200
+/*#define  CAEN_DEV_SUP_TASK_PRI     200*/
+#define  CAEN_DEV_SUP_TASK_PRI     epicsThreadPriorityHigh
 #define  CAEN_DEV_SUP_TASK_OPT     0
 #define  CAEN_DEV_SUP_TASK_SS      10000
 #define  CAEN_DEV_SUP_TASK_ENTRY   CAEN_dev_sup

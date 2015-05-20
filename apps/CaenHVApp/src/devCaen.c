@@ -924,6 +924,7 @@ void CAEN_dev_sup()
     last_LAM = 0;
     read_channel=0;
 
+    taskwdInsert(0, NULL, NULL);
     /* Go Into Processing Loop */
     while (1) {
 #ifdef WATCHDOG

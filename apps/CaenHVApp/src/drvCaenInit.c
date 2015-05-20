@@ -48,8 +48,10 @@ void CAEN_dev_sup_respawn(epicsThreadId tid)
 {
     epicsThreadId result;
 
-    taskwdRemove(tid);
-    taskDelete((int)tid);
+    if(tid) {
+      taskwdRemove(tid);
+      taskDelete((int)tid);
+    }
     /* Spawn the asychronous task */
     result = taskSpawn(CAEN_DEV_SUP_TASK_NAME,
                        CAEN_DEV_SUP_TASK_PRI,
@@ -57,7 +59,9 @@ void CAEN_dev_sup_respawn(epicsThreadId tid)
                        CAEN_DEV_SUP_TASK_SS,
                        (FUNCPTR)CAEN_DEV_SUP_TASK_ENTRY,0,1,2,3,4,5,6,7,8,9);
     if((int)result != ERROR) {
-        taskwdInsert(result, (VOIDFUNCPTR) CAEN_dev_sup_respawn, (void *)result);
+      epicsThreadId etid;
+      etid = epicsThreadGetId(CAEN_DEV_SUP_TASK_NAME);
+      taskwdInsert(result, (VOIDFUNCPTR) CAEN_dev_sup_respawn, etid);
     } else {
         printf("CAEN Dev Sup: Error in spawning task %s\n",
                CAEN_DEV_SUP_TASK_NAME);
@@ -258,25 +262,14 @@ int CAEN_init_task()
   CAEN_INITIALISED=TRUE;
 
   if(SPAWN_ASYN_TASK) {
-        /* Spawn the asychronous task */
-        debug("drvCaenInit: Spawning task\n");
-        result = taskSpawn(CAEN_DEV_SUP_TASK_NAME,
-                           CAEN_DEV_SUP_TASK_PRI,
-                           CAEN_DEV_SUP_TASK_OPT,
-                           CAEN_DEV_SUP_TASK_SS,
-                           (FUNCPTR)CAEN_DEV_SUP_TASK_ENTRY,0,1,2,3,4,5,6,7,8,9);
-        if(result == ERROR) {
-            printf("CAEN Dev Sup: Error in spawning task %s\n",
-                   CAEN_DEV_SUP_TASK_NAME);
-            CAEN_INITIALISED=TRUE;
-            return(CAEN_ERROR);
-        }
-    } else {
-        taskwdInsert((epicsThreadId)result, (VOIDFUNCPTR)CAEN_dev_sup_respawn, (void *)result);
-    }
+	unsigned int stackSize;
+	stackSize = epicsThreadGetStackSize(epicsThreadStackSmall);
+	epicsThreadCreate(CAEN_DEV_SUP_TASK_NAME, CAEN_DEV_SUP_TASK_PRI,
+			  stackSize, CAEN_DEV_SUP_TASK_ENTRY,0);
+  }			
 
-    CAEN_INITIALISED=TRUE;
-    return(CAEN_OK);
+  CAEN_INITIALISED=TRUE;
+  return(CAEN_OK);
 }
 #if 0
 int CAEN_init_old()
