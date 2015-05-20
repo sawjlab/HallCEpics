@@ -1,0 +1,62 @@
+# Crate 3 has no slot 0
+
+file "db/AS503_Chan.template" {
+pattern
+    {P,      H,  S,   V}
+    {hchv,   3,  01, 000}
+    {hchv,   3,  01, 001}
+    {hchv,   3,  01, 002}
+    {hchv,   3,  01, 003}
+    {hchv,   3,  01, 004}
+    {hchv,   3,  01, 005}
+    {hchv,   3,  01, 006}
+    {hchv,   3,  01, 007}
+    {hchv,   3,  01, 008}
+    {hchv,   3,  01, 009}
+    {hchv,   3,  01, 010}
+    {hchv,   3,  01, 011}
+    {hchv,   3,  01, 012}
+    {hchv,   3,  01, 013}
+    {hchv,   3,  01, 014}
+    {hchv,   3,  01, 015}
+}
+file "db/AS503_Chan.template" {
+pattern
+    {P,      H,  S,   V}
+    {hchv,   3,  02, 000}
+    {hchv,   3,  02, 001}
+    {hchv,   3,  02, 002}
+    {hchv,   3,  02, 003}
+    {hchv,   3,  02, 004}
+    {hchv,   3,  02, 005}
+    {hchv,   3,  02, 006}
+    {hchv,   3,  02, 007}
+    {hchv,   3,  02, 008}
+    {hchv,   3,  02, 009}
+    {hchv,   3,  02, 010}
+    {hchv,   3,  02, 011}
+    {hchv,   3,  02, 012}
+    {hchv,   3,  02, 013}
+    {hchv,   3,  02, 014}
+    {hchv,   3,  02, 015}
+}
+file "db/AS503_Chan.template" {
+pattern
+    {P,      H,  S,   V}
+    {hchv,   3,  03, 000}
+    {hchv,   3,  03, 001}
+    {hchv,   3,  03, 002}
+    {hchv,   3,  03, 003}
+    {hchv,   3,  03, 004}
+    {hchv,   3,  03, 005}
+    {hchv,   3,  03, 006}
+    {hchv,   3,  03, 007}
+    {hchv,   3,  03, 008}
+    {hchv,   3,  03, 009}
+    {hchv,   3,  03, 010}
+    {hchv,   3,  03, 011}
+    {hchv,   3,  03, 012}
+    {hchv,   3,  03, 013}
+    {hchv,   3,  03, 014}
+    {hchv,   3,  03, 015}
+}
