@@ -1,0 +1,60 @@
+record(ai, "$(P)$(H):$(S):$(V):V0Setr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):V0Set CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V")
+}
+record(ai, "$(P)$(H):$(S):$(V):V1Setr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):V1Set CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V")
+}
+record(ai, "$(P)$(H):$(S):$(V):SVMaxr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):SVMax CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V")
+}
+record(ai, "$(P)$(H):$(S):$(V):I0Setr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):I0Set CP")
+    field(SCAN, "Passive")
+    field(EGU,  "uA")
+}
+record(ai, "$(P)$(H):$(S):$(V):I1Setr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):I0Set CP")
+    field(SCAN, "Passive")
+    field(EGU,  "uA")
+}
+record(ai, "$(P)$(H):$(S):$(V):RUpr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):RUp CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V/s")
+}
+record(ai, "$(P)$(H):$(S):$(V):RDWnr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):RDWn CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V/s")
+}
+record(ai, "$(P)$(H):$(S):$(V):Pwr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):Pw CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V/s")
+}
+record(ai, "$(P)$(H):$(S):$(V):POnr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):POn CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V/s")
+}
+record(ai, "$(P)$(H):$(S):$(V):PDwnr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):PDwn CP")
+    field(SCAN, "Passive")
+    field(EGU,  "V/s")
+}

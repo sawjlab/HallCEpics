@@ -1,0 +1,12 @@
+# Common backup file
+*~
+
+# Generated EPICS files
+O.*
+cdCommands
+envPaths
+apps/bin
+apps/db
+apps/dbd
+apps/include
+apps/lib
