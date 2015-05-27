@@ -1,4 +1,4 @@
-#!/bin/ksh
+#!/bin/bash
 
 #@(#) softioc_console 2.60 2013/08/29 cuffe@jlab.org 
 #
@@ -27,7 +27,7 @@ SCRIPT_NAME=softioc_console
 #-----------------------------------------------------------------------
 # Data File Locations
 #-----------------------------------------------------------------------
-CONFIG_DIR=/usr/clas12/hps/prod/apps/iocBoot
+CONFIG_DIR=/home/cvxwrks/Epics12GeV/apps/iocBoot
 
 IOC_DIR=$CONFIG_DIR
 DIR_LIST="$APP_DIR $CONFIG_DIR $IOC_DIR"

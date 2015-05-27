@@ -10,3 +10,4 @@ apps/db
 apps/dbd
 apps/include
 apps/lib
+logs/*

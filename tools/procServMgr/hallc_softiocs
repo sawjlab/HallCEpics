@@ -6,7 +6,7 @@
 #
 
 # All log files
-/usr/clas12/hps/logs/*.log {
+/home/cvxwrks/Epics12GeV/logs/*.log {
     notifempty
     copytruncate
     daily
