@@ -1,0 +1,118 @@
+PV: HC_bit15 Type: bo ()
+
+DESC Moller Kicker status (bit 15)
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit2 Type: bo ()
+
+DESC Input register bit 2
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit9 Type: bo ()
+
+DESC Input register bit 9
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HCDOG_bit0 Type: bo ()
+
+DESC Crate CH03B05-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+FLNK HDDOG_bit9
+
+
+PV: HCDOG_bit1 Type: bo ()
+
+DESC Crate CH03B05-3 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit2 Type: bo ()
+
+DESC Crate CH03B06-2 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit3 Type: bo ()
+
+DESC Crate CH03B07-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_diskwatch     Type: bo ()
+
+DESC Diskwatch GUI
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_happyreaper     Type: bo ()
+
+DESC SILO data backup script
+DTYP Soft Channel
+SCAN Passive
+HIGH 1800
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_BetaBrite     Type: bo ()
+
+DESC Beam Current LED Display
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_ChannelArchiver     Type: bo ()
+
+DESC Channel Archiver on jeffylab
+DTYP Soft Channel
+SCAN Passive
+HIGH 900
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+

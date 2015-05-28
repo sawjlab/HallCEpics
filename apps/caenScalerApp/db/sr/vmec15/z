@@ -1,0 +1,10 @@
+caput qw:TargetDiffXWidth.EGU um
+caput qw:TargetDiffXP.EGU um
+caput qw:TargetDiffXPError.EGU um
+caput qw:TargetDiffXPWidth.EGU um
+caput qw:TargetDiffY.EGU um
+caput qw:TargetDiffYError.EGU um
+caput qw:TargetDiffYWidth.EGU um
+caput qw:TargetDiffYP.EGU um
+caput qw:TargetDiffYPError.EGU um
+caput qw:TargetDiffYPWidth.EGU um

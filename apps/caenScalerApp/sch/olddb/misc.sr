@@ -1,0 +1,68 @@
+PV: hallc_last_polarization    Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: hallc_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_last_polarization     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: mott_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_raster_status    Type: bo
+DESC binary output record
+DTYP Soft Channel
+SCAN Passive
+ZNAM Off
+ONAM On
+
+
+PV: BPM3H00CX0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00CY0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00AX0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00AY0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+

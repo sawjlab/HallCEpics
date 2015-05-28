@@ -1,0 +1,180 @@
+PV: HVM_fast_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_slow_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_drive_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_initial_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temperature_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temp_initial_1_1     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_fast_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_slow_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_drive_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_initial_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temperature_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temp_initial_1_2     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_fast_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_slow_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_drive_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_initial_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temperature_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temp_initial_1_3     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_fast_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_slow_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_drive_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_initial_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temperature_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temp_initial_1_4     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_fast_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_slow_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_drive_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_initial_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temperature_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+
+PV: HVM_temp_initial_1_5     Type: ai
+DESC analog input record
+SCAN 2 second
+DTYP Soft Channel
+PREC 0
+

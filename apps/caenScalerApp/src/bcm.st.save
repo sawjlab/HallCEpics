@@ -1,0 +1,166 @@
+/* bcm
+   Calculate beam currents
+
+   Stephen Wood, June 24, 1998
+*/
+
+program bcm
+
+option -r;
+option +c;
+
+int clock;
+int bcm1;
+int bcm2;
+int bcm3;
+int clock_last;
+int bcm1_last;
+int bcm2_last;
+int bcm3_last;
+int clock_dif;
+int bcm1_dif;
+int bcm2_dif;
+int bcm3_dif;
+int icount;
+
+double ibcm1;
+double ibcm2;
+double ibcm3;
+double ibcm1_off;
+double ibcm2_off;
+double ibcm3_off;
+double ibcm1_gain;
+double ibcm2_gain;
+double ibcm3_gain;
+double iave1;
+double iave2;
+double iave3;
+double iavetime;
+double isum1;
+double isum2;
+double isum3;
+double isumtime;
+
+assign clock to "hcscaler.S1";
+assign bcm1 to "hcscaler.S2";
+assign bcm2 to "hcscaler.S3";
+assign bcm3 to "hcscaler.S4";
+
+assign ibcm1 to "ibcm1";
+assign ibcm2 to "ibcm2";
+assign ibcm3 to "ibcm3";
+assign ibcm1_off to "ibcm1.AOFF";
+assign ibcm2_off to "ibcm2.AOFF";
+assign ibcm3_off to "ibcm3.AOFF";
+assign ibcm1_gain to "ibcm1.ASLO";
+assign ibcm2_gain to "ibcm2.ASLO";
+assign ibcm3_gain to "ibcm3.ASLO";
+
+assign iave1 to "iave1";
+assign iave2 to "iave2";
+assign iave3 to "iave3";
+assign iavetime to "iavetime";
+
+evflag ef_clock;
+sync clock ef_clock;
+
+monitor clock;
+
+ss bcm {
+  state init {
+    when (efTestAndClear(ef_clock)) {
+      pvGet(bcm1);
+      pvGet(bcm2);
+      pvGet(bcm3);
+      ibcm1 = 0.0;
+      ibcm2 = 0.0;
+      ibcm3 = 0.0;
+      pvPut(ibcm1);
+      pvPut(ibcm2);
+      pvPut(ibcm3);
+      clock_last = clock;
+      bcm1_last = bcm1;
+      bcm2_last = bcm2;
+      bcm3_last = bcm3;
+      /* Average current */
+      icount = 0;
+      isum1 = 0.0;
+      isum2 = 0.0;
+      isum3 = 0.0;
+      isumtime = 0.0;
+    } state load_calibration
+  }
+  state load_calibration {
+    when () {
+      pvGet(ibcm1_off);
+      pvGet(ibcm2_off);
+      pvGet(ibcm3_off);
+      pvGet(ibcm1_gain);
+      pvGet(ibcm2_gain);
+      pvGet(ibcm3_gain);
+    } state calculate
+  }
+  state calculate {
+    when (efTestAndClear(ef_clock)) {
+      pvGet(bcm1);
+      pvGet(bcm2);
+      pvGet(bcm3);
+      clock_dif = scaldif(clock,clock_last);
+      bcm1_dif = scaldif(bcm1,bcm1_last);
+      bcm2_dif = scaldif(bcm2,bcm2_last);
+      bcm3_dif = scaldif(bcm3,bcm3_last);
+      /*      printf("%ld %ld %ld\n",clock_dif,bcm3,bcm3_last);*/
+      /* printf("%ld %ld %ld %ld\n",clock_dif,bcm1_dif,bcm2_dif,bcm3_dif);*/
+      clock_last = clock;
+      bcm1_last = bcm1;
+      bcm2_last = bcm2;
+      bcm3_last = bcm3;
+      ibcm1 = ibcm1_gain * (bcm1_dif/ (clock_dif / 1000000.0) - ibcm1_off);
+      ibcm2 = ibcm2_gain * (bcm2_dif/ (clock_dif / 1000000.0) - ibcm2_off);
+      ibcm3 = ibcm3_gain * (bcm3_dif/ (clock_dif / 1000000.0) - ibcm3_off);
+/*	printf("%f %ld %f %f\n",ibcm1, bcm2_dif, ibcm2_off, ibcm2_gain);*/
+      pvPut(ibcm1);
+      pvPut(ibcm2);
+      pvPut(ibcm3);
+      /* Average current */
+	isum1 += ibcm1;
+	isum2 += ibcm2;
+	isum3 += ibcm3;
+      isumtime += clock_dif/1000000.0;
+      icount++;
+      if(icount >= 30) {
+	iave1 = isum1/icount;
+	iave2 = isum2/icount;
+	iave3 = isum3/icount;
+	iavetime = isumtime;
+	pvPut(iave1);
+	pvPut(iave2);
+	pvPut(iave3);
+	pvPut(iavetime);
+        icount = 0;
+        isum1 = 0.0;
+        isum2 = 0.0;
+        isum3 = 0.0;
+        isumtime = 0.0;
+	/* special code to put average currents to LabView for gen */
+	/*        if(pushCurrent(iavetime,iave1,iave2,iave3)==-1) 
+	  pushCurrent(iavetime,iave1,iave2,iave3); *//* Try one more time */
+      }
+    } state calculate
+  }
+}
+%{
+
+  /* Take the difference between two 32 bit scalers */
+  int scaldif(unsigned int new, unsigned int old)
+    {
+      int dif;
+
+      if(new > old) {
+	return((int) (new-old));
+      } else {
+	return((int) (~old + 1 + new));
+      }
+    }
+
+}%

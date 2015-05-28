@@ -1,0 +1,438 @@
+PV: qw:targetX    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetY    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenX    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenY    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetXtest    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetYtest    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenXtest    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenYtest    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:VCG3H09ATr   Type: ai
+
+DESC VCG3H09ATr copy
+INP VCG3H09ATr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09BTr   Type: ai
+
+DESC VCG3H09BTr copy
+INP VCG3H09BTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09CTr   Type: ai
+
+DESC VCG3H09CTr copy
+INP VCG3H09CTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09DTr   Type: ai
+
+DESC VCG3H09DTr copy
+INP VCG3H09DTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: QW_DSBLVac     Type: calc
+
+DESC Downstream beamline vacuum
+INPA VCG3H09DTr CPP
+SCAN Passive
+CALC (1000000.0*A)
+PREC 2
+EGU uTorr
+
+
+PV: qw:SLD3H03GDOSC   Type: ai
+
+DESC SLD3H03GDOSC copy
+INP SLD3H03GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:SLD3H04GDOSC   Type: ai
+
+DESC SLD3H04GDOSC copy
+INP SLD3H04GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:SLD3H05GDOSC   Type: ai
+
+DESC SLD3H05GDOSC copy
+INP SLD3H05GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:EHCFR_IXPEAK   Type: ai
+
+DESC EHCFR_IXPEAK copy
+INP EHCFR_IXPEAK CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 2
+
+
+PV: qw:EHCFR_IYPEAK   Type: ai
+
+DESC EHCFR_IYPEAK copy
+INP EHCFR_IYPEAK CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 2
+
+
+PV: qw:FB_C:FB_On      Type: bi
+
+DESC FB_C_FB_On Copy
+INP FB_C:FB_On CPP
+SCAN Passive
+ONAM Enabled
+ZNAM Off
+
+
+PV: qw:FB_C:FB_Running      Type: calc
+
+DESC Fast Feedback running
+INPA FB_C:status:mbbi2.B7 CPP
+SCAN Passive
+CALC (!A)
+
+
+PV: qw:ChargeFeedback	Type: bi
+
+DESC Charge Feedback status
+SCAN Passive
+DTYP Soft Channel
+ONAM On
+ZNAM Off
+
+
+PV: qw:ChargeAsymmetry   Type: ai
+
+DESC Charge Asymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:ChargeAsymmetryError   Type: ai
+
+DESC Charge Asymmetry Error
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+PV: qw:ChargeAsymmetryWidth   Type: ai
+
+DESC Charge Asymmetry Width
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+PV: qw:hk2_thresh Type: ai
+
+DESC Hokie2 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk3_thresh Type: ai
+
+DESC Hokie3 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk4_thresh Type: ai
+
+DESC Hokie4 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk5_thresh Type: ai
+
+DESC Hokie5 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+
+
+PV: qw:ChargeAsymmetry   Type: ai
+
+DESC Charge Asymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:TargetDiffX   Type: ai
+
+DESC TargetDiffX
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:TargetDiffXError   Type: ai
+
+DESC TargetDiffXError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:TargetDiffXWidth   Type: ai
+
+DESC TargetDiffXWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXP   Type: ai
+
+DESC TargetDiffXP
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXPError   Type: ai
+
+DESC TargetDiffXPError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXPWidth   Type: ai
+
+DESC TargetDiffXPWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffY   Type: ai
+
+DESC TargetDiffY
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYError   Type: ai
+
+DESC TargetDiffYError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYWidth   Type: ai
+
+DESC TargetDiffYWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYP   Type: ai
+
+DESC TargetDiffYP
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYPError   Type: ai
+
+DESC TargetDiffYPError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYPWidth   Type: ai
+
+DESC TargetDiffYPWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:HAChargeAsymmetry   Type: ai
+
+DESC HAChargeAsymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:HAChargeAsymmetryError   Type: ai
+
+DESC HAChargeAsymmetryError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:HAChargeAsymmetryWidth   Type: ai
+
+DESC HAChargeAsymmetryWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:MQE3M03M   Type: ai
+
+DESC Moller Big Quad
+INP MQE3M03M CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+HIHI 60
+HIGH 50
+LOW 42
+LOLO 35
+PREC 2
+EGU Amps
+
+
+PV: qw:MQF3M01M   Type: ai
+
+DESC Moller Small Quad
+INP MQF3M01M CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+HIHI 90
+HIGH 80
+LOW 70
+LOLO 60
+PREC 2
+EGU Amps
+
+

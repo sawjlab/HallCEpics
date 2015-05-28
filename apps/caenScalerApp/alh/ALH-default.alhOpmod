@@ -1,0 +1,112 @@
+21-Dec-2001 10:32:03 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:32:08 : Setup---Config File : ALH-default.alhConfig -> /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/watchdogs.alhConfig
+21-Dec-2001 10:32:11 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_diskwatch
+21-Dec-2001 10:32:11 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:32:11 : Input error: Invalid input line: The diskwatch GUI that monitors free disk space is either hung or not
+21-Dec-2001 10:32:11 : Input error: Invalid input line: running.  This GUI should be running on the DAQ console.  If it is running,
+21-Dec-2001 10:32:11 : Input error: Invalid input line: click the Quit button.  To restart the GUI, type the command "diskwatch"
+21-Dec-2001 10:32:11 : Input error: Invalid input line: into an xterm window on the DAQ console.  (Should be logged on as "cdaq").
+21-Dec-2001 10:32:11 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:32:11 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_happyreaper
+21-Dec-2001 10:32:11 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:32:11 : Input error: Invalid input line: The scripts that copy runs from the data disks to the Silo do not appear
+21-Dec-2001 10:32:11 : Input error: Invalid input line: to be running.  Steve Wood should be notified.  However, if there more
+21-Dec-2001 10:32:11 : Input error: Invalid input line: than, say, five green partitions in diskwatch, the situation is not
+21-Dec-2001 10:32:11 : Input error: Invalid input line: urgent, so don't wake him up in the middle of the night.
+21-Dec-2001 10:32:11 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:32:19 : Silence One Hour set to TRUE
+21-Dec-2001 10:32:41 : Local Ack Group---   HallC_Ops                    INVALID          INVALID         
+21-Dec-2001 10:51:05 : Setup---Config File : /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/watchdogs.alhConfig -> /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/watchdogs.alhConfig
+21-Dec-2001 10:51:05 : Silence One Hour set to FALSE
+21-Dec-2001 10:51:15 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_diskwatch
+21-Dec-2001 10:51:15 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:51:15 : Input error: Invalid input line: The diskwatch GUI that monitors free disk space is either hung or not
+21-Dec-2001 10:51:15 : Input error: Invalid input line: running.  This GUI should be running on the DAQ console.  If it is running,
+21-Dec-2001 10:51:15 : Input error: Invalid input line: click the Quit button.  To restart the GUI, type the command "diskwatch"
+21-Dec-2001 10:51:15 : Input error: Invalid input line: into an xterm window on the DAQ console.  (Should be logged on as "cdaq").
+21-Dec-2001 10:51:15 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:51:15 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_happyreaper
+21-Dec-2001 10:51:15 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:51:15 : Input error: Invalid input line: The scripts that copy runs from the data disks to the Silo do not appear
+21-Dec-2001 10:51:15 : Input error: Invalid input line: to be running.  Steve Wood should be notified.  However, if there more
+21-Dec-2001 10:51:15 : Input error: Invalid input line: than, say, five green partitions in diskwatch, the situation is not
+21-Dec-2001 10:51:15 : Input error: Invalid input line: urgent, so don't wake him up in the middle of the night.
+21-Dec-2001 10:51:15 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:51:35 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:51:36 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+21-Dec-2001 10:51:37 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_diskwatch
+21-Dec-2001 10:51:37 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:51:37 : Input error: Invalid input line: The diskwatch GUI that monitors free disk space is either hung or not
+21-Dec-2001 10:51:37 : Input error: Invalid input line: running.  This GUI should be running on the DAQ console.  If it is running,
+21-Dec-2001 10:51:37 : Input error: Invalid input line: click the Quit button.  To restart the GUI, type the command "diskwatch"
+21-Dec-2001 10:51:37 : Input error: Invalid input line: into an xterm window on the DAQ console.  (Should be logged on as "cdaq").
+21-Dec-2001 10:51:37 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:51:37 : Input error: Can not find parent: CHANNEL DataMovement HCDOG_happyreaper
+21-Dec-2001 10:51:37 : Input error: Logic error: glink is NULL: $GUIDANCE
+21-Dec-2001 10:51:37 : Input error: Invalid input line: The scripts that copy runs from the data disks to the Silo do not appear
+21-Dec-2001 10:51:37 : Input error: Invalid input line: to be running.  Steve Wood should be notified.  However, if there more
+21-Dec-2001 10:51:37 : Input error: Invalid input line: than, say, five green partitions in diskwatch, the situation is not
+21-Dec-2001 10:51:37 : Input error: Invalid input line: urgent, so don't wake him up in the middle of the night.
+21-Dec-2001 10:51:37 : Input error: Logic error: glink is NULL: $END
+21-Dec-2001 10:51:48 : Setup---Exit
+21-Dec-2001 10:52:14 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:52:15 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+21-Dec-2001 10:56:23 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:56:23 : Setup---Config File : z.alh -> z.alh
+21-Dec-2001 10:56:43 : Silence One Hour set to TRUE
+21-Dec-2001 10:58:12 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:58:12 : Setup---Config File : z.alh -> z.alh
+21-Dec-2001 10:58:20 : Input error: Can not find parent: CHANNEL B HCDOG_diskwatch
+21-Dec-2001 10:58:20 : Input error: Can not find parent: CHANNEL B HCDOG_happyreaper
+21-Dec-2001 10:58:32 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 10:58:32 : Setup---Config File : z.alh -> z.alh
+21-Dec-2001 10:58:55 : Silence One Hour set to TRUE
+21-Dec-2001 10:59:35 : Local Ack Group---   A                            INVALID          INVALID         
+21-Dec-2001 11:01:03 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 11:01:03 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+21-Dec-2001 11:01:23 : Local Ack Group---   HallC_Ops                    INVALID          NO_ALARM        
+21-Dec-2001 11:01:36 : Silence One Hour set to TRUE
+21-Dec-2001 11:04:14 : Local Ack Group---   HallC_Ops                    MINOR            NO_ALARM        
+21-Dec-2001 11:11:04 : Local Ack Group---   HallC_Ops                    MINOR            NO_ALARM        
+21-Dec-2001 11:18:57 : Setup---Exit
+21-Dec-2001 11:19:20 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+21-Dec-2001 11:19:20 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+21-Dec-2001 11:20:35 : Local Ack Group---   HallC_Ops                    MINOR            MINOR           
+21-Dec-2001 11:26:40 : Setup---Exit
+15-Jan-2002 11:57:07 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+15-Jan-2002 11:57:07 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+15-Jan-2002 15:03:22 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+15-Jan-2002 15:03:22 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+15-Jan-2002 15:04:42 : Chan  Mask ID ---[Enable / Disable     ] ON    [HCDOG_happyreaper] <-D--->
+15-Jan-2002 15:04:47 : Local Ack Group---   HallC_Ops                    MINOR            MINOR           
+15-Jan-2002 15:08:06 : Group Mask ID ---[Enable / Disable     ] OFF   [HallC_Ops] <----->
+15-Jan-2002 15:08:09 : Group Mask ID ---[Enable / Disable     ] ON    [HallC_Ops] <-D--->
+15-Jan-2002 15:08:11 : Group Mask ID ---[Enable / Disable     ] OFF   [HallC_Ops] <----->
+15-Jan-2002 15:08:19 : Chan  Mask ID ---[Enable / Disable     ] ON    [HCDOG_happyreaper] <-D--->
+15-Jan-2002 15:08:33 : Setup---Save New Config: /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/watchdogs.alhConfig
+15-Jan-2002 15:08:42 : Setup---Exit
+22-Jan-2002 15:15:27 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+22-Jan-2002 15:15:27 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+22-Jan-2002 15:15:43 : Chan  Mask ID ---[Enable / Disable     ] OFF   [HCDOG_happyreaper] <----->
+22-Jan-2002 15:15:52 : Setup---Save New Config: /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/watchdogs.alhConfig
+22-Jan-2002 15:16:00 : Setup---Exit
+24-Jan-2002 09:35:02 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+24-Jan-2002 09:35:03 : Setup---Config File : moller.alhConfig -> moller.alhConfig
+24-Jan-2002 09:35:14 : Local Ack Group---   Moller_Polarimeter           MINOR            MINOR           
+24-Jan-2002 10:09:48 : Setup---Exit
+24-Jan-2002 10:42:27 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+24-Jan-2002 10:42:27 : Setup---Config File : z.alh -> z.alh
+Thu Jan 24 10:53:18 2002   Setup---Config File : z.alh -> z.alh
+Thu Jan 24 10:53:24 2002   Setup---Exit
+24-Jan-2002 10:56:32 : Setup---Exit
+24-Jan-2002 20:31:31 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+24-Jan-2002 20:31:31 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+24-Jan-2002 20:31:56 : Chan  Mask ID ---[Ack / NoAck          ] ON    [OXSS_MGFD] <--A-->
+24-Jan-2002 20:32:18 : Setup---Exit
+24-Jan-2002 20:32:43 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+24-Jan-2002 20:32:43 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+24-Jan-2002 20:32:59 : Chan  Mask ID ---[Ack / NoAck          ] ON    [OXSS_MGFD] <--A-->
+24-Jan-2002 20:33:09 : Setup---Save New Config: /net/cdaqfs/epics/dvlepics/llapp/CaenScaler/1-0/alh/z.alh
+24-Jan-2002 20:34:02 : Setup---Alarm Log File : ALH-default.alhAlarm -> ALH-default.alhAlarm
+24-Jan-2002 20:34:02 : Setup---Config File : watchdogs.alhConfig -> watchdogs.alhConfig
+24-Jan-2002 20:34:20 : Setup---Exit

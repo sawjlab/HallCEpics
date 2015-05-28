@@ -1,0 +1,263 @@
+PV: qw:exitwindowsupply   Type: ai
+
+DESC Exit window supply water temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 3
+PREC 1
+
+
+PV: qw:exitwindowreturn   Type: ai
+
+DESC Exit window return water temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 4
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOW 10.0
+HIGH 30.0
+HIHI 35.0
+FLNK qw:exitwindowdiff
+
+
+PV: qw:doghouse   Type: ai
+
+DESC Doghouse temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 5
+PREC 1
+
+
+PV: qw:bellowstemp1   Type: ai
+
+DESC Temp 1
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 6
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp2   Type: ai
+
+DESC Temp 2
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 7
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp3   Type: ai
+
+DESC Temp 3
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 8
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp4   Type: ai
+
+DESC Temp 4
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 9
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp5   Type: ai
+
+DESC Temp 5
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 10
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp6   Type: ai
+
+DESC Temp 6
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 11
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+FLNK qw:tempsanitydiff
+
+
+PV: qw:bellowstemp7   Type: ai
+
+DESC Temp 7
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 12
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:bellowstemp8   Type: ai
+
+DESC Temp 8
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 13
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:tungstenplugsupply   Type: ai
+
+DESC Tungsten plug supply water
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 14
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+
+
+PV: qw:tungstenplugreturn   Type: ai
+
+DESC Tungsten plug supply water
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 15
+PREC 1
+LLSV NO_ALARM
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+FLNK qw:tungstenplugdiff
+
+
+PV: qw:exitwindowdiff Type: calc
+
+DESC Exit window water temp rise
+SCAN Passive
+INPA qw:exitwindowsupply
+INPB qw:exitwindowreturn
+CALC (B-A)
+PREC 1
+EGU C
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -1.0
+LOW -0.5
+HIGH 2.0
+HIHI 2.5
+
+
+PV: qw:tungstenplugdiff Type: calc
+
+DESC Tungsten plug water temp rise
+SCAN Passive
+INPA qw:tungstenplugsupply
+INPB qw:tungstenplugreturn
+CALC (B-A)
+PREC 1
+EGU C
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -1.0
+LOW -0.5
+HIGH 4.0
+HIHI 5.0
+
+
+PV: qw:tempsanitydiff Type: calc
+
+DESC Temp Sanity Check
+SCAN Passive
+INPA qw:bellowstemp6
+INPB qw:bellowstemp7
+CALC (A-0.93*B-1.8102)
+PREC 1
+EGU C
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -1.0
+LOW -0.5
+HIGH 1.1
+HIHI 1.6
+
+

@@ -1,0 +1,90 @@
+PV: scaler                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+
+PV: scalerp                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+CARD 1
+
+PV: scalerm                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+CARD 2
+
+PV: ibcm1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU nA
+AOFF 249800
+ASLO 0.000626
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+
+PV: ibcm2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU nA
+AOFF 249300
+ASLO 0.000594
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+
+PV: ibcm3    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 248148
+ASLO -.24055381
+LOPR 0.
+HOPR 50.0
+ASG DEFAULT
+
+PV: iave1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+PV: iave2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+PV: iave3    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+PV: iavetime    Type: ai
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+

@@ -1,0 +1,39 @@
+GROUP NULL HallC_Ops
+$GUIDANCE
+This is the master alarm screen.  It monitors the health status of
+a variety of Hall C subsystems.
+A number of subsystem's status' are checked with watchdogs.  The
+subsystem will send an "I'm alive" signal to an EPICS record.  These
+EPICS records will time out if no signal is received in certain
+time.  These watchdog records are kept on vmec15.
+$END
+GROUP HallC_Ops DataMovement
+$GUIDANCE
+Alarms related to the backup of data to the Silo.
+$END
+CHANNEL DataMovement HCDOG_diskwatch
+$GUIDANCE
+The diskwatch GUI that monitors free disk space is either hung or not
+running.  This GUI should be running on the DAQ console.  If it is running,
+click the Quit button.  To restart the GUI, type the command "diskwatch"
+into an xterm window on the DAQ console.  (Should be logged on as "cdaq").
+$END
+CHANNEL DataMovement HCDOG_happyreaper
+$GUIDANCE
+The scripts that copy runs from the data disks to the Silo do not appear
+to be running.  Steve Wood should be notified.  However, if there more
+than, say, five green partitions in diskwatch, the situation is not
+urgent, so don't wake him up in the middle of the night.
+$END
+GROUP HallC_Ops Monitoring
+$GUIDANCE
+Status of various monitoring functions such as the BetaBrite screen
+display.
+$END
+CHANNEL Monitoring HCDOG_BetaBrite
+$GUIDANCE
+The LED display that shows beam current and PSS status is not working
+properly.  To restart, logon to jeffylab as "cvxwrks".  Do
+"ps -aux | grep bcm_pss" and kill any copies of the script that are
+running.  Then do "cd ~/BETABRITE/bcm" and "./bcm_pss.pl".
+$END

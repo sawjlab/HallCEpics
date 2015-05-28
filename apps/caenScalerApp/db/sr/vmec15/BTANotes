@@ -1,0 +1,31 @@
+Feb 4, 2004 (saw)
+
+The following formulas are set into the "BTA Hall C CONFIGURATION" page
+available through the Monticello screen.
+
+Beam Available Condition:
+
+(A>B)&&(!C)
+A: HC:selected_bcm.VAL
+B: HC:beamok_limit PP NMS
+C: HC:abuwait PP NMS
+
+
+Beam Used Condition
+!(A=1||A=4)&&(!B)&&(C=1)
+A: PLC_HLC.VAL PP NMS
+B: HallCBANU PP NMS
+C: HC:exp_ready PP NMS
+
+
+Experiment Ready Condition
+(!(A=1||A=4)&&(!B)&&(C=1))||(C=3)
+A: PLC_HLC.VAL PP NMS
+B: HallCBANU PP NMS
+C: HC:exp_ready PP NMS
+
+
+Hall Config Change Condition
+(A=2)&&(B>-100)
+A: HC:exp_ready PP NMS
+B: HC:selected_bcm.VAL PP NMS

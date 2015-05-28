@@ -1,0 +1,709 @@
+	record(scaler,"g0scaler") {
+		field(DESC,"scaler record")
+		field(SCAN,"1 second")
+		field(RATE,"1")
+		field(ASG,"DEFAULT")
+		field(D1,"Up")
+		field(DTYP,"Caen Scaler")
+		field(CARD,"0")
+		field(FREQ,"60")
+	}
+	record(scaler,"g0scaler1") {
+		field(DESC,"scaler record")
+		field(SCAN,"1 second")
+		field(RATE,"1")
+		field(ASG,"DEFAULT")
+		field(D1,"Up")
+		field(DTYP,"Caen Scaler")
+		field(CARD,"1")
+		field(FREQ,"60")
+	}
+	record(scaler,"g0scaler2") {
+		field(DESC,"scaler record")
+		field(SCAN,"1 second")
+		field(RATE,"1")
+		field(ASG,"DEFAULT")
+		field(D1,"Up")
+		field(DTYP,"Caen Scaler")
+		field(CARD,"2")
+		field(FREQ,"60")
+	}
+	record(ao,"g0scaler_update_period") {
+		field(DESC,"Qweak Rate Monitor Integration Period")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+		field(EGU,"sec")
+		field(ASG,"DEFAULT")
+		field(VAL,"1")
+	}
+	record(ai,"g0rate1") {
+		field(DESC,"Scanner")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate1_norm")
+	}
+	record(ai,"g0rate2") {
+		field(DESC,"DSLUMI3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate2_norm")
+	}
+	record(ai,"g0rate3") {
+		field(DESC,"Halo 3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate3_norm")
+	}
+	record(ai,"g0rate4") {
+		field(DESC,"Halo 4")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate4_norm")
+	}
+	record(ai,"g0rate5") {
+		field(DESC,"Halo 5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate5_norm")
+	}
+	record(ai,"g0rate6") {
+		field(DESC,"Halo 6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate6_norm")
+	}
+	record(ai,"g0rate7") {
+		field(DESC,"Halo 7")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate7_norm")
+	}
+	record(ai,"g0rate8") {
+		field(DESC,"Halo 8")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate8_norm")
+	}
+	record(ai,"g0rate9") {
+		field(DESC,"4 MHz Clock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate9_norm")
+	}
+	record(ai,"g0rate10") {
+		field(DESC,"31 MHz Clock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate10_norm")
+	}
+	record(ai,"g0rate11") {
+		field(DESC,"TS OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate11_norm")
+	}
+	record(ai,"g0rate12") {
+		field(DESC,"R2 TS beam left")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate12_norm")
+	}
+	record(ai,"g0rate13") {
+		field(DESC,"R2 TS beam right")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate13_norm")
+	}
+	record(ai,"g0rate14") {
+		field(DESC,"Level 1 Accept")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate14_norm")
+	}
+	record(ai,"g0rate15") {
+		field(DESC,"MD EM Trigger")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate15_norm")
+	}
+	record(ai,"g0rate16") {
+		field(DESC,"20 MHz Accel.")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"g0rate16_norm")
+	}
+	record(ai,"g0rate17") {
+		field(DESC,"Hokie 2 Fast OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate18") {
+		field(DESC,"Hokie 3 Fast OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate19") {
+		field(DESC,"Hokie 4 Fast OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate20") {
+		field(DESC,"Hokie 5 Fast OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate21") {
+		field(DESC,"USLUMI1-")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate22") {
+		field(DESC,"USLUMI1+")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate23") {
+		field(DESC,"USLUMI5-")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate24") {
+		field(DESC,"USLUMI5+")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate25") {
+		field(DESC,"DSLUMI1")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate26") {
+		field(DESC,"DSLUMI2")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate27") {
+		field(DESC,"broken NIM/ECL chan")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate28") {
+		field(DESC,"DSLUMI4")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate29") {
+		field(DESC,"DSLUMI5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate30") {
+		field(DESC,"DSLUMI6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate31") {
+		field(DESC,"DSLUMI7")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0rate32") {
+		field(DESC,"DSLUMI8")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage1") {
+		field(DESC,"Qweak V2F Voltage 1")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage2") {
+		field(DESC,"Qweak V2F Voltage 2")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage3") {
+		field(DESC,"Qweak V2F Voltage 3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage4") {
+		field(DESC,"Qweak V2F Voltage 4")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage5") {
+		field(DESC,"Qweak V2F Voltage 5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage6") {
+		field(DESC,"Qweak V2F Voltage 6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage7") {
+		field(DESC,"Qweak V2F Voltage 7")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage8") {
+		field(DESC,"Qweak V2F Voltage 8")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage9") {
+		field(DESC,"Qweak V2F Voltage 9")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage10") {
+		field(DESC,"Qweak V2F Voltage 10")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage11") {
+		field(DESC,"Qweak V2F Voltage 11")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage12") {
+		field(DESC,"Qweak V2F Voltage 12")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage13") {
+		field(DESC,"Qweak V2F Voltage 13")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage14") {
+		field(DESC,"Qweak V2F Voltage 14")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage15") {
+		field(DESC,"Qweak V2F Voltage 15")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0voltage16") {
+		field(DESC,"Qweak V2F Voltage 16")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"Volts")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"g0cagetemp1") {
+		field(DESC,"Qweak Cage Temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"C")
+		field(ASG,"DEFAULT")
+		field(AOFF,"3")
+	}
+	record(ai,"g0cagetemp2") {
+		field(DESC,"Qweak Cage Temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"C")
+		field(ASG,"DEFAULT")
+		field(AOFF,"4")
+	}
+	record(ai,"g0cagetemp3") {
+		field(DESC,"Qweak Cage Temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"C")
+		field(ASG,"DEFAULT")
+		field(AOFF,"5")
+	}
+	record(bo,"g0BPM_Flatline") {
+		field(DESC,"BPM Flatline Alarm")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(HIGH,"30")
+		field(ONAM,"OK")
+		field(ZNAM,"Flat")
+		field(ZSV,"MAJOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(calc,"qwvdc1voltage") {
+		field(DESC,"VDC1 High Voltage")
+		field(DTYP,"Soft Channel")
+		field(CALC,"1000.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage1 PP")
+		field(PREC,"1")
+		field(EGU,"Volts")
+	}
+	record(calc,"qwvdc2voltage") {
+		field(DESC,"VDC2 High Voltage")
+		field(DTYP,"Soft Channel")
+		field(CALC,"1000.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage2 PP")
+		field(PREC,"1")
+		field(EGU,"Volts")
+	}
+	record(calc,"qwvdc3voltage") {
+		field(DESC,"VDC3 High Voltage")
+		field(DTYP,"Soft Channel")
+		field(CALC,"1000.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage3 PP")
+		field(PREC,"1")
+		field(EGU,"Volts")
+	}
+	record(calc,"qwvdc4voltage") {
+		field(DESC,"VDC4 High Voltage")
+		field(DTYP,"Soft Channel")
+		field(CALC,"1000.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage4 PP")
+		field(PREC,"1")
+		field(EGU,"Volts")
+	}
+	record(calc,"qwvdc1current") {
+		field(DESC,"VDC1 Current")
+		field(DTYP,"Soft Channel")
+		field(CALC,"100.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage5 PP")
+		field(PREC,"1")
+		field(EGU,"mA")
+	}
+	record(calc,"qwvdc2current") {
+		field(DESC,"VDC2 Current")
+		field(DTYP,"Soft Channel")
+		field(CALC,"100.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage6 PP")
+		field(PREC,"1")
+		field(EGU,"mA")
+	}
+	record(calc,"qwvdc3current") {
+		field(DESC,"VDC3 Current")
+		field(DTYP,"Soft Channel")
+		field(CALC,"100.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage7 PP")
+		field(PREC,"1")
+		field(EGU,"mA")
+	}
+	record(calc,"qwvdc4current") {
+		field(DESC,"VDC4 Current")
+		field(DTYP,"Soft Channel")
+		field(CALC,"100.0*A")
+		field(SCAN,"1 second")
+		field(INPA,"g0voltage8 PP")
+		field(PREC,"1")
+		field(EGU,"mA")
+	}
+	record(calc,"g0rate1_norm") {
+		field(DESC,"N Scanner")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate1")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate2_norm") {
+		field(DESC,"N DSLUMI3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate2")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate3_norm") {
+		field(DESC,"N Halo 3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate3")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate4_norm") {
+		field(DESC,"N Halo 4")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate4")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate5_norm") {
+		field(DESC,"N Halo 5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate5")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate6_norm") {
+		field(DESC,"N Halo 6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate6")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate7_norm") {
+		field(DESC,"N Halo 7")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate7")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate8_norm") {
+		field(DESC,"N Halo 8")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate8")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate9_norm") {
+		field(DESC,"N 4MHz Clock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate9")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate10_norm") {
+		field(DESC,"N 31 MHz Clock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate10")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate11_norm") {
+		field(DESC,"N TS OR")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate11")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate12_norm") {
+		field(DESC,"N R2 TS beam left")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate12")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate13_norm") {
+		field(DESC,"N R2 TS beam right")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate13")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate14_norm") {
+		field(DESC,"N Level 1 Accept")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate14")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate15_norm") {
+		field(DESC,"N MD EM Trigger")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate15")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(calc,"g0rate16_norm") {
+		field(DESC,"N 20 MHz Accel.")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"g0rate16")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+

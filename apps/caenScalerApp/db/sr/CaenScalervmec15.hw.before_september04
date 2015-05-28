@@ -1,0 +1,1284 @@
+PV: HC:exp_ready        Type: mbbi
+DESC Hall C Status
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+TWVL 2
+ZRST Exp Not Ready
+ONST Exp Ready
+TWST Config Change
+
+
+PV: HC:beamok_limit	Type: ao
+DESC Minimum Acceptable Current
+SCAN Passive
+VAL 10.0
+PREC 2
+EGU uA
+
+
+PV: HC:abu_wait_limit   Type: ao
+
+DESC Start ABU holdoff here
+SCAN Passive
+VAL 1.0
+PREC 2
+EGU uA
+
+
+PV: HC:bcm_select        Type: mbbi
+DESC Choose BCM
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+ZRST BCM1
+ONST BCM2
+VAL 1
+FLNK HC:selected_bcm
+
+
+PV: HC:selected_bcm   Type: calc
+
+DESC Select BCM for ABU calcs
+CALC (D=2)?C:(D=1)?B:A
+SCAN Passive
+INPA ibcm1 NPP
+INPB ibcm2 NPP
+INPC ibcm3 NPP
+INPD HC:bcm_select PP
+PREC 4
+EGU uA
+FLNK HC:abuwaitcalc
+
+
+PV: HC:abuwait     Type: bo
+
+DESC Hold off ABU after trips
+DTYP Soft Channel
+SCAN Event
+EVNT 1
+HIGH 1
+ZSV MINOR
+OSV NO_ALARM
+OMSL closed_loop
+
+
+PV: HC:abuwaitcalc     Type: calcout
+
+DESC Trigger wait on abu after trip
+CALC A>=B
+SCAN Passive
+INPA HC:selected_bcm NPP
+INPB HC:abu_wait_limit NPP
+DOPT Use CALC
+OOPT On Change
+OUT HC:abuwait
+OEVT 1
+
+
+PV: ibcm1m    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 249800
+ASLO 0.000626
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm2m    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 253730
+ASLO 0.000611463
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm1p    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 249800
+ASLO 0.000626
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm2p    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 253730
+ASLO 0.000611463
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: time_asy    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: current_asy1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: current_asy2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: charge_asy1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: charge_asy2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: clockm_dif	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+ASG DEFAULT
+
+
+PV: clockp_dif	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+ASG DEFAULT
+
+
+PV: HC:Q_ASY	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -100
+LOW -60
+HIGH 60
+HIHI 100
+
+
+PV: HC:DQ_ASY	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:Q_ONOFF	Type: bo
+DESC binary output record
+SCAN Passive
+DTYPE Soft Channel
+ZNAM OFF
+ONAM ON
+
+
+PV: HC:Q_STAMP	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU sec
+
+
+PV: HC:Q_STAMP_ASC	Type: stringin
+DESC stringinput record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU sec
+
+
+PV: HC:RWP_SLOPE	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm/step
+
+
+PV: HC:RWP_SLOPE_IN	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm/step
+
+
+PV: HC:RWP_SLOPE_OUT	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm/step
+
+
+PV: HC:q_asy1		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:dq_asy1		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:q_asy2		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:dq_asy2		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:bcm_select		Type: ao
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU ppm
+
+
+PV: HC:qint_period		Type: ao
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU seconds
+
+
+PV: HC:bcm_threshold		Type: ao
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:coda_asy1		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:coda_dasy1		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:coda_asy2		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:coda_dasy2		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: HC:X_DIF	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -500
+LOW -200
+HIGH 200
+HIHI 500
+
+
+PV: HC:DX_DIF	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm
+
+
+PV: HC:Y_DIF	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO -500
+LOW -200
+HIGH 200
+HIHI 500
+
+
+PV: HC:DY_DIF	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm
+
+
+PV: HC:P_ONOFF	Type: bo
+DESC binary output record
+SCAN Passive
+DTYPE Soft Channel
+ZNAM OFF
+ONAM ON
+
+
+PV: HC:P_STAMP	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU sec
+
+
+PV: HC:P_STAMP_ASC	Type: stringin
+DESC stringinput record
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+EGU sec
+
+
+PV: HC:PITA_SLOPE	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU ppm/volt
+
+
+PV: HC:TACO_SLOPE	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU ppm/volt
+
+
+PV: HC:IA_SLOPE	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU ppm/volt
+
+
+PV: HC:PZT_M11		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm/volt
+
+
+PV: HC:PZT_M12		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm/volt
+
+
+PV: HC:PZT_M21		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm/volt
+
+
+PV: HC:PZT_M22		Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU nm/volt
+
+
+PV: HC:g0feedback_mat11       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat12       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat13       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat21       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat22       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat23       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat31       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat32       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:g0feedback_mat33       Type: ai
+DESC G0 feedback matrix
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:IA                     Type: ai
+DTYPE Soft Channel
+DESC IGL1I00AI24
+INP IGL1I00AI24 CPP
+SCAN Passive
+UNIT volt
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO 1.0
+LOW 2.5
+HIGH 5.0
+HIHI 9.0
+PREC 2
+
+
+PV: HC:PZTX                   Type: ai
+DTYPE Soft Channel
+DESC IGL1I00AI22
+INP IGL1I00AI22 CPP
+SCAN Passive
+UNIT volt
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO 1.0
+LOW 2.5
+HIGH 7.5
+HIHI 9.0
+PREC 2
+
+
+PV: HC:PZTY                   Type: ai
+DTYPE Soft Channel
+DESC IGL1I00AI23
+INP IGL1I00AI23 CPP
+SCAN Passive
+UNIT volt
+LLSV MAJOR
+LSV MINOR
+HSV MINOR
+HHSV MAJOR
+LOLO 1.0
+LOW 2.5
+HIGH 7.5
+HIHI 9.0
+PREC 2
+
+
+PV: HC:dE_3C12       Type: ai
+DESC Energy Difference
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+
+
+PV: HC:pint_period    Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:bpm_select     Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:bpm_threshold  Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:xdif_inst      Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:ydif_inst      Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:dxdif_inst     Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: HC:dydif_inst     Type: ao ()
+DESC analog output record
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+
+
+PV: ecCFI11139     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/s
+
+
+PV: ecCPI671T     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCTD671T     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCPI9521     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCTD9521     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCPI603QC     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCLL675SC     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: ecCPI6751     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCTP6751     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCPI671SC     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCFI6711C     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/s
+HOPR 20
+
+
+PV: ecCTD671SC     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCTD671SD     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCLL671SC     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: ecCPI672     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCTD672     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCFI6010     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/s
+
+
+PV: ecCPI6010     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCPI60DLP     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCFI60DLP     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/s
+
+
+PV: ecCTD673     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU K
+
+
+PV: ecCPI673     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCFI6731C     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/2
+
+
+PV: ecCEV6711C     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: ecCPI67T     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU atm
+
+
+PV: ecCFI6731A     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/2
+
+
+PV: ecMBSY3CS     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU amps
+LOPR 0.0
+HOPR 100.0
+
+
+PV: ecMBSY3CM      Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU amps
+LOPR 0.0
+HOPR 100.0
+
+
+PV: ecHLCNMRFIELDRBCK      Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU amps
+LOPR 0.09
+HOPR 0.26
+
+
+PV: ecIPM3C07X      Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 6
+EGU amps
+LOPR -2.0
+HOPR 2.0
+
+
+PV: ecIPM3C12X      Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 6
+EGU amps
+LOPR -2.0
+HOPR 2.0
+
+
+PV: ecIPM3C17X      Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 6
+EGU amps
+LOPR -2.0
+HOPR 2.0
+
+
+PV: ecCEV6711C_FLOW     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU g/s
+
+
+PV: BPM3H00CX0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00CY0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00AX0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: BPM3H00AY0            Type: ao
+DESC analog output record
+DTYP Soft Channel
+SCAN Passive
+PREC 2
+EGU mm
+
+
+PV: hallc_last_polarization    Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: hallc_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_last_polarization     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: mott_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_raster_status    Type: bo
+DESC binary output record
+DTYP Soft Channel
+SCAN Passive
+ZNAM Off
+ONAM On
+
+
+PV: hallc_n2level_good		Type: calc
+
+DESC At least one resovoir has N2
+CALC (A>G)||(B>G)||(C>G)||(D>G)||(E>G)
+SCAN 2 second
+INPA echmsq1h_ln2 CPP
+INPB echmsq2h_ln2 CPP
+INPC echmsq3h_ln2 CPP
+INPD echmsdh_ln2 CPP
+INPE G0:LN2Level CPP
+INPG 70.0
+HIHI 10.0
+HIGH 10.0
+LOLO 0.5
+LOW 0.5
+HSV MAJOR
+HHSV MAJOR
+LLSV MAJOR
+LSV MAJOR
+
+
+PV: HC:hms_angle	Type: ao
+DESC HMS Encoder Angle
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU deg
+
+
+PV: HC:sos_angle	Type: ao
+DESC SOS Encoder Angle
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU deg
+
+
+
+PV: g0_pivot_halo              Type: ao
+DESC Rate of G0 Pivot Halo
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+HHSV MAJOR
+HIHI 500
+
+
+PV: halo_update_period    Type: ao
+DESC Halo Monitor Integration Period
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+EGU sec
+ASG DEFAULT
+VAL 2
+
+
+PV: hcscaler                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+
+
+PV: hcscalerp                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+CARD 1
+DTYP Caen Scaler
+
+
+PV: hcscalerm                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+CARD 2
+DTYP Caen Scaler
+
+
+PV: ibcm1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 250513
+ASLO 0.001101
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 250463
+ASLO 0.0012963
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm3    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 282099
+ASLO .000250
+LOPR 0.
+HOPR 50.0
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: iave1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave3    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iavetime    Type: ai
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: HC_bit15 Type: bo ()
+
+DESC Moller Kicker status (bit 15)
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit2 Type: bo ()
+
+DESC Input register bit 2
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit9 Type: bo ()
+
+DESC Input register bit 9
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HCDOG_bit0 Type: bo ()
+
+DESC Crate CH03B05-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+FLNK HDDOG_bit9
+
+
+PV: HCDOG_bit1 Type: bo ()
+
+DESC Crate CH03B05-3 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit2 Type: bo ()
+
+DESC Crate CH03B06-2 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit3 Type: bo ()
+
+DESC Crate CH03B07-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_diskwatch     Type: bo ()
+
+DESC Diskwatch GUI
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_happyreaper     Type: bo ()
+
+DESC SILO data backup script
+DTYP Soft Channel
+SCAN Passive
+HIGH 1800
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_BetaBrite     Type: bo ()
+
+DESC Beam Current LED Display
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_ChannelArchiver     Type: bo ()
+
+DESC Channel Archiver on jeffylab
+DTYP Soft Channel
+SCAN Passive
+HIGH 900
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+

@@ -1,0 +1,133 @@
+PV: hallc_last_polarization    Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: hallc_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_last_polarization     Type: ao
+DESC analog output record
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU %
+
+
+PV: mott_last_polarization_date    Type: stringout
+DESC string output record
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: mott_raster_status    Type: bo
+DESC binary output record
+DTYP Soft Channel
+SCAN Passive
+ZNAM Off
+ONAM On
+
+
+PV: hallc_n2level_good		Type: calc
+
+DESC At least one resovoir has N2
+CALC (A>G)||(B>G)||(C>G)||(D>G)||(E>G)
+SCAN 2 second
+INPA ecDI_h_LN2 CPP
+INPB ecQ1_h_LN2 CPP
+INPC ecQ2_h_LN2 CPP
+INPD ecQ3_h_LN2 CPP
+INPE G0:LN2Level CPP
+INPG 60.0
+HIHI 10.0
+HIGH 10.0
+LOLO 0.5
+LOW 0.5
+HSV MAJOR
+HHSV MAJOR
+LLSV MAJOR
+LSV MAJOR
+
+
+PV: HC:hms_angle	Type: ao
+DESC HMS Encoder Angle
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU deg
+
+
+PV: HC:sos_angle	Type: ao
+DESC SOS Encoder Angle
+SCAN Passive
+DTYPE Soft Channel
+PREC 2
+EGU deg
+
+
+PV: HC:run_number	Type: ao
+DESC Latest Run Number
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+
+
+PV: vmec15_up  Type: bo
+
+DESC Hold off camonsave after reboots
+DTYPE Soft Channel
+SCAN Passive
+VAL 0
+ZNAM 0
+ONAM 1
+
+
+PV: hcozone		Type: calc
+
+DESC Ozone in ppb
+CALC (A/B)
+SCAN 2 second
+INPA hcrate9 PP
+INPB 1000.0
+PREC 1
+EGU ppb
+
+
+PV: hrozone               Type: ao
+DESC Hampton Roads Ozone
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU ppb
+
+
+PV: hcbend_t1		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+
+PV: hcbend_t2		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+
+PV: hcbend_t3		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+

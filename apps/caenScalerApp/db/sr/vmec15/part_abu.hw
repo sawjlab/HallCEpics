@@ -1,0 +1,80 @@
+PV: HC:exp_ready        Type: mbbi
+DESC Hall C Status
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+TWVL 2
+ZRST Exp Not Ready
+ONST Exp Ready
+TWST Config Change
+
+
+PV: HC:beamok_limit	Type: ao
+DESC Minimum Acceptable Current
+SCAN Passive
+VAL 40.0
+PREC 2
+EGU uA
+
+
+PV: HC:abu_wait_limit   Type: ao
+
+DESC Start ABU holdoff here
+SCAN Passive
+VAL 1.0
+PREC 2
+EGU uA
+
+
+PV: HC:bcm_select        Type: mbbi
+DESC Choose BCM
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+ZRST BCM1
+ONST BCM2
+VAL 1
+FLNK HC:selected_bcm
+
+
+PV: HC:selected_bcm   Type: calc
+
+DESC Select BCM for ABU calcs
+CALC (D=2)?C:(D=1)?B:A
+SCAN Passive
+INPA ibcm1 NPP
+INPB ibcm2 NPP
+INPC ibcm3 NPP
+INPD HC:bcm_select PP
+PREC 4
+EGU uA
+FLNK HC:abuwaitcalc
+
+
+PV: HC:abuwait     Type: bo
+
+DESC Hold off ABU after trips
+DTYP Soft Channel
+SCAN Event
+EVNT 1
+HIGH 1
+ZSV MINOR
+OSV NO_ALARM
+OMSL closed_loop
+
+
+PV: HC:abuwaitcalc     Type: calcout
+
+DESC Trigger wait on abu after trip
+CALC A>=B
+SCAN Passive
+INPA HC:selected_bcm NPP
+INPB HC:abu_wait_limit NPP
+DOPT Use CALC
+OOPT On Change
+OUT HC:abuwait
+OEVT 1
+
+

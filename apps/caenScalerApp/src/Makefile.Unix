@@ -1,0 +1,59 @@
+#
+# applSrcMakefile.Unix: Makefile.Unix
+#
+# Makefile for CA applications un Unix
+#----------------------------------------
+# DO NOT REMOVE OR CHANGE FOLLOWING LINES
+#
+# execution of this Makefile is from O.<arch> directory
+
+APP= VMI3123
+
+EPICS_BASE = $(EPICS)/base
+include Target.include
+include $(EPICS)/config/CONFIG_EXTENSIONS
+PROD_DIR = ../../prod_dir
+INSTALL_LOCATION = $(PROD_DIR)/$(T_A)
+
+#----------------------------------------
+#  ADD MACRO DEFINITIONS AFTER THIS LINE
+# >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# C source code files in src/ are listed here
+# Ex. for prog1.c and prog2.c in src/
+# SRCS.c += ../prog1.c
+# SRCS.c += ../prog2.c
+SRCS.c +=
+
+SRCS.cc +=
+
+TARGETS =
+
+USR_CFLAGS = 
+
+USR_CCFLAGS =
+
+USR_LDLIBS = -lca -lCom
+
+#----------------------------------------
+# DO NOT REMOVE OR CHANGE FOLLOWING LINES
+#
+
+include $(EPICS)/config/RULES.Unix
+#----------------------------------------
+#  ADD RULES AFTER THIS LINE
+#
+install:
+	@test -d $(INSTALL_LOCATION) || mkdir $(INSTALL_LOCATION)
+	@if [ -n "$(TARGETS)" ]; then \
+	    if [ -f $(TARGETS) ]; then \
+	    	echo "Installing OBJ files to $(INSTALL_LOCATION)"; \
+	    	cp $(TARGETS) $(INSTALL_LOCATION); \
+	    else \
+		echo "make $(TARGETS) before install."; \
+	    fi \
+	else \
+	    echo "Nothing to be installed."; \
+	fi
+
+clean::
+	$(RM) *.o

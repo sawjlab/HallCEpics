@@ -1,0 +1,38 @@
+#
+# Makefile.Host
+# - for R3.13.0.beta12CEBAF2 or newer EPICS releases
+# - Makefile for application dbd files or CA applications
+
+APP = CaenScaler
+PROD_DIR = ../../prod_dir
+INSTALL_LOCATION_APP = $(PROD_DIR)/db
+include $(EPICS)/config/CONFIG_APP
+#----------------------------------------
+#  ADD MACRO DEFINITIONS AFTER THIS LINE
+
+USER_DBDFLAGS += -I .. -I $(EPICS_BASE)/dbd
+# Use RECTYPES for custom record support. Replace xxx with record name
+RECTYPES += scalerRecord.h
+DBDEXPAND = $(APP)Include.dbd
+DBDNAME = $(APP).dbd
+
+include $(EPICS)/config/RULES.Host
+#----------------------------------------
+#  ADD RULES AFTER THIS LINE
+
+ifeq ($(shell whichEpicsVer),R313)
+install::
+else
+install:
+endif
+	@test -d $(INSTALL_LOCATION) || mkdir $(INSTALL_LOCATION)
+	@if [ -n "$(DBDNAME)" ]; then \
+	    echo "Installing $(DBDNAME) to $(INSTALL_LOCATION)"; \
+	    cp $(DBDNAME) $(INSTALL_LOCATION); \
+	else \
+	  echo "Nothing to be installed."; \
+	fi
+
+clean::
+	$(RM) *.o *.h *.dbd
+

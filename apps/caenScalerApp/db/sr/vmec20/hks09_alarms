@@ -1,0 +1,39 @@
+List of signals that we may want to put alarms on:
+
+Position before target.
+Positions in arc
+Hall C arc energy calculation
+9th dipole
+current on chicane magnets DW before magnet, and splitter
+
+Magnets:
+
+Fast Feedback
+
+FB_C:FB_On		should be one
+FB_C:use_RF		should be one
+FB_C:status:mbbi2.B7  Should be zero
+
+HCNMR:SIG	0.192096
+HALLC:p		2344.09
+MDZ3H01M	314.923
+MFZ3H03M	417.502
+MDW3H04AHM	125.53
+MSP3H04M	953.971
+
+BPMs
+
+Also 8 + 16
+
+IPM3C07.XRAW
+IPM3C12.XRAW
+IPM3C17.XRAW
+IPM3H01.XRAW
+IPM3H02A.XRAW
+IPM3H02B.XRAW
+IPM3H02C.XRAW
+IPM3H03A.XRAW
+IPM3H03A.YRAW
+IPM3H03B.XRAW
+IPM3H03B.YRAW
+

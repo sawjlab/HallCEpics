@@ -1,0 +1,13 @@
+24-Jan-2002 20:34:02 : OXSS_MGFD                    NO_ALARM     NO_ALARM         2.8300                                  
+24-Jan-2002 20:34:04 : OXSS_MGFD                    LOLO         MINOR            0.0010                                  
+15-Jan-2002 15:08:11 : HCDOG_happyreaper            STATE        MINOR            Dead                                    
+21-Dec-2001 11:08:30 : HCDOG_BetaBrite              STATE        MINOR            Dead                                    
+21-Dec-2001 11:10:56 : HCDOG_BetaBrite              NO_ALARM     NO_ALARM         Alive                                   
+Thu Jan 24 10:53:19 2002 :  HCDOG_diskwatch              NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_happyreaper            NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_ChannelArchiver        NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_BetaBrite              NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_bit0                   NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_bit1                   NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_bit2                   NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive
+Thu Jan 24 10:53:19 2002 :  HCDOG_bit3                   NO_ALARM     NO_ALARM         NO_ALARM     NO_ALARM         Alive

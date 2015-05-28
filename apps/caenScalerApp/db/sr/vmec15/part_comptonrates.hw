@@ -1,0 +1,122 @@
+PV: cComptScannerRateX  Type: ai ()
+
+DESC Compton X Scanner Rate
+INP hcrate6
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+PREC 1
+
+
+PV: cComptScannerRateY  Type: ai ()
+
+DESC Compton Y Scanner Rate
+INP hcrate7
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+PREC 1
+
+
+PV: cComptEdetPos Type: calc ()
+
+DESC Compton Electron Detector Pos
+SCAN Passive
+INPA hcrate8
+INPB 1875
+CALC A/B
+EGU mm
+PREC 2
+
+
+PV: cComptEdetRef  Type: ai ()
+
+DESC Reference rate
+INP hcrate13
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptEdetRatio
+PREC 1
+
+
+PV: cComptEdetRatio Type: calc ()
+
+DESC Compton Edet Pos Ratio
+SCAN Passive
+INPA hcrate8
+INPB cComptEdetRef
+CALC A/B
+EGU x
+PREC 4
+
+
+PV: cComptScintRate  Type: ai ()
+
+DESC Scintillator rate
+INP hcrate14
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptScintRateNorm
+PREC 1
+
+
+PV: cComptScintRateNorm  Type: calc ()
+
+DESC Normalized Scintillator rate
+SCAN Passive
+INPA cComptScintRate
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: cComptPhotonRate  Type: ai ()
+
+DESC Photon Detector rate
+INP hcrate15
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptPhotonRateNorm
+PREC 1
+
+
+PV: cComptPhotonRateNorm  Type: calc ()
+
+DESC Normalized Photon Detector rate
+SCAN Passive
+INPA cComptPhotonRate
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: cComptCavityPower_calfac Type: ai  ()
+
+DESC Cavity Power Calibration Factor
+SCAN Passive
+DTYP Soft Channel
+VAL 0.38
+
+
+PV: cComptCavityPower Type: calc ()
+
+DESC Cavity Power
+SCAN Passive
+INPA hcrate12
+INPB cComptCavityPower_calfac
+CALC A*B
+EGU watts
+
+
+PV: cComptPhotonDetHV Type: ai ()
+
+DESC Photon Detector HV
+INP v_mon16_62 CPP
+SCAN Passive
+
+

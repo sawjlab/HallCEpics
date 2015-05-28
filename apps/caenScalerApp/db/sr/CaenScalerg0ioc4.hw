@@ -1,0 +1,789 @@
+PV: g0scaler                           Type: scaler               ()
+DESC scaler record
+SCAN 1 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+CARD 0
+FREQ 60
+
+
+PV: g0scaler1                           Type: scaler               ()
+DESC scaler record
+SCAN 1 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+CARD 1
+FREQ 60
+
+
+PV: g0scaler2                           Type: scaler               ()
+DESC scaler record
+SCAN 1 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+CARD 2
+FREQ 60
+
+
+PV: g0scaler_update_period	Type: ao
+DESC Qweak Rate Monitor Integration Period
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+EGU sec
+ASG DEFAULT
+VAL 1
+
+
+PV: g0rate1	Type: ai
+DESC Scanner
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate1_norm
+
+
+PV: g0rate2	Type: ai
+DESC DSLUMI3
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate2_norm
+
+
+PV: g0rate3	Type: ai
+DESC Halo 3
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate3_norm
+
+
+PV: g0rate4	Type: ai
+DESC Halo 4
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate4_norm
+
+
+PV: g0rate5	Type: ai
+DESC Halo 5
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate5_norm
+
+
+PV: g0rate6	Type: ai
+DESC Halo 6
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate6_norm
+
+
+
+PV: g0rate7	Type: ai
+DESC Halo 7
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate7_norm
+
+
+PV: g0rate8	Type: ai
+DESC Halo 8
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate8_norm
+
+
+PV: g0rate9	Type: ai
+DESC 4 MHz Clock
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate9_norm
+
+
+PV: g0rate10	Type: ai
+DESC 31 MHz Clock
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate10_norm
+
+
+PV: g0rate11	Type: ai
+DESC TS OR
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate11_norm
+
+
+PV: g0rate12	Type: ai
+DESC R2 TS beam left
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate12_norm
+
+
+PV: g0rate13	Type: ai
+DESC R2 TS beam right
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate13_norm
+
+
+PV: g0rate14	Type: ai
+DESC Level 1 Accept
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate14_norm
+
+
+PV: g0rate15	Type: ai
+DESC MD EM Trigger
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate15_norm
+
+
+PV: g0rate16	Type: ai
+DESC 20 MHz Accel.
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK g0rate16_norm
+
+
+PV: g0rate17	Type: ai
+DESC Hokie 2 Fast OR
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate18    Type: ai
+DESC Hokie 3 Fast OR
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate19    Type: ai
+DESC Hokie 4 Fast OR
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate20    Type: ai
+DESC Hokie 5 Fast OR
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate21    Type: ai
+DESC USLUMI1-
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate22    Type: ai
+DESC USLUMI1+
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate23    Type: ai
+DESC USLUMI5-
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate24    Type: ai
+DESC USLUMI5+
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate25    Type: ai
+DESC DSLUMI1
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate26    Type: ai
+DESC DSLUMI2
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate27    Type: ai
+DESC broken NIM/ECL chan
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate28    Type: ai
+DESC DSLUMI4
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate29    Type: ai
+DESC DSLUMI5
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate30    Type: ai
+DESC DSLUMI6
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate31    Type: ai
+DESC DSLUMI7
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate32    Type: ai
+DESC DSLUMI8
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0voltage1	Type: ai
+DESC Qweak V2F Voltage 1
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage2	Type: ai
+DESC Qweak V2F Voltage 2
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage3	Type: ai
+DESC Qweak V2F Voltage 3
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage4	Type: ai
+DESC Qweak V2F Voltage 4
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage5	Type: ai
+DESC Qweak V2F Voltage 5
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage6	Type: ai
+DESC Qweak V2F Voltage 6
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage7	Type: ai
+DESC Qweak V2F Voltage 7
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage8	Type: ai
+DESC Qweak V2F Voltage 8
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage9	Type: ai
+DESC Qweak V2F Voltage 9
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage10	Type: ai
+DESC Qweak V2F Voltage 10
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage11	Type: ai
+DESC Qweak V2F Voltage 11
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage12	Type: ai
+DESC Qweak V2F Voltage 12
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage13	Type: ai
+DESC Qweak V2F Voltage 13
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage14	Type: ai
+DESC Qweak V2F Voltage 14
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage15	Type: ai
+DESC Qweak V2F Voltage 15
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0voltage16	Type: ai
+DESC Qweak V2F Voltage 16
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU Volts
+ASG DEFAULT
+
+
+PV: g0cagetemp1   Type: ai
+DESC Qweak Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 3
+
+
+PV: g0cagetemp2   Type: ai
+DESC Qweak Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 4
+
+
+PV: g0cagetemp3   Type: ai
+DESC Qweak Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 5
+
+
+PV: g0BPM_Flatline    Type: bo ()
+DESC BPM Flatline Alarm
+DTYP Soft Channel
+SCAN Passive
+HIGH 30
+ONAM OK
+ZNAM Flat
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: qwvdc1voltage    Type: calc ()
+DESC VDC1 High Voltage
+DTYP Soft Channel
+CALC 1000.0*A
+SCAN 1 second
+INPA g0voltage1 PP
+PREC 1
+EGU Volts
+
+
+PV: qwvdc2voltage    Type: calc ()
+DESC VDC2 High Voltage
+DTYP Soft Channel
+CALC 1000.0*A
+SCAN 1 second
+INPA g0voltage2 PP
+PREC 1
+EGU Volts
+
+
+PV: qwvdc3voltage    Type: calc ()
+DESC VDC3 High Voltage
+DTYP Soft Channel
+CALC 1000.0*A
+SCAN 1 second
+INPA g0voltage3 PP
+PREC 1
+EGU Volts
+
+
+PV: qwvdc4voltage    Type: calc ()
+DESC VDC4 High Voltage
+DTYP Soft Channel
+CALC 1000.0*A
+SCAN 1 second
+INPA g0voltage4 PP
+PREC 1
+EGU Volts
+
+
+PV: qwvdc1current    Type: calc ()
+DESC VDC1 Current
+DTYP Soft Channel
+CALC 100.0*A
+SCAN 1 second
+INPA g0voltage5 PP
+PREC 1
+EGU mA
+
+
+PV: qwvdc2current    Type: calc ()
+DESC VDC2 Current
+DTYP Soft Channel
+CALC 100.0*A
+SCAN 1 second
+INPA g0voltage6 PP
+PREC 1
+EGU mA
+
+
+PV: qwvdc3current    Type: calc ()
+DESC VDC3 Current
+DTYP Soft Channel
+CALC 100.0*A
+SCAN 1 second
+INPA g0voltage7 PP
+PREC 1
+EGU mA
+
+
+PV: qwvdc4current    Type: calc ()
+DESC VDC4 Current
+DTYP Soft Channel
+CALC 100.0*A
+SCAN 1 second
+INPA g0voltage8 PP
+PREC 1
+EGU mA
+
+
+PV: g0rate1_norm   Type: calc
+DESC N Scanner
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate1
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate2_norm   Type: calc
+DESC N DSLUMI3
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate2
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate3_norm   Type: calc
+DESC N Halo 3
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate3
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate4_norm   Type: calc
+DESC N Halo 4
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate4
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate5_norm   Type: calc
+DESC N Halo 5
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate5
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate6_norm   Type: calc
+DESC N Halo 6
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate6
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate7_norm   Type: calc
+DESC N Halo 7
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate7
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate8_norm   Type: calc
+DESC N Halo 8
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate8
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate9_norm   Type: calc
+DESC N 4MHz Clock
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate9
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate10_norm   Type: calc
+DESC N 31 MHz Clock
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate10
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate11_norm   Type: calc
+DESC N TS OR
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate11
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate12_norm   Type: calc
+DESC N R2 TS beam left
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate12
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate13_norm   Type: calc
+DESC N R2 TS beam right
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate13
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate14_norm   Type: calc
+DESC N Level 1 Accept
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate14
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate15_norm   Type: calc
+DESC N MD EM Trigger
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate15
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: g0rate16_norm   Type: calc
+DESC N 20 MHz Accel.
+SCAN Passive
+DTYP Soft Channel
+INPA g0rate16
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+

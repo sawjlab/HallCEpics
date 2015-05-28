@@ -1,0 +1,9 @@
+# IOC: vmec15
+# APP: CaenScaler
+
+# laod module for CaenScaler
+ld<CaenScalerV/mv162/CaenScaler.o
+
+# load database and definitions
+dbLoadDatabase("CaenScalerV/db/CaenScaler.dbd")
+dbLoadRecords("CaenScalerV/db/CaenScalervmec15.db")

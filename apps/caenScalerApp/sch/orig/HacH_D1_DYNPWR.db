@@ -1,0 +1,47 @@
+database(x) { nowhere() {
+}
+record(ao,"HacH_D1_DYNPWR:ISET")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @ISET")
+	field(PREC,"5")
+	field(DRVH,"1140")
+}
+record(ao,"HacH_D1_DYNPWR:VSET")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @VSET")
+	field(PREC,"2")
+	field(DRVH,"6")
+}
+record(bo,"HacH_D1_DYNPWR:START")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @START")
+}
+record(bo,"HacH_D1_DYNPWR:RST")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @RST")
+}
+record(bo,"HacH_D1_DYNPWR:IMODE")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @IMODE")
+}
+record(bo,"HacH_D1_DYNPWR:VMODE")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @VMODE")
+}
+record(bo,"HacH_D1_DYNPWR:M3")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @M3")
+}
+record(bo,"HacH_D1_DYNPWR:M4")
+{
+	field(DTYP,"DYNPWR")
+	field(OUT,"#B18 L0 G0 P0 @M4")
+}
+}

@@ -1,0 +1,1601 @@
+	record(mbbi,"HC:exp_ready") {
+		field(DESC,"Hall C Status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ZRVL,"0")
+		field(ONVL,"1")
+		field(TWVL,"2")
+		field(ZRST,"Exp Not Ready")
+		field(ONST,"Exp Ready")
+		field(TWST,"Config Change")
+	}
+	record(ao,"HC:beamok_limit") {
+		field(DESC,"Minimum Acceptable Current")
+		field(SCAN,"Passive")
+		field(VAL,"40.0")
+		field(PREC,"2")
+		field(EGU,"uA")
+	}
+	record(ao,"HC:abu_wait_limit") {
+		field(DESC,"Start ABU holdoff here")
+		field(SCAN,"Passive")
+		field(VAL,"1.0")
+		field(PREC,"2")
+		field(EGU,"uA")
+	}
+	record(mbbi,"HC:bcm_select") {
+		field(DESC,"Choose BCM")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ZRVL,"0")
+		field(ONVL,"1")
+		field(ZRST,"BCM1")
+		field(ONST,"BCM2")
+		field(VAL,"1")
+		field(FLNK,"HC:selected_bcm")
+	}
+	record(calc,"HC:selected_bcm") {
+		field(DESC,"Select BCM for ABU calcs")
+		field(CALC,"(D=2)?C:(D=1)?B:A")
+		field(SCAN,"Passive")
+		field(INPA,"ibcm1 NPP")
+		field(INPB,"ibcm2 NPP")
+		field(INPC,"ibcm3 NPP")
+		field(INPD,"HC:bcm_select PP")
+		field(PREC,"4")
+		field(EGU,"uA")
+		field(FLNK,"HC:abuwaitcalc")
+	}
+	record(bo,"HC:abuwait") {
+		field(DESC,"Hold off ABU after trips")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Event")
+		field(EVNT,"1")
+		field(HIGH,"1")
+		field(ZSV,"MINOR")
+		field(OSV,"NO_ALARM")
+		field(OMSL,"closed_loop")
+	}
+	record(calcout,"HC:abuwaitcalc") {
+		field(DESC,"Trigger wait on abu after trip")
+		field(CALC,"A>=B")
+		field(SCAN,"Passive")
+		field(INPA,"HC:selected_bcm NPP")
+		field(INPB,"HC:abu_wait_limit NPP")
+		field(DOPT,"Use CALC")
+		field(OOPT,"On Change")
+		field(OUT,"HC:abuwait")
+		field(OEVT,"1")
+	}
+	record(ai,"ibcm1m") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(AOFF,"249800")
+		field(ASLO,"0.000626")
+		field(LOPR,"0.")
+		field(HOPR,"500.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"ibcm2m") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(AOFF,"253730")
+		field(ASLO,"0.000611463")
+		field(LOPR,"0.")
+		field(HOPR,"500.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"ibcm1p") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(AOFF,"249800")
+		field(ASLO,"0.000626")
+		field(LOPR,"0.")
+		field(HOPR,"500.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"ibcm2p") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(AOFF,"253730")
+		field(ASLO,"0.000611463")
+		field(LOPR,"0.")
+		field(HOPR,"500.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"time_asy") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(LOPR,"-1.0")
+		field(HOPR,"1.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"current_asy1") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(LOPR,"-1.0")
+		field(HOPR,"1.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"current_asy2") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(LOPR,"-1.0")
+		field(HOPR,"1.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"charge_asy1") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(LOPR,"-1.0")
+		field(HOPR,"1.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"charge_asy2") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"3")
+		field(LOPR,"-1.0")
+		field(HOPR,"1.0")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"clockm_dif") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"3")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"clockp_dif") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"3")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"cComptLasCur") {
+		field(DESC,"Laser Current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasPow") {
+		field(DESC,"Laser output power setpoint")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasLBOTmp") {
+		field(DESC,"Laser LBO temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasBplTmp") {
+		field(DESC,"Laser baseplate temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasD1Tmp") {
+		field(DESC,"Laser diode 1 temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasD2Tmp") {
+		field(DESC,"Laser diode 2 temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasVanTmp") {
+		field(DESC,"Laser vanadate temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasEtlnTmp") {
+		field(DESC,"Laser etalon temperature")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasD1Cur") {
+		field(DESC,"Laser diode 1 current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasD2Cur") {
+		field(DESC,"Laser diode 1 current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptLasLBOSvoStat") {
+		field(DESC,"Laser LBO servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasD1SvoStat") {
+		field(DESC,"Laser diode 1 servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasD2SvoStat") {
+		field(DESC,"Laser diode 2 servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasLtSvoStat") {
+		field(DESC,"Laser light servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasVanSvoStat") {
+		field(DESC,"Laser vanadate servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasEtlnSvoStat") {
+		field(DESC,"Laser etalon servo status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasKeyPos") {
+		field(DESC,"Laser key position")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasShutPos") {
+		field(DESC,"Laser shutter position")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasState") {
+		field(DESC,"Laser state (standby/on)")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptLasLBOHtrStat") {
+		field(DESC,"Laser heater status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL1H") {
+		field(DESC,"QPD1 L-R (+/-10V read by 16 bit ADC)")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL1V") {
+		field(DESC,"QPD1 B-T")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL2H") {
+		field(DESC,"QPD2 B-T")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL2V") {
+		field(DESC,"QPD2 L-R")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL3H") {
+		field(DESC,"QPD3 L-R")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL3V") {
+		field(DESC,"QPD3 B-T")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL4H") {
+		field(DESC,"QPD3 L-R")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL4V") {
+		field(DESC,"QPD4 B-T")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptM1V") {
+		field(DESC,"Vertical position of first closed loop mirror on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptM1H") {
+		field(DESC,"Horizontal position of first closed loop mirror on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptM2V") {
+		field(DESC,"Vertical position of second closed loop mirror on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptM2H") {
+		field(DESC,"Horizontal position of second closed loop mirror on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQWP1") {
+		field(DESC,"Degree of first QWP rotation stage on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptQWP2") {
+		field(DESC,"Degree of second QWP rotation stage on laser table")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkScanAmp") {
+		field(DESC,"Digilock scan amplitude")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkScanFrq") {
+		field(DESC,"Digilock scan frequency")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkScanCh") {
+		field(DESC,"Digilock output channel for scan")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkScanSglType") {
+		field(DESC,"Digilock scan signal type (sine, sawtooth)")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(bi,"cComptDgkScanEnbl") {
+		field(DESC,"Digilock scan on/off.")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(ai,"cComptDgkOfstCh") {
+		field(DESC,"Digilock offset channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkOfst") {
+		field(DESC,"Digilock offset value")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPDHModFreq") {
+		field(DESC,"Digilock PDH modulation frequency")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPDHModAmp") {
+		field(DESC,"Digilock PDH modulation amplitude")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPDHOfst") {
+		field(DESC,"Digilock PDH offset")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPDHOutCh") {
+		field(DESC,"Digilock PDH output channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPDHInCh") {
+		field(DESC,"Digilock PDH input channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPDHPhase") {
+		field(DESC,"Digilock PDH phase shift")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(bi,"cComptDgkPDHModEnbl") {
+		field(DESC,"Digilock PDH module enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1RstEnbl") {
+		field(DESC,"Digilock PID1 reset enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1ManRlk") {
+		field(DESC,"Digilock PID1 manual relock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1AutoRlk") {
+		field(DESC,"Digilock PID1 automatic relock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1RlkEnbl") {
+		field(DESC,"Digilock PID1 relock enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1OLEnbl") {
+		field(DESC,"Digilock PID1 output limit enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1LWEnbl") {
+		field(DESC,"Digilock PID1 lock window enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID1LockEnbl") {
+		field(DESC,"Digilock PID1 lock enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(ai,"cComptDgkPID1G") {
+		field(DESC,"Digilock PID1 Gain")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1D") {
+		field(DESC,"Digilock PID1 Differential")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1I") {
+		field(DESC,"Digilock PID1 Integral")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1P") {
+		field(DESC,"Digilock PID1 Proportional")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1InCh") {
+		field(DESC,"Digilock PID1 input channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID1LWCh") {
+		field(DESC,"Digilock PID1 lock window channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID1LWMax") {
+		field(DESC,"Digilock PID1 lock window maximum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1LWMin") {
+		field(DESC,"Digilock PID1 lock window minimum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1OutLmtMax") {
+		field(DESC,"Digilock PID1 output limit maximum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1OutLmtMin") {
+		field(DESC,"Digilock PID1 output limit minimum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1OutCh") {
+		field(DESC,"Digilock PID1 output channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID1RlkFrq") {
+		field(DESC,"Digilock PID1 relock frequency")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1RlkAmp") {
+		field(DESC,"Digilock PID1 relock amplitude")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1RstRate") {
+		field(DESC,"Digilock PID1 reset rate")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1Setpt") {
+		field(DESC,"Digilock PID1 setpoint")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID1Sign") {
+		field(DESC,"Digilock PID1 sign")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID1Slope") {
+		field(DESC,"Digilock PID1 slope")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID1FC") {
+		field(DESC,"Digilock PID1 cutoff frequency")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(bi,"cComptDgkPID1FCEnbl") {
+		field(DESC,"Digilock PID1 frequency cutoff enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2RstEnbl") {
+		field(DESC,"Digilock PID2 reset enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2ManRlk") {
+		field(DESC,"Digilock PID2 manual relock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2AutoRlk") {
+		field(DESC,"Digilock PID2 automatic relock")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2RlkEnbl") {
+		field(DESC,"Digilock PID2 relock enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2OLEnbl") {
+		field(DESC,"Digilock PID2 output limit enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2LWEnbl") {
+		field(DESC,"Digilock PID2 lock window enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(bi,"cComptDgkPID2LockEnbl") {
+		field(DESC,"Digilock PID2 lock enable")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(ai,"cComptDgkPID2G") {
+		field(DESC,"Digilock PID2 Gain")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2D") {
+		field(DESC,"Digilock PID2 Differential")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2I") {
+		field(DESC,"Digilock PID2 Integral")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2P") {
+		field(DESC,"Digilock PID2 Proportional")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2InCh") {
+		field(DESC,"Digilock PID2 input channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID2LWCh") {
+		field(DESC,"Digilock PID2 lock window channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID2LWMax") {
+		field(DESC,"Digilock PID2 lock window maximum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2LWMin") {
+		field(DESC,"Digilock PID2 lock window minimum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2OutLmtMax") {
+		field(DESC,"Digilock PID2 output limit maximum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2OutLmtMin") {
+		field(DESC,"Digilock PID2 output limit minimum parameter")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2OutCh") {
+		field(DESC,"Digilock PID2 output channel")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID2RlkFrq") {
+		field(DESC,"Digilock PID2 relock frequency")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2RlkAmp") {
+		field(DESC,"Digilock PID2 relock amplitude")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2RstRate") {
+		field(DESC,"Digilock PID2 reset rate")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2Setpt") {
+		field(DESC,"Digilock PID2 setpoint")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptDgkPID2Sign") {
+		field(DESC,"Digilock PID2 sign")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptDgkPID2Slope") {
+		field(DESC,"Digilock PID2 slope")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptQPDL1Pow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptQPDL2Pow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptQPDL3Pow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptQPDL4Pow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptRawADC0") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC1") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC2") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC3") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC4") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC5") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC6") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC7") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC8") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC9") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC10") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC11") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC12") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC13") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC14") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRawADC15") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(ai,"cComptRPDPow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptTPDPow") {
+		field(DESC,"")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(bi,"cComptScanclean") {
+		field(DESC,"cComptScanclean")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(ONAM,"T")
+		field(ZNAM,"F")
+	}
+	record(ai,"cComptScandata1") {
+		field(DESC,"cComptScandata1")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"4")
+	}
+	record(ai,"cComptScintRate") {
+		field(DESC,"Scintillator rate")
+		field(INP,"hcrate14")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(EGU,"Hz")
+		field(FLNK,"cComptScintRateNorm")
+		field(PREC,"1")
+	}
+	record(calc,"cComptScintRateNorm") {
+		field(DESC,"Normalized Scintillator rate")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"cComptScintRate")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(ai,"cComptPhotonRate") {
+		field(DESC,"Photon Detector rate")
+		field(INP,"hcrate15")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(EGU,"Hz")
+		field(FLNK,"cComptPhotonRateNorm")
+		field(PREC,"1")
+	}
+	record(calc,"cComptPhotonRateNorm") {
+		field(DESC,"Normalized Photon Detector rate")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"cComptPhotonRate")
+		field(INPB,"ibcm1")
+		field(CALC,"(B>1)?(A/B):0")
+		field(EGU,"Hz/uA")
+		field(PREC,"1")
+	}
+	record(ai,"cComptCavityPower_calfac") {
+		field(DESC,"Cavity Power Calibration Factor")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(VAL,"0.38")
+	}
+	record(calc,"cComptCavityPower") {
+		field(DESC,"Cavity Power")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(INPA,"hcrate12")
+		field(INPB,"cComptCavityPower_calfac")
+		field(CALC,"A*B")
+		field(EGU,"watts")
+	}
+	record(ai,"cComptPhotonDetHV") {
+		field(DESC,"Photon Detector HV")
+		field(INP,"v_mon16_63 CPP")
+		field(SCAN,"Passive")
+	}
+	record(ao,"hallc_last_polarization") {
+		field(DESC,"analog output record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"%")
+	}
+	record(stringout,"hallc_last_polarization_date") {
+		field(DESC,"string output record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+	}
+	record(ao,"mott_last_polarization") {
+		field(DESC,"analog output record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"%")
+	}
+	record(stringout,"mott_last_polarization_date") {
+		field(DESC,"string output record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+	}
+	record(bo,"mott_raster_status") {
+		field(DESC,"binary output record")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(ZNAM,"Off")
+		field(ONAM,"On")
+	}
+	record(calc,"hallc_n2level_good") {
+		field(DESC,"At least one resovoir has N2")
+		field(CALC,"(A>G)||(B>G)||(C>G)||(D>G)||(E>G)")
+		field(SCAN,"2 second")
+		field(INPA,"ecDI_h_LN2 CPP")
+		field(INPB,"ecQ1_h_LN2 CPP")
+		field(INPC,"ecQ2_h_LN2 CPP")
+		field(INPD,"ecQ3_h_LN2 CPP")
+		field(INPE,"G0:LN2Level CPP")
+		field(INPG,"60.0")
+		field(HIHI,"10.0")
+		field(HIGH,"10.0")
+		field(LOLO,"0.5")
+		field(LOW,"0.5")
+		field(HSV,"MAJOR")
+		field(HHSV,"MAJOR")
+		field(LLSV,"MAJOR")
+		field(LSV,"MAJOR")
+	}
+	record(ao,"HC:hms_angle") {
+		field(DESC,"HMS Encoder Angle")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"deg")
+	}
+	record(ao,"HC:sos_angle") {
+		field(DESC,"SOS Encoder Angle")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"deg")
+	}
+	record(ao,"HC:run_number") {
+		field(DESC,"Latest Run Number")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"0")
+	}
+	record(bo,"vmec15_up") {
+		field(DESC,"Hold off camonsave after reboots")
+		field(DTYPE,"Soft Channel")
+		field(SCAN,"Passive")
+		field(VAL,"0")
+		field(ZNAM,"0")
+		field(ONAM,"1")
+	}
+	record(calc,"hcozone") {
+		field(DESC,"Ozone in ppb")
+		field(CALC,"(A/B)")
+		field(SCAN,"2 second")
+		field(INPA,"hcrate9 PP")
+		field(INPB,"1000.0")
+		field(PREC,"1")
+		field(EGU,"ppb")
+	}
+	record(ao,"hrozone") {
+		field(DESC,"Hampton Roads Ozone")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"ppb")
+	}
+	record(ao,"hcbend_t1") {
+		field(DESC,"Bender Temperature 1")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"deg")
+	}
+	record(ao,"hcbend_t2") {
+		field(DESC,"Bender Temperature 1")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"deg")
+	}
+	record(ao,"hcbend_t3") {
+		field(DESC,"Bender Temperature 1")
+		field(SCAN,"Passive")
+		field(DTYPE,"Soft Channel")
+		field(PREC,"3")
+		field(EGU,"deg")
+	}
+	record(ai,"qw:targetX") {
+		field(DESC,"X position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:targetY") {
+		field(DESC,"Y position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:tungstenX") {
+		field(DESC,"X position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:tungstenY") {
+		field(DESC,"Y position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:targetXtest") {
+		field(DESC,"X position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:targetYtest") {
+		field(DESC,"Y position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:tungstenXtest") {
+		field(DESC,"X position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:tungstenYtest") {
+		field(DESC,"Y position at target")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+	}
+	record(ai,"qw:VCG3H09ATr") {
+		field(DESC,"VCG3H09ATr copy")
+		field(INP,"VCG3H09ATr CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+	}
+	record(ai,"qw:VCG3H09BTr") {
+		field(DESC,"VCG3H09BTr copy")
+		field(INP,"VCG3H09BTr CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+	}
+	record(ai,"qw:SLD3H03GDOSC") {
+		field(DESC,"SLD3H03GDOSC copy")
+		field(INP,"SLD3H03GDOSC CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+	}
+	record(ai,"qw:SLD3H04GDOSC") {
+		field(DESC,"SLD3H04GDOSC copy")
+		field(INP,"SLD3H04GDOSC CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+	}
+	record(ai,"qw:SLD3H05GDOSC") {
+		field(DESC,"SLD3H05GDOSC copy")
+		field(INP,"SLD3H05GDOSC CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+	}
+	record(ai,"qw:EHCFR_IXPEAK") {
+		field(DESC,"EHCFR_IXPEAK copy")
+		field(INP,"EHCFR_IXPEAK CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+		field(PREC,"2")
+	}
+	record(ai,"qw:EHCFR_IYPEAK") {
+		field(DESC,"EHCFR_IYPEAK copy")
+		field(INP,"EHCFR_IYPEAK CPP")
+		field(SCAN,"Passive")
+		field(HHSV,"MAJOR")
+		field(HSV,"MINOR")
+		field(LSV,"MINOR")
+		field(LLSV,"MAJOR")
+		field(PREC,"2")
+	}
+	record(bi,"qw:FB_C:FB_On") {
+		field(DESC,"FB_C_FB_On Copy")
+		field(INP,"FB_C:FB_On CPP")
+		field(SCAN,"Passive")
+		field(ONAM,"Enabled")
+		field(ZNAM,"Off")
+	}
+	record(calc,"qw:FB_C:FB_Running") {
+		field(DESC,"Fast Feedback running")
+		field(INPA,"FB_C:status:mbbi2.B7 CPP")
+		field(SCAN,"Passive")
+		field(CALC,"(!A)")
+	}
+	record(scaler,"hcscaler") {
+		field(DESC,"scaler record")
+		field(SCAN,"2 second")
+		field(RATE,"1")
+		field(ASG,"DEFAULT")
+		field(D1,"Up")
+		field(DTYP,"Caen Scaler")
+	}
+	record(ai,"ibcm1") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"5")
+		field(EGU,"uA")
+		field(AOFF,"251426")
+		field(ASLO,"0.00010917")
+		field(LOPR,"0.")
+		field(HOPR,"500")
+		field(ASG,"DEFAULT")
+		field(FLNK,"HC:selected_bcm")
+	}
+	record(ai,"ibcm2") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"5")
+		field(EGU,"uA")
+		field(AOFF,"251020")
+		field(ASLO,"0.000126036")
+		field(LOPR,"0.")
+		field(HOPR,"500")
+		field(ASG,"DEFAULT")
+		field(FLNK,"HC:selected_bcm")
+	}
+	record(ai,"ibcm3") {
+		field(DESC,"Unser Monitor")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"uA")
+		field(AOFF,"598000")
+		field(ASLO,".000250")
+		field(LOPR,"0.")
+		field(HOPR,"50.0")
+		field(ASG,"DEFAULT")
+		field(FLNK,"HC:selected_bcm")
+	}
+	record(ai,"ibcm4") {
+		field(DESC,"Moeller BCM")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"2")
+		field(EGU,"uA")
+		field(AOFF,"248239")
+		field(ASLO,"0.0020711")
+		field(LOPR,"0.")
+		field(HOPR,"500")
+		field(ASG,"DEFAULT")
+		field(FLNK,"HC:selected_bcm")
+	}
+	record(ai,"ibcm5") {
+		field(DESC,"BCM 5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"6")
+		field(EGU,"uA")
+		field(AOFF,"0")
+		field(ASLO,"0.0020711")
+		field(LOPR,"0.")
+		field(HOPR,"200")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"ibcm6") {
+		field(DESC,"BCM 6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"6")
+		field(EGU,"uA")
+		field(AOFF,"0")
+		field(ASLO,"0.0020711")
+		field(LOPR,"0.")
+		field(HOPR,"200")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave1") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave2") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave3") {
+		field(DESC,"analog input record")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave4") {
+		field(DESC,"Moller BCM average current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave5") {
+		field(DESC,"BCM5 average current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iave6") {
+		field(DESC,"BCM6 average current")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"iavetime") {
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"nA")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate1") {
+		field(DESC,"Hall C Rate 1")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate2") {
+		field(DESC,"Hall C Rate 2")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate3") {
+		field(DESC,"Hall C Rate 3")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate4") {
+		field(DESC,"Hall C Rate 4")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate5") {
+		field(DESC,"Hall C Rate 5")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate6") {
+		field(DESC,"Hall C Rate 6")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate7") {
+		field(DESC,"Hall C Rate 7")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate8") {
+		field(DESC,"Hall C Rate 8")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate9") {
+		field(DESC,"Hall C Rate 9")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate10") {
+		field(DESC,"Hall C Rate 10")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate11") {
+		field(DESC,"Hall C Rate 11")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate12") {
+		field(DESC,"Hall C Rate 12")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"cComptCavityPower")
+	}
+	record(ai,"hcrate13") {
+		field(DESC,"Hall C Rate 13")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ai,"hcrate14") {
+		field(DESC,"Hall C Rate 14")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"cComptScintRate")
+	}
+	record(ai,"hcrate15") {
+		field(DESC,"Hall C Rate 15")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+		field(FLNK,"cComptPhotonRate")
+	}
+	record(ai,"hcrate16") {
+		field(DESC,"Hall C Rate 16")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"1")
+		field(EGU,"Hz")
+		field(ASG,"DEFAULT")
+	}
+	record(ao,"hcscaler_update_period") {
+		field(DESC,"Halo Monitor Integration Period")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(PREC,"0")
+		field(EGU,"sec")
+		field(ASG,"DEFAULT")
+		field(VAL,"2")
+	}
+	record(bo,"HC_bit15") {
+		field(DESC,"Moller Kicker status (bit 15)")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+	}
+	record(bo,"HC_bit2") {
+		field(DESC,"Input register bit 2")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+	}
+	record(bo,"HC_bit9") {
+		field(DESC,"Input register bit 9")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+	}
+	record(bo,"HCDOG_bit0") {
+		field(DESC,"Crate CH03B05-1 Status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(HIGH,"30")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MAJOR")
+		field(OSV,"NO_ALARM")
+		field(FLNK,"HDDOG_bit9")
+	}
+	record(bo,"HCDOG_bit1") {
+		field(DESC,"Crate CH03B05-3 Status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(HIGH,"30")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MAJOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_bit2") {
+		field(DESC,"Crate CH03B06-2 Status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(HIGH,"30")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MAJOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_bit3") {
+		field(DESC,"Crate CH03B07-1 Status")
+		field(SCAN,"Passive")
+		field(DTYP,"Soft Channel")
+		field(HIGH,"30")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MAJOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_diskwatch") {
+		field(DESC,"Diskwatch GUI")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(HIGH,"120")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MINOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_happyreaper") {
+		field(DESC,"SILO data backup script")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(HIGH,"1800")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MINOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_BetaBrite") {
+		field(DESC,"Beam Current LED Display")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(HIGH,"120")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MINOR")
+		field(OSV,"NO_ALARM")
+	}
+	record(bo,"HCDOG_ChannelArchiver") {
+		field(DESC,"Channel Archiver on jeffylab")
+		field(DTYP,"Soft Channel")
+		field(SCAN,"Passive")
+		field(HIGH,"900")
+		field(ONAM,"Alive")
+		field(ZNAM,"Dead")
+		field(ZSV,"MINOR")
+		field(OSV,"NO_ALARM")
+	}
+

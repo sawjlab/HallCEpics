@@ -1,0 +1,205 @@
+PV: g0scaler                           Type: scaler               ()
+DESC scaler record
+SCAN 1 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+CARD 0
+
+
+PV: g0scaler_update_period	Type: ao
+DESC G0 Rate Monitor Integration Period
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+EGU sec
+ASG DEFAULT
+VAL 1
+
+
+PV: g0rate1	Type: ai
+DESC G0 Rate 1
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate2	Type: ai
+DESC G0 Rate 2
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate3	Type: ai
+DESC G0 Rate 3
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate4	Type: ai
+DESC G0 Rate 4
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate5	Type: ai
+DESC G0 Rate 5
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate6	Type: ai
+DESC G0 Rate 6
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate7	Type: ai
+DESC G0 Rate 7
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate8	Type: ai
+DESC G0 Rate 8
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate9	Type: ai
+DESC G0 Rate 9
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate10	Type: ai
+DESC G0 Rate 10
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate11	Type: ai
+DESC G0 Rate 11
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate12	Type: ai
+DESC G0 Rate 12
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate13	Type: ai
+DESC G0 Rate 13
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate14	Type: ai
+DESC G0 Rate 14
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate15	Type: ai
+DESC G0 Rate 15
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0rate16	Type: ai
+DESC G0 Rate 16
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: g0cagetemp1   Type: ai
+DESC G0 Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 3
+
+
+PV: g0cagetemp2   Type: ai
+DESC G0 Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 4
+
+
+PV: g0cagetemp3   Type: ai
+DESC G0 Cage Temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU C
+ASG DEFAULT
+AOFF 5
+
+
+PV: g0BPM_Flatline    Type: bo ()
+DESC BPM Flatline Alarm
+DTYP Soft Channel
+SCAN Passive
+HIGH 30
+ONAM OK
+ZNAM Flat
+ZSV MAJOR
+OSV NO_ALARM
+
+

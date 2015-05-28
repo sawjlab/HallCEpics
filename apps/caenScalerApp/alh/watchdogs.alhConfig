@@ -1,0 +1,135 @@
+GROUP    NULL                         HallC_Ops                   
+$GUIDANCE
+This alarm panel is intended to alert the operator to various problems
+with controls, DAQ and other systems.  If there is some hardware or software
+that you think could be included in this panel, please contact Steve Wood.
+For this alarm panel to work, vmec15 must be up and healthy.  If most
+everything is in an invalid or error state, then reboot vmec15.
+$END
+GROUP    HallC_Ops                    DataMovement                
+CHANNEL  DataMovement                 HCDOG_diskwatch             
+$GUIDANCE
+The diskwatch GUI that monitors free disk space is either hung or not
+running.  This GUI should be running on the DAQ console.  If it is running,
+click the Quit button.  To restart the GUI, type the command "diskwatch"
+into an xterm window on the DAQ console.  (Should be logged on as "cdaq").
+$END
+CHANNEL  DataMovement                 HCDOG_happyreaper           
+$GUIDANCE
+The scripts that copy runs from the data disks to the Silo do not appear
+to be running.  Steve Wood should be notified.  However, if there more
+than, say, five green partitions in diskwatch, the situation is not
+urgent, so don't wake him up in the middle of the night.
+$END
+GROUP    HallC_Ops                    Monitoring                  
+CHANNEL  Monitoring                   HCDOG_ChannelArchiver       
+$GUIDANCE
+The EPICS Channel Archiver that maintains a continuous log of controls
+information is not running.  To restart, logon to jeffylab as "cvxwrks"
+ and type the following commands:
+	cd ~/Archives
+	./stop_archiver
+	./start_archiver
+$END
+CHANNEL  Monitoring                   HCDOG_BetaBrite             
+$GUIDANCE
+The LED display that shows beam current and PSS status is not working
+properly.  To restart, logon to jeffylab as "cvxwrks".  Do
+"ps -aux | grep bcm_pss" and kill any copies of the script that are
+running.  Then type "cd ~/BETABRITE/bcm ; ./bcm_pss.pl&".
+$END
+GROUP    HallC_Ops                    Crates                      
+$GUIDANCE
+The status of many of the counting house NIM bins and Camac crates is
+monitored by passing a pulser signal through a module in each crate.
+The pulser coming from each crate is connect to an input register.  If
+the pulser signal stops for a given crate, an alarm will be raised,
+indicating a possible power problem with the crate.
+$END
+CHANNEL  Crates                       HCDOG_bit0                  
+$ALIAS CH03B05-1
+$GUIDANCE
+The watchdog signal from the top NIM bit in rack CH03B05 is not present.
+This is most likely a problem with the NIM crate (loss of power or bad
+modules) and should be addressed immediately.
+It could also be that the master watchdog pulser has failed.  If this is the
+case, then alarms should be present for other NIM bins.
+$END
+CHANNEL  Crates                       HCDOG_bit1                  
+$ALIAS CH03B05-3
+$GUIDANCE
+The watchdog signal from the third NIM bin in rack CH03B05 is not present.
+This is most likely a problem with the NIM crate (loss of power or bad
+modules) and should be addressed immediately.
+It could also be that the master watchdog pulser has failed.  If this is the
+case, then alarms should be present for other NIM bins.
+$END
+CHANNEL  Crates                       HCDOG_bit2                  
+$ALIAS CH03B06-2
+$GUIDANCE
+The watchdog signal from the top NIM bin (under the CAMAC crate) in rack
+CH03B06 is not present.  This is most likely a problem with the NIM crate
+(loss of power or bad modules) and should be addressed immediately.
+It could also be that the master watchdog pulser has failed.  If this is the
+case, then alarms should be present for other NIM bins.
+$END
+CHANNEL  Crates                       HCDOG_bit3                  
+$ALIAS CH03B07-1
+$GUIDANCE
+The watchdog signal from the top NIM bin CH03B07 is not present.  This
+is most likely a problem with the NIM crate (loss of power or bad
+modules) and should be addressed immediately.  It could also be that
+the master watchdog pulser has failed.  If this is the case, then
+alarms should be present for other NIM bins.
+$END
+GROUP    HallC_Ops                    Moller_Polarimeter          
+$GUIDANCE
+     For info on the operation of the Polarimeter,
+     consult the Hall-C Ops Manual and/or the Moller
+     Step-by-Step users guide.
+$END
+GROUP    Moller_Polarimeter           Solenoid_Cryogenics         
+CHANNEL  Solenoid_Cryogenics          LL91020                     
+$ALIAS  LHe Level
+$GUIDANCE
+     This alarm indicates that the LHe level in
+     the Moller Solenoid reservoir is low. If the
+     solenoid field is not zero then action must be
+     taken quickly to either ramp the field to zero
+     or to restore the LHe level.
+$END
+CHANNEL  Solenoid_Cryogenics          LL91019                     
+$ALIAS  LN2 Level
+$GUIDANCE
+     This alarm indicates that the LN2 level in
+     the Moller Solenoid reservoir is low. If the
+     solenoid field is not zero then action must be
+     taken quickly to either ramp the field to zero
+     or to restore the LN2 level before the loss of 
+     LN2 causes a loss of liquid helium.
+$END
+CHANNEL  Solenoid_Cryogenics          TI91014                     
+$ALIAS  LHe Supply Temp
+$ALARMCOUNTFILTER  5 10
+$GUIDANCE
+     Liquid helium supply temperature upstream of the Moller
+     reservoir JT valve is higher than normal. This indicates
+     that the flow is too low to keep the transfer line cold,
+     or that there has been an interruption in flow and the 
+     line is not yet cold.
+$END
+GROUP    Moller_Polarimeter           Solenoid_Field              
+CHANNEL  Solenoid_Field               OXSS_RDF                    
+$ALIAS  Leads Field
+$GUIDANCE
+     The solenoid 'leads field' is outside the operating range.
+     This alarm may be disregarded if the 'persistent field'
+     (OXSS_MGFD) is not also in alarm.
+$END
+CHANNEL  Solenoid_Field               OXSS_MGFD                     --A--
+$ALIAS  Persistent Field
+$GUIDANCE
+     The solenoid 'Persistent Field' is outside the operating range.
+     This alarm may be disregarded if the 'Leads Field' 
+     (OXSS_RDF) is not also in alarm.
+$END

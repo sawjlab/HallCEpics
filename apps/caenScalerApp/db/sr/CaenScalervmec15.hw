@@ -1,0 +1,2381 @@
+PV: HC:exp_ready        Type: mbbi
+DESC Hall C Status
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+TWVL 2
+ZRST Exp Not Ready
+ONST Exp Ready
+TWST Config Change
+
+
+PV: HC:beamok_limit	Type: ao
+DESC Minimum Acceptable Current
+SCAN Passive
+VAL 40.0
+PREC 2
+EGU uA
+
+
+PV: HC:abu_wait_limit   Type: ao
+
+DESC Start ABU holdoff here
+SCAN Passive
+VAL 1.0
+PREC 2
+EGU uA
+
+
+PV: HC:bcm_select        Type: mbbi
+DESC Choose BCM
+SCAN Passive
+DTYP Soft Channel
+ZRVL 0
+ONVL 1
+ZRST BCM1
+ONST BCM2
+VAL 1
+FLNK HC:selected_bcm
+
+
+PV: HC:selected_bcm   Type: calc
+
+DESC Select BCM for ABU calcs
+CALC (D=2)?C:(D=1)?B:A
+SCAN Passive
+INPA ibcm1 NPP
+INPB ibcm2 NPP
+INPC ibcm3 NPP
+INPD HC:bcm_select PP
+PREC 4
+EGU uA
+FLNK HC:abuwaitcalc
+
+
+PV: HC:abuwait     Type: bo
+
+DESC Hold off ABU after trips
+DTYP Soft Channel
+SCAN Event
+EVNT 1
+HIGH 1
+ZSV MINOR
+OSV NO_ALARM
+OMSL closed_loop
+
+
+PV: HC:abuwaitcalc     Type: calcout
+
+DESC Trigger wait on abu after trip
+CALC A>=B
+SCAN Passive
+INPA HC:selected_bcm NPP
+INPB HC:abu_wait_limit NPP
+DOPT Use CALC
+OOPT On Change
+OUT HC:abuwait
+OEVT 1
+
+
+PV: ibcm1m    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 249800
+ASLO 0.000626
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm2m    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 253730
+ASLO 0.000611463
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm1p    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 249800
+ASLO 0.000626
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: ibcm2p    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+AOFF 253730
+ASLO 0.000611463
+LOPR 0.
+HOPR 500.0
+ASG DEFAULT
+
+
+PV: time_asy    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: current_asy1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: current_asy2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: charge_asy1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: charge_asy2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+LOPR -1.0
+HOPR 1.0
+ASG DEFAULT
+
+
+PV: clockm_dif	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+ASG DEFAULT
+
+
+PV: clockp_dif	Type: ai
+DESC analog input record
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+ASG DEFAULT
+
+
+PV: cComptBeamPosX	Type: calc
+
+DESC Compton Beam Pos X
+SCAN 1 second
+INPA IPM3P02A.XPOS CPP
+INPB IPM3P02B.XPOS CPP
+CALC (A+B)/2
+PREC 4
+EGU mm
+
+
+PV: cComptBeamPosY	Type: calc
+
+DESC Compton Beam Pos Y
+SCAN 1 second
+INPA IPM3P02A.YPOS CPP
+INPB IPM3P02B.YPOS CPP
+CALC (A+B)/2
+PREC 4
+EGU mm
+
+
+PV: cComptBeamSlopeX	Type: calc
+
+DESC Compton Beam Slope X
+SCAN 1 second
+INPA IPM3P02A.XPOS CPP
+INPB IPM3P02B.XPOS CPP
+CALC (B-A)/1390
+PREC 4
+
+
+PV: cComptBeamSlopeY	Type: calc
+
+DESC Compton Beam Slope Y
+SCAN 1 second
+INPA IPM3P02A.YPOS CPP
+INPB IPM3P02B.YPOS CPP
+CALC (B-A)/1390
+PREC 4
+
+
+PV: cComptLasCur      Type: ai
+DESC Laser Current
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasPow      Type: ai
+DESC Laser output power setpoint
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasLBOTmp      Type: ai
+DESC Laser LBO temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasBplTmp      Type: ai
+DESC Laser baseplate temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasD1Tmp      Type: ai
+DESC Laser diode 1 temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasD2Tmp      Type: ai
+DESC Laser diode 2 temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasVanTmp      Type: ai
+DESC Laser vanadate temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasEtlnTmp      Type: ai
+DESC Laser etalon temperature
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasD1Cur      Type: ai
+DESC Laser diode 1 current
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasD2Cur      Type: ai
+DESC Laser diode 1 current
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptLasLBOSvoStat      Type: ai
+DESC Laser LBO servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasD1SvoStat      Type: ai
+DESC Laser diode 1 servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasD2SvoStat      Type: ai
+DESC Laser diode 2 servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasLtSvoStat      Type: ai
+DESC Laser light servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasVanSvoStat      Type: ai
+DESC Laser vanadate servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasEtlnSvoStat      Type: ai
+DESC Laser etalon servo status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasKeyPos      Type: ai
+DESC Laser key position
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasShutPos      Type: ai
+DESC Laser shutter position
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasState      Type: ai
+DESC Laser state (standby/on)
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptLasLBOHtrStat      Type: ai
+DESC Laser heater status
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL1H      Type: ai
+DESC QPD1 L-R (+/-10V read by 16 bit ADC)
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL1V      Type: ai
+DESC QPD1 B-T
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL2H      Type: ai
+DESC QPD2 B-T
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL2V      Type: ai
+DESC QPD2 L-R
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL3H      Type: ai
+DESC QPD3 L-R
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL3V      Type: ai
+DESC QPD3 B-T
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL4H      Type: ai
+DESC QPD3 L-R
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL4V      Type: ai
+DESC QPD4 B-T
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptM1V      Type: ai
+DESC Vertical position of first closed loop mirror on laser table
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptM1H      Type: ai
+DESC Horizontal position of first closed loop mirror on laser table
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptM2V      Type: ai
+DESC Vertical position of second closed loop mirror on laser table
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptM2H      Type: ai
+DESC Horizontal position of second closed loop mirror on laser table
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQWP1      Type: ai
+DESC Degree of first QWP rotation stage on laser table
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkScanAmp      Type: ai
+DESC Digilock scan amplitude
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkScanFrq      Type: ai
+DESC Digilock scan frequency
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkScanCh      Type: ai
+DESC Digilock  output channel for scan
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkScanSglType:      Type: ai
+DESC Digilock scan signal type (sine, sawtooth)
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkScanEnbl    Type: bi
+DESC Digilock scan on/off.
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkOfstCh      Type: ai
+DESC Digilock offset channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkOfst      Type: ai
+DESC Digilock offset value
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPDHModFreq      Type: ai
+DESC Digilock PDH modulation frequency
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPDHModAmp      Type: ai
+DESC Digilock PDH modulation amplitude
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPDHOfst      Type: ai
+DESC Digilock PDH offset
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPDHOutCh      Type: ai
+DESC Digilock PDH output channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPDHInCh      Type: ai
+DESC Digilock PDH input channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPDHPhase      Type: ai
+DESC Digilock PDH phase shift
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPDHModEnbl    Type: bi
+DESC Digilock PDH module enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1RstEnbl    Type: bi
+DESC Digilock PID1 reset enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1ManRlk    Type: bi
+DESC Digilock PID1 manual relock
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1AutoRlk    Type: bi
+DESC Digilock PID1 automatic relock
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1RlkEnbl    Type: bi
+DESC Digilock PID1 relock enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1OLEnbl    Type: bi
+DESC Digilock PID1  output limit enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1LWEnbl    Type: bi
+DESC Digilock PID1 lock window enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1LockEnbl    Type: bi
+DESC Digilock PID1 lock enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID1G      Type: ai
+DESC Digilock PID1 Gain
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1D      Type: ai
+DESC Digilock PID1 Differential
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1I      Type: ai
+DESC Digilock PID1 Integral 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1P      Type: ai
+DESC Digilock PID1 Proportional
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1InCh      Type: ai
+DESC Digilock PID1 input channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID1LWCh      Type: ai
+DESC Digilock PID1 lock window channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID1LWMax      Type: ai
+DESC Digilock PID1 lock window maximum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1LWMin      Type: ai
+DESC Digilock PID1 lock window minimum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1OutLmtMax      Type: ai
+DESC Digilock PID1 output limit maximum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1OutLmtMin      Type: ai
+DESC Digilock PID1 output limit minimum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1OutCh      Type: ai
+DESC Digilock PID1 output channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID1RlkFrq      Type: ai
+DESC Digilock PID1 relock frequency
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1RlkAmp      Type: ai
+DESC Digilock PID1 relock amplitude
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1RstRate      Type: ai
+DESC Digilock PID1 reset rate
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1Setpt      Type: ai
+DESC Digilock PID1 setpoint
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1Sign      Type: ai
+DESC Digilock PID1 sign
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID1Slope      Type: ai
+DESC Digilock PID1 slope
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID1FC      Type: ai
+DESC Digilock PID1 cutoff frequency
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID1FCEnbl    Type: bi
+DESC Digilock PID1 frequency cutoff  enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2RstEnbl    Type: bi
+DESC Digilock PID2 reset enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2ManRlk    Type: bi
+DESC Digilock PID2 manual relock
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2AutoRlk    Type: bi
+DESC Digilock PID2 automatic relock
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2RlkEnbl    Type: bi
+DESC Digilock PID2 relock enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2OLEnbl    Type: bi
+DESC Digilock PID2  output limit enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2LWEnbl    Type: bi
+DESC Digilock PID2 lock window enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2LockEnbl    Type: bi
+DESC Digilock PID2 lock enable
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptDgkPID2G      Type: ai
+DESC Digilock PID2 Gain
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2D      Type: ai
+DESC Digilock PID2 Differential
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2I      Type: ai
+DESC Digilock PID2 Integral 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2P      Type: ai
+DESC Digilock PID2 Proportional
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2InCh      Type: ai
+DESC Digilock PID2 input channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID2LWCh      Type: ai
+DESC Digilock PID2 lock window channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID2LWMax      Type: ai
+DESC Digilock PID2 lock window maximum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2LWMin      Type: ai
+DESC Digilock PID2 lock window minimum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2OutLmtMax      Type: ai
+DESC Digilock PID2 output limit maximum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2OutLmtMin      Type: ai
+DESC Digilock PID2 output limit minimum parameter
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2OutCh      Type: ai
+DESC Digilock PID2 output channel
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID2RlkFrq      Type: ai
+DESC Digilock PID2 relock frequency
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2RlkAmp      Type: ai
+DESC Digilock PID2 relock amplitude
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2RstRate      Type: ai
+DESC Digilock PID2 reset rate
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2Setpt      Type: ai
+DESC Digilock PID2 setpoint
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2Sign      Type: ai
+DESC Digilock PID2 sign
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptDgkPID2Slope      Type: ai
+DESC Digilock PID2 slope
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptQPDL1Pow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptQPDL2Pow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptQPDL3Pow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptQPDL4Pow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptRawADC0      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC1      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC2      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC3      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC4      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC5      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC6      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC7      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC8      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC9      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC10      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC11      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC12      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC13      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC14      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRawADC15      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+
+
+PV: cComptRPDPow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptTPDPow      Type: ai
+DESC 
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptScanclean    Type: bi
+DESC cComptScanclean
+SCAN Passive
+DTYP Soft Channel
+ONAM T
+ZNAM F
+
+
+PV: cComptScandata1      Type: ai
+DESC cComptScandata1
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+
+
+PV: cComptDgkPID2Output  Type: ai
+DESC cComptDgkPID2Output
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: cComptTHWP  Type: ai
+DESC cComptTHWP
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU deg
+
+
+PV: cComptRGL  Type: ai
+DESC cComptRGL
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU deg
+
+
+PV: cComptRRPD  Type: ai
+DESC cComptRRPD
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU mW
+
+
+PV: cComptScannerPosX  Type: ai
+DESC cComptScannerPosX
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU nm
+
+
+PV: cComptScannerPosY  Type: ai
+DESC cComptScannerPosY
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU nm
+
+
+PV: cComptEdetHV1  Type: ai
+DESC cComptEdetHV1
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+
+PV: cComptEdetHV2  Type: ai
+DESC cComptEdetHV2
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+
+PV: cComptEdetThrV  Type: ai
+DESC cComptEdetThrV
+SCAN Passive
+DTYP Soft Channel
+PREC 3
+EGU V
+
+
+PV: cComptEdetThrI  Type: ai
+DESC cComptEdetThrI
+SCAN Passive
+DTYP Soft Channel
+PREC 4
+EGU A
+
+
+PV: cComptScannerRateX  Type: ai ()
+
+DESC Compton X Scanner Rate
+INP hcrate6
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+PREC 1
+
+
+PV: cComptScannerRateY  Type: ai ()
+
+DESC Compton Y Scanner Rate
+INP hcrate7
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+PREC 1
+
+
+PV: cComptEdetPos Type: calc ()
+
+DESC Compton Electron Detector Pos
+SCAN Passive
+INPA hcrate8
+INPB 1875
+CALC A/B
+EGU mm
+PREC 2
+
+
+PV: cComptEdetRef  Type: ai ()
+
+DESC Reference rate
+INP hcrate13
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptEdetRatio
+PREC 1
+
+
+PV: cComptEdetRatio Type: calc ()
+
+DESC Compton Edet Pos Ratio
+SCAN Passive
+INPA hcrate8
+INPB cComptEdetRef
+CALC A/B
+EGU x
+PREC 4
+
+
+PV: cComptScintRate  Type: ai ()
+
+DESC Scintillator rate
+INP hcrate14
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptScintRateNorm
+PREC 1
+
+
+PV: cComptScintRateNorm  Type: calc ()
+
+DESC Normalized Scintillator rate
+SCAN Passive
+INPA cComptScintRate
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: cComptPhotonRate  Type: ai ()
+
+DESC Photon Detector rate
+INP hcrate15
+SCAN Passive
+DTYP Soft Channel
+EGU Hz
+FLNK cComptPhotonRateNorm
+PREC 1
+
+
+PV: cComptPhotonRateNorm  Type: calc ()
+
+DESC Normalized Photon Detector rate
+SCAN Passive
+INPA cComptPhotonRate
+INPB ibcm1
+CALC (B>1)?(A/B):0
+EGU Hz/uA
+PREC 1
+
+
+PV: cComptCavityPower_calfac Type: ai  ()
+
+DESC Cavity Power Calibration Factor
+SCAN Passive
+DTYP Soft Channel
+VAL 0.38
+
+
+PV: cComptCavityPower Type: calc ()
+
+DESC Cavity Power
+SCAN Passive
+INPA hcrate12
+INPB cComptCavityPower_calfac
+CALC A*B
+EGU watts
+
+
+PV: cComptPhotonDetHV Type: ai ()
+
+DESC Photon Detector HV
+INP v_mon16_62 CPP
+SCAN Passive
+
+
+PV: HC:run_number	Type: ao
+DESC Latest Run Number
+SCAN Passive
+DTYPE Soft Channel
+PREC 0
+
+
+PV: vmec15_up  Type: bo
+
+DESC Hold off camonsave after reboots
+DTYPE Soft Channel
+SCAN Passive
+VAL 0
+ZNAM 0
+ONAM 1
+
+
+PV: hcozone		Type: calc
+
+DESC Ozone in ppb
+CALC (A/B)
+SCAN 2 second
+INPA hcrate9 PP
+INPB 1000.0
+PREC 1
+EGU ppb
+
+
+PV: hrozone               Type: ao
+DESC Hampton Roads Ozone
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU ppb
+
+
+PV: hcbend_t1		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+
+PV: hcbend_t2		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+
+PV: hcbend_t3		Type: ao
+DESC Bender Temperature 1
+SCAN Passive
+DTYPE Soft Channel
+PREC 3
+EGU deg
+
+
+PV: qw:targetX    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetY    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenX    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenY    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetXtest    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:targetYtest    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenXtest    Type: ai
+DESC X position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:tungstenYtest    Type: ai
+DESC Y position at target
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+
+
+PV: qw:VCG3H09ATr   Type: ai
+
+DESC VCG3H09ATr copy
+INP VCG3H09ATr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09BTr   Type: ai
+
+DESC VCG3H09BTr copy
+INP VCG3H09BTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09CTr   Type: ai
+
+DESC VCG3H09CTr copy
+INP VCG3H09CTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: qw:VCG3H09DTr   Type: ai
+
+DESC VCG3H09DTr copy
+INP VCG3H09DTr CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 8
+EGU torr
+
+
+PV: QW_DSBLVac     Type: calc
+
+DESC Downstream beamline vacuum
+INPA VCG3H09DTr CPP
+SCAN Passive
+CALC (1000000.0*A)
+PREC 2
+EGU uTorr
+
+
+PV: qw:SLD3H03GDOSC   Type: ai
+
+DESC SLD3H03GDOSC copy
+INP SLD3H03GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:SLD3H04GDOSC   Type: ai
+
+DESC SLD3H04GDOSC copy
+INP SLD3H04GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:SLD3H05GDOSC   Type: ai
+
+DESC SLD3H05GDOSC copy
+INP SLD3H05GDOSC CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+
+
+PV: qw:EHCFR_IXPEAK   Type: ai
+
+DESC EHCFR_IXPEAK copy
+INP EHCFR_IXPEAK CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 2
+
+
+PV: qw:EHCFR_IYPEAK   Type: ai
+
+DESC EHCFR_IYPEAK copy
+INP EHCFR_IYPEAK CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+PREC 2
+
+
+PV: qw:FB_C:FB_On      Type: bi
+
+DESC FB_C_FB_On Copy
+INP FB_C:FB_On CPP
+SCAN Passive
+ONAM Enabled
+ZNAM Off
+
+
+PV: qw:FB_C:FB_Running      Type: calc
+
+DESC Fast Feedback running
+INPA FB_C:status:mbbi2.B7 CPP
+SCAN Passive
+CALC (!A)
+
+
+PV: qw:ChargeFeedback	Type: bi
+
+DESC Charge Feedback status
+SCAN Passive
+DTYP Soft Channel
+ONAM On
+ZNAM Off
+
+
+PV: qw:ChargeAsymmetry   Type: ai
+
+DESC Charge Asymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:ChargeAsymmetryError   Type: ai
+
+DESC Charge Asymmetry Error
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+PV: qw:ChargeAsymmetryWidth   Type: ai
+
+DESC Charge Asymmetry Width
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+PV: qw:hk2_thresh Type: ai
+
+DESC Hokie2 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk3_thresh Type: ai
+
+DESC Hokie3 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk4_thresh Type: ai
+
+DESC Hokie4 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+PV: qw:hk5_thresh Type: ai
+
+DESC Hokie5 Threshold
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU V
+
+
+
+PV: qw:ChargeAsymmetry   Type: ai
+
+DESC Charge Asymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:TargetDiffX   Type: ai
+
+DESC TargetDiffX
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXError   Type: ai
+
+DESC TargetDiffXError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXWidth   Type: ai
+
+DESC TargetDiffXWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXP   Type: ai
+
+DESC TargetDiffXP
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXPError   Type: ai
+
+DESC TargetDiffXPError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffXPWidth   Type: ai
+
+DESC TargetDiffXPWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffY   Type: ai
+
+DESC TargetDiffY
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYError   Type: ai
+
+DESC TargetDiffYError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYWidth   Type: ai
+
+DESC TargetDiffYWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYP   Type: ai
+
+DESC TargetDiffYP
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYPError   Type: ai
+
+DESC TargetDiffYPError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:TargetDiffYPWidth   Type: ai
+
+DESC TargetDiffYPWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:HAChargeAsymmetry   Type: ai
+
+DESC HAChargeAsymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:HAChargeAsymmetryError   Type: ai
+
+DESC HAChargeAsymmetryError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:HAChargeAsymmetryWidth   Type: ai
+
+DESC HAChargeAsymmetryWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:MQE3M03M   Type: ai
+
+DESC Moller Big Quad
+INP MQE3M03M CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+HIHI 60
+HIGH 50
+LOW 42
+LOLO 35
+PREC 2
+EGU Amps
+
+
+PV: qw:MQF3M01M   Type: ai
+
+DESC Moller Small Quad
+INP MQF3M01M CPP
+SCAN Passive
+HHSV MAJOR
+HSV MINOR
+LSV MINOR
+LLSV MAJOR
+HIHI 90
+HIGH 80
+LOW 70
+LOLO 60
+PREC 2
+EGU Amps
+
+
+PV: qw:3C12DiffX   Type: ai
+
+DESC 3C12DiffX
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12DiffXError   Type: ai
+
+DESC 3C12DiffXError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12DiffXWidth   Type: ai
+
+DESC 3C12DiffXWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12DiffY   Type: ai
+
+DESC 3C12DiffY
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12DiffYError   Type: ai
+
+DESC 3C12DiffYError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12DiffYWidth   Type: ai
+
+DESC 3C12DiffYWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU um
+
+
+PV: qw:3C12EffQ   Type: ai
+
+DESC 3C12EffQ
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU arb
+
+
+PV: qw:3C12EffQError   Type: ai
+
+DESC 3C12EffQError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU arb
+
+
+PV: qw:3C12EffQWidth   Type: ai
+
+DESC 3C12EffQWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU arb
+
+
+PV: qw:BCM8        Type: ai
+
+DESC BCM8
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+
+
+PV: qw:BCM78DDAsymmetry    Type: ai
+
+DESC BCM78DDAsymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:BCM78DDAsymmetryError    Type: ai
+
+DESC BCM78DDAsymmetryError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:BCM78DDAsymmetryWidth    Type: ai
+
+DESC BCM78DDAsymmetryWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:USLumiAsymmetry    Type: ai
+
+DESC USLumiAsymmetry
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:USLumiAsymmetryError    Type: ai
+
+DESC USLumiAsymmetryError
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+PV: qw:USLumiAsymmetryWidth    Type: ai
+
+DESC USLumiAsymmetryWidth
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU ppm
+
+
+
+PV: hcscaler                           Type: scaler               ()
+DESC scaler record
+SCAN 2 second
+RATE 1
+ASG DEFAULT
+D1 Up
+DTYP Caen Scaler
+
+
+PV: ibcm1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 5
+EGU uA
+AOFF 251426
+ASLO 0.00010917
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 5
+EGU uA
+AOFF 251020
+ASLO 0.000126036
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm3    Type: ai
+DESC Unser Monitor
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 598000
+ASLO .000250
+LOPR 0.
+HOPR 50.0
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm4    Type: ai
+DESC Moeller BCM
+SCAN Passive
+DTYP Soft Channel
+PREC 2
+EGU uA
+AOFF 248239
+ASLO 0.0020711
+LOPR 0.
+HOPR 500
+ASG DEFAULT
+FLNK HC:selected_bcm
+
+
+PV: ibcm5    Type: ai
+DESC BCM 5
+SCAN Passive
+DTYP Soft Channel
+PREC 6
+EGU uA
+AOFF 0
+ASLO 0.0020711
+LOPR 0.
+HOPR 200
+ASG DEFAULT
+
+
+PV: ibcm6    Type: ai
+DESC BCM 6
+SCAN Passive
+DTYP Soft Channel
+PREC 6
+EGU uA
+AOFF 0
+ASLO 0.0020711
+LOPR 0.
+HOPR 200
+ASG DEFAULT
+
+
+PV: iave1    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave2    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave3    Type: ai
+DESC analog input record
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave4    Type: ai
+DESC Moller BCM average current
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave5    Type: ai
+DESC BCM5 average current
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iave6    Type: ai
+DESC BCM6 average current
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: iavetime    Type: ai
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU nA
+ASG DEFAULT
+
+
+PV: hcrate1	Type: ai
+DESC Hall C Rate 1
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate2	Type: ai
+DESC Hall C Rate 2
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate3	Type: ai
+DESC Hall C Rate 3
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate4	Type: ai
+DESC Hall C Rate 4
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate5	Type: ai
+DESC Hall C Rate 5
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate6	Type: ai
+DESC Hall C Rate 6
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptScannerRateX
+
+
+PV: hcrate7	Type: ai
+DESC Hall C Rate 7
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptScannerRateY
+
+
+PV: hcrate8	Type: ai
+DESC Hall C Rate 8
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptEdetPos
+
+
+PV: hcrate9	Type: ai
+DESC Hall C Rate 9
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate10	Type: ai
+DESC Hall C Rate 10
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate11	Type: ai
+DESC Hall C Rate 11
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcrate12	Type: ai
+DESC Hall C Rate 12
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptCavityPower
+
+
+PV: hcrate13	Type: ai
+DESC Hall C Rate 13
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptEdetRef
+
+
+PV: hcrate14	Type: ai
+DESC Hall C Rate 14
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptScintRate
+
+
+PV: hcrate15	Type: ai
+DESC Hall C Rate 15
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+FLNK cComptPhotonRate
+
+
+PV: hcrate16	Type: ai
+DESC Hall C Rate 16
+SCAN Passive
+DTYP Soft Channel
+PREC 1
+EGU Hz
+ASG DEFAULT
+
+
+PV: hcscaler_update_period   Type: ao
+DESC Halo Monitor Integration Period
+SCAN Passive
+DTYP Soft Channel
+PREC 0
+EGU sec
+ASG DEFAULT
+VAL 2
+
+
+PV: HC_bit15 Type: bo ()
+
+DESC Moller Kicker status (bit 15)
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit2 Type: bo ()
+
+DESC Input register bit 2
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HC_bit9 Type: bo ()
+
+DESC Input register bit 9
+SCAN Passive
+DTYP Soft Channel
+
+
+PV: HCDOG_bit0 Type: bo ()
+
+DESC Crate CH03B05-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+FLNK HDDOG_bit9
+
+
+PV: HCDOG_bit1 Type: bo ()
+
+DESC Crate CH03B05-3 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit2 Type: bo ()
+
+DESC Crate CH03B06-2 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_bit3 Type: bo ()
+
+DESC Crate CH03B07-1 Status
+SCAN Passive
+DTYP Soft Channel
+HIGH 30
+ONAM Alive
+ZNAM Dead
+ZSV MAJOR
+OSV NO_ALARM
+
+
+PV: HCDOG_diskwatch     Type: bo ()
+
+DESC Diskwatch GUI
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_happyreaper     Type: bo ()
+
+DESC SILO data backup script
+DTYP Soft Channel
+SCAN Passive
+HIGH 1800
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_BetaBrite     Type: bo ()
+
+DESC Beam Current LED Display
+DTYP Soft Channel
+SCAN Passive
+HIGH 120
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+
+PV: HCDOG_ChannelArchiver     Type: bo ()
+
+DESC Channel Archiver on jeffylab
+DTYP Soft Channel
+SCAN Passive
+HIGH 900
+ONAM Alive
+ZNAM Dead
+ZSV MINOR
+OSV NO_ALARM
+
+

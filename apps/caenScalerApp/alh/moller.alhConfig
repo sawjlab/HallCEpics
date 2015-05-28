@@ -1,0 +1,51 @@
+GROUP NULL Moller_Polarimeter
+     $GUIDANCE
+     For info on the operation of the Polarimeter,
+     consult the Hall-C Ops Manual and/or the Moller
+     Step-by-Step users guide.
+     $END
+GROUP  Moller_Polarimeter Solenoid_Cryogenics
+CHANNEL Solenoid_Cryogenics LL91020
+     $ALIAS LHe Level
+     $GUIDANCE
+     This alarm indicates that the LHe level in
+     the Moller Solenoid reservoir is low. If the
+     solenoid field is not zero then action must be
+     taken quickly to either ramp the field to zero
+     or to restore the LHe level.
+     $END
+CHANNEL Solenoid_Cryogenics LL91019
+     $ALIAS LN2 Level
+     $GUIDANCE
+     This alarm indicates that the LN2 level in
+     the Moller Solenoid reservoir is low. If the
+     solenoid field is not zero then action must be
+     taken quickly to either ramp the field to zero
+     or to restore the LN2 level before the loss of 
+     LN2 causes a loss of liquid helium.
+     $END
+CHANNEL Solenoid_Cryogenics TI91014
+     $ALIAS LHe Supply Temp
+     $GUIDANCE
+     Liquid helium supply temperature upstream of the Moller
+     reservoir JT valve is higher than normal. This indicates
+     that the flow is too low to keep the transfer line cold,
+     or that there has been an interruption in flow and the 
+     line is not yet cold.
+     $END
+     $ALARMCOUNTFILTER 5 10
+GROUP  Moller_Polarimeter Solenoid_Field
+CHANNEL Solenoid_Field OXSS_RDF
+     $ALIAS Leads Field
+     $GUIDANCE
+     The solenoid 'leads field' is outside the operating range.
+     This alarm may be disregarded if the 'persistent field'
+     (OXSS_MGFD) is not also in alarm.
+     $END
+CHANNEL Solenoid_Field OXSS_MGFD --A--
+     $ALIAS Persistent Field
+     $GUIDANCE
+     The solenoid 'Persistent Field' is outside the operating range.
+     This alarm may be disregarded if the 'Leads Field' 
+     (OXSS_RDF) is not also in alarm.
+     $END

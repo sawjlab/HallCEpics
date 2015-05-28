@@ -1,0 +1,419 @@
+menu(scalerSCALERCOUNT) {
+	choice(scalerSCALERCOUNT_Done,"Done")
+	choice(scalerSCALERCOUNT_Count,"Count")
+}
+menu(scalerCOUNTDIR) {
+	choice(scalerCOUNTDIR_Up,"Up")
+	choice(scalerCOUNTDIR_Down,"Dn")
+}
+menu(scalerGATECTRL) {
+	choice(scalerGATECTRL_N,"N")
+	choice(scalerGATECTRL_Y,"Y")
+}
+
+recordtype(scaler) {
+        include "dbCommon.dbd"
+	field(VERS,DBF_FLOAT) {
+		prompt("Code Verson")
+		special(SPC_NOMOD)
+	}
+	field(VAL,DBF_DOUBLE) {
+		prompt("Result")
+	}
+	field(FREQ,DBF_DOUBLE) {
+		prompt("Time base freq")
+		interest(1)
+	}
+	field(CNT,DBF_MENU) {
+		prompt("Count")
+		special(SPC_MOD)
+		pp(TRUE)
+		interest(1)
+		menu(scalerSCALERCOUNT)
+	}		
+	field(PCNT,DBF_MENU) {
+		prompt("Prev Count")
+		special(SPC_NOMOD)
+		interest(1)
+		menu(scalerSCALERCOUNT)
+	}		
+	field(OUT,DBF_OUTLINK) {
+		prompt("Output Specification")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(CARD,DBF_SHORT) {
+		prompt("Card Number")
+		special(SPC_NOMOD)
+		interest(3)
+	}
+	field(RATE,DBF_FLOAT) {
+		prompt("Display Rate (Hz.)")
+		special(SPC_NOMOD)
+		size(10)
+	}
+	field(DLY,DBF_FLOAT) {
+		prompt("Delay")
+	}
+	field(NCH,DBF_SHORT) {
+		prompt("Number of Channels")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(D1,DBF_MENU) {
+		prompt("Count Direction 1")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D2,DBF_MENU) {
+		prompt("Count Direction 2")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D3,DBF_MENU) {
+		prompt("Count Direction 3")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D4,DBF_MENU) {
+		prompt("Count Direction 4")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D5,DBF_MENU) {
+		prompt("Count Direction 5")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D6,DBF_MENU) {
+		prompt("Count Direction 6")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D7,DBF_MENU) {
+		prompt("Count Direction 7")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D8,DBF_MENU) {
+		prompt("Count Direction 8")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D9,DBF_MENU) {
+		prompt("Count Direction 9")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D10,DBF_MENU) {
+		prompt("Count Direction 10")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D11,DBF_MENU) {
+		prompt("Count Direction 11")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D12,DBF_MENU) {
+		prompt("Count Direction 12")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D13,DBF_MENU) {
+		prompt("Count Direction 13")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D14,DBF_MENU) {
+		prompt("Count Direction 14")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D15,DBF_MENU) {
+		prompt("Count Direction 15")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(D16,DBF_MENU) {
+		prompt("Count Direction 16")
+		interest(1)
+		menu(scalerCOUNTDIR)
+	}
+	field(G1,DBF_MENU) {
+		prompt("Gate Control 1")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G2,DBF_MENU) {
+		prompt("Gate Control 2")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G3,DBF_MENU) {
+		prompt("Gate Control 3")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G4,DBF_MENU) {
+		prompt("Gate Control 4")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G5,DBF_MENU) {
+		prompt("Gate Control 5")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G6,DBF_MENU) {
+		prompt("Gate Control 6")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G7,DBF_MENU) {
+		prompt("Gate Control 7")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G8,DBF_MENU) {
+		prompt("Gate Control 8")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G9,DBF_MENU) {
+		prompt("Gate Control 9")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G10,DBF_MENU) {
+		prompt("Gate Control 10")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G11,DBF_MENU) {
+		prompt("Gate Control 11")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G12,DBF_MENU) {
+		prompt("Gate Control 12")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G13,DBF_MENU) {
+		prompt("Gate Control 13")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G14,DBF_MENU) {
+		prompt("Gate Control 14")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G15,DBF_MENU) {
+		prompt("Gate Control 15")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(G16,DBF_MENU) {
+		prompt("Gate Control 16")
+		special(SPC_MOD)
+		interest(1)
+		menu(scalerGATECTRL)
+	}
+	field(TP,DBF_DOUBLE) {
+		prompt("Time Preset")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR1,DBF_LONG) {
+		prompt("Preset 1")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR2,DBF_LONG) {
+		prompt("Preset 2")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR3,DBF_LONG) {
+		prompt("Preset 3")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR4,DBF_LONG) {
+		prompt("Preset 4")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR5,DBF_LONG) {
+		prompt("Preset 5")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR6,DBF_LONG) {
+		prompt("Preset 6")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR7,DBF_LONG) {
+		prompt("Preset 7")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR8,DBF_LONG) {
+		prompt("Preset 8")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR9,DBF_LONG) {
+		prompt("Preset 9")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR10,DBF_LONG) {
+		prompt("Preset 10")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR11,DBF_LONG) {
+		prompt("Preset 11")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR12,DBF_LONG) {
+		prompt("Preset 12")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR13,DBF_LONG) {
+		prompt("Preset 13")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR14,DBF_LONG) {
+		prompt("Preset 14")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR15,DBF_LONG) {
+		prompt("Preset 15")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(PR16,DBF_LONG) {
+		prompt("Preset 16")
+		special(SPC_MOD)
+		interest(1)
+	}
+	field(T,DBF_DOUBLE) {
+		prompt("Timer")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S1,DBF_LONG) {
+		prompt("Preset 1")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S2,DBF_LONG) {
+		prompt("Preset 2")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S3,DBF_LONG) {
+		prompt("Preset 3")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S4,DBF_LONG) {
+		prompt("Preset 4")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S5,DBF_LONG) {
+		prompt("Preset 5")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S6,DBF_LONG) {
+		prompt("Preset 6")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S7,DBF_LONG) {
+		prompt("Preset 7")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S8,DBF_LONG) {
+		prompt("Preset 8")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S9,DBF_LONG) {
+		prompt("Preset 9")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S10,DBF_LONG) {
+		prompt("Preset 10")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S11,DBF_LONG) {
+		prompt("Preset 11")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S12,DBF_LONG) {
+		prompt("Preset 12")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S13,DBF_LONG) {
+		prompt("Preset 13")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S14,DBF_LONG) {
+		prompt("Preset 14")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S15,DBF_LONG) {
+		prompt("Preset 15")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(S16,DBF_LONG) {
+		prompt("Preset 16")
+		special(SPC_NOMOD)
+		interest(1)
+	}
+	field(EGU,DBF_STRING) {
+		prompt("Units Name")
+		interest(1)
+		size(16)
+	}
+	field(PREC,DBF_SHORT) {
+		prompt("Display Precision")
+		interest(1)
+	}
+}
+	
