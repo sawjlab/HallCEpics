@@ -33,6 +33,7 @@ Modification Log:
 
 #include	<vxWorks.h>
 #include	<types.h>
+#include       	<stdlib.h>
 #include	<stdioLib.h>
 #include	<lstLib.h>
 #include	<string.h>
@@ -42,9 +43,12 @@ Modification Log:
 #include	<callback.h>
 #include	<dbDefs.h>
 #include	<dbAccess.h>
+#include     	<dbEvent.h>
 #include	<dbFldTypes.h>
+#include	<dbScan.h>
 #include	<errMdef.h>
 #include	<recSup.h>
+#include        <recGbl.h>
 #include	<devSup.h>
 #include	<special.h>
 #define GEN_SIZE_OFFSET
@@ -108,42 +112,47 @@ struct rset scalerRSET = {
 };
 
 static void alarm();
-static void monitor();
+static void monitor(scalerRecord *);
 static void updateCounts(struct scalerRecord *pscal);
 
 /*** callback stuff ***/
-struct callback {
+typedef struct myCallback {
 	CALLBACK	callback;
 	struct dbCommon *precord;
 	WDOG_ID wd_id;
-};
+}myCallback;
 
-static void myCallback(struct callback *pcallback)
+static void myCallbackFunc(CALLBACK *arg)
 {
-    struct dbCommon *precord=pcallback->precord;
+    myCallback *pcallback;
+    scalerRecord *prec;
 
-    dbScanLock(precord);
-    updateCounts((struct scalerRecord *)precord);
-    dbScanUnlock(precord);
+    callbackGetUser(pcallback,arg);
+    prec=(scalerRecord *)pcallback->precord;
+    dbScanLock((struct dbCommon *)prec);
+    updateCounts((struct scalerRecord *)prec);
+    dbScanUnlock((struct dbCommon *)prec);
 }
 
-static void myCallback1(struct callback *pcallback)
+static void myCallbackFunc1(CALLBACK *arg)
 {
-    struct scalerRecord *pscal = (struct scalerRecord *)pcallback->precord;
+    myCallback *pcallback;
+    scalerRecord *prec;
+    callbackGetUser(pcallback,arg);
 
-	if (pscal->scan) scanOnce((void *)pscal);
+    prec = (scalerRecord *)pcallback->precord;
+
+    if (prec->scan) scanOnce((void *)prec);
 }
 
 
-static long init_record(pscal,pass)
-struct scalerRecord *pscal;
-int pass;
+static long init_record(scalerRecord *pscal,int pass)
 {
   /*	int i,j;*/
 	long status;
-	static card=0;
+	static int card=0;
 	SCALERDSET *pdset = (SCALERDSET *)(pscal->dset);
-	struct callback *pcallback, *pcallback1;
+	myCallback *pcallback, *pcallback1;
 
 	Debug(5, "init_record: pass = %d\n", pass);
 	if (pass == 0) {
@@ -156,14 +165,15 @@ int pass;
 
 	/*** setup callback stuff (note: array of 2 callback structures) ***/
 	/* first callback to implement periodic updates */
-	pcallback = (struct callback *)(calloc(2,sizeof(struct callback)));
+	//	pcallback = (struct callback *)(calloc(2,sizeof(struct callback)));
+	pcallback = (myCallback *)(calloc(2,sizeof(myCallback)));
 	pscal->dpvt = (void *)pcallback;
-	callbackSetCallback(myCallback,&pcallback->callback);
+	callbackSetCallback(myCallbackFunc,&pcallback->callback);
 	pcallback->precord = (struct dbCommon *)pscal;
 	pcallback->wd_id = wdCreate();
 	/* second callback to implement delay */
-	pcallback1 = (struct callback *)&(pcallback[1]);
-	callbackSetCallback(myCallback1,&pcallback1->callback);
+	pcallback1 = (myCallback *)&(pcallback[1]);
+	callbackSetCallback(myCallbackFunc1,&pcallback1->callback);
 	pcallback1->precord = (struct dbCommon *)pscal;
 	pcallback1->wd_id = wdCreate();
 
@@ -174,13 +184,13 @@ int pass;
 		return(S_dev_noDSET);
 	}
 
-	Debug(2, "init_record: calling dset->init_record\n", 0);
+	Debug(2, "init_record: calling dset->init_record\n",0);
 	pscal->out.value.vmeio.card = card++; /* SAW Hack */
 	printf("Card = %d\n",pscal->out.value.vmeio.card);
 	if (pdset->init_record)
 	{
 		status=(*pdset->init_record)(pscal);
-		Debug(3, "init_record: dset->init_record returns %d\n", status);
+		Debug(3, "init_record: dset->init_record returns %ld\n", status);
 		if (status) {
 			pscal->card = -1;
 			return (status);
@@ -200,13 +210,12 @@ int pass;
 }
 
 
-static long process(pscal)
-struct scalerRecord *pscal;
+static long process(scalerRecord *pscal)
 {
-	int i, card, preset_value, keepon;
-	long *pscaler = &(pscal->s1);
-	long *ppreset = &(pscal->pr1);
-	volatile long *pdata = NULL;
+        int i, card; /* , preset_value, keepon;*/
+	//	epicsInt32 *pscaler = &(pscal->s1);
+	epicsInt32 *ppreset = &(pscal->pr1);
+	//	volatile long *pdata = NULL;
 	short *pdir = &pscal->d1;
 	short *pgate = &pscal->g1;
 	SCALERDSET *pdset = (SCALERDSET *)(pscal->dset);
@@ -265,18 +274,18 @@ struct scalerRecord *pscal;
 }
 
 
-static void updateCounts(struct scalerRecord *pscal)
+static void updateCounts(scalerRecord *pscal)
 {
-	int i, keepon, called_by_process;
+        int i, called_by_process; /* keepon */
 	int card = pscal->out.value.vmeio.card;
-	long *pscaler = &(pscal->s1);
-	long *ppreset = &(pscal->pr1);
+	epicsInt32 *pscaler = &(pscal->s1);
+	epicsInt32 *ppreset = &(pscal->pr1);
 	/*	short *pgate = &(pscal->g1);*/
 	volatile long *pdata = NULL;
 	short *pdir = &pscal->d1;
 	long counts[MAX_SCALER_CHANNELS];
 	SCALERDSET *pdset = (SCALERDSET *)(pscal->dset);
-	struct callback *pcallback = (struct callback *)pscal->dpvt;
+	myCallback *pcallback = (myCallback *)pscal->dpvt;
 
 	called_by_process = (pscal->pact == TRUE);
 	if (!called_by_process) {
@@ -328,9 +337,15 @@ static void updateCounts(struct scalerRecord *pscal)
 		Debug(4, "updateCounts: arranging for callback\n", 0);
 		callbackSetPriority(pscal->prio,&pcallback->callback);
 		if (pscal->rate > .01) {
+#if 1
+		  double seconds = 1.0/pscal->rate;
+		  callbackRequestDelayed(&pcallback->callback, seconds);
+#else
+		  /* Old way */
 			i = vxTicksPerSecond / pscal->rate; /* ticks between updates */
 			i = MAX(1,i);
 			wdStart(pcallback->wd_id,i,(FUNCPTR)callbackRequest,(int)pcallback);
+#endif
 		}
 	}
 
@@ -347,8 +362,8 @@ int	after;
 	int i;
 	unsigned short *pdir, *pgate;
 	long *ppreset;
-	struct callback *pcallback = (struct callback *)pscal->dpvt;
-	struct callback *pcallback1 = (struct callback *)&(pcallback[1]);
+	myCallback *pcallback = (myCallback *)pscal->dpvt;
+	myCallback *pcallback1 = (myCallback *)&(pcallback[1]);
 
 	if (!after) return (0);
 
@@ -358,13 +373,17 @@ int	after;
 
 		/* arrange to call this routine again after user-specified time */
 		callbackSetPriority(pscal->prio,&pcallback1->callback);
-		i = vxTicksPerSecond * pscal->dly; /* ticks to delay */
-		if (i <= 0) {
+		if (pscal->dly <= 0) {
 			if (pscal->scan) scanOnce((void *)pscal);
-		}
-		else {
+		} else {
+#if 1
+		  double seconds = pscal->dly;
+		  callbackRequestDelayed(&pcallback1->callback, seconds);
+#else
+		        i = vxTicksPerSecond * pscal->dly; /* ticks to delay */
 			wdStart(pcallback1->wd_id,i,(FUNCPTR)callbackRequest,
 				(int)pcallback1);
+#endif
 		}
 	}
 	else if (paddr->pfield == (void *) &pscal->tp) {

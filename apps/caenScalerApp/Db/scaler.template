@@ -1,0 +1,9 @@
+record(scaler, $(prefix)scaler$(card)) {
+       field(DESC, "$(prefix) scaler record")
+       field(SCAN, "2 second")
+       field(RATE, "1")
+       field(ASG, "DEFAULT")g
+       field(D1, "Up")
+       field(DTYP, "Caen Scaler")
+       field(CARD, "$(card)")
+}

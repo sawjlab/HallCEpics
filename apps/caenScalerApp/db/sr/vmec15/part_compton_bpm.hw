@@ -1,42 +1,0 @@
-PV: cComptBeamPosX	Type: calc
-
-DESC Compton Beam Pos X
-SCAN 1 second
-INPA IPM3P02A.XPOS CPP
-INPB IPM3P02B.XPOS CPP
-CALC (A+B)/2
-PREC 4
-EGU mm
-
-
-PV: cComptBeamPosY	Type: calc
-
-DESC Compton Beam Pos Y
-SCAN 1 second
-INPA IPM3P02A.YPOS CPP
-INPB IPM3P02B.YPOS CPP
-CALC (A+B)/2
-PREC 4
-EGU mm
-
-
-PV: cComptBeamSlopeX	Type: calc
-
-DESC Compton Beam Slope X
-SCAN 1 second
-INPA IPM3P02A.XPOS CPP
-INPB IPM3P02B.XPOS CPP
-CALC (B-A)/1390
-PREC 4
-
-
-PV: cComptBeamSlopeY	Type: calc
-
-DESC Compton Beam Slope Y
-SCAN 1 second
-INPA IPM3P02A.YPOS CPP
-INPB IPM3P02B.YPOS CPP
-CALC (B-A)/1390
-PREC 4
-
-

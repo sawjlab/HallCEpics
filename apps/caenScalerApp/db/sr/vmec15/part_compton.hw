@@ -1,944 +1,0 @@
-PV: cComptLasCur      Type: ai
-DESC Laser Current
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasPow      Type: ai
-DESC Laser output power setpoint
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasLBOTmp      Type: ai
-DESC Laser LBO temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasBplTmp      Type: ai
-DESC Laser baseplate temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasD1Tmp      Type: ai
-DESC Laser diode 1 temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasD2Tmp      Type: ai
-DESC Laser diode 2 temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasVanTmp      Type: ai
-DESC Laser vanadate temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasEtlnTmp      Type: ai
-DESC Laser etalon temperature
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasD1Cur      Type: ai
-DESC Laser diode 1 current
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasD2Cur      Type: ai
-DESC Laser diode 1 current
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptLasLBOSvoStat      Type: ai
-DESC Laser LBO servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasD1SvoStat      Type: ai
-DESC Laser diode 1 servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasD2SvoStat      Type: ai
-DESC Laser diode 2 servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasLtSvoStat      Type: ai
-DESC Laser light servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasVanSvoStat      Type: ai
-DESC Laser vanadate servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasEtlnSvoStat      Type: ai
-DESC Laser etalon servo status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasKeyPos      Type: ai
-DESC Laser key position
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasShutPos      Type: ai
-DESC Laser shutter position
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasState      Type: ai
-DESC Laser state (standby/on)
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptLasLBOHtrStat      Type: ai
-DESC Laser heater status
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL1H      Type: ai
-DESC QPD1 L-R (+/-10V read by 16 bit ADC)
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL1V      Type: ai
-DESC QPD1 B-T
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL2H      Type: ai
-DESC QPD2 B-T
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL2V      Type: ai
-DESC QPD2 L-R
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL3H      Type: ai
-DESC QPD3 L-R
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL3V      Type: ai
-DESC QPD3 B-T
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL4H      Type: ai
-DESC QPD3 L-R
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL4V      Type: ai
-DESC QPD4 B-T
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptM1V      Type: ai
-DESC Vertical position of first closed loop mirror on laser table
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptM1H      Type: ai
-DESC Horizontal position of first closed loop mirror on laser table
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptM2V      Type: ai
-DESC Vertical position of second closed loop mirror on laser table
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptM2H      Type: ai
-DESC Horizontal position of second closed loop mirror on laser table
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQWP1      Type: ai
-DESC Degree of first QWP rotation stage on laser table
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkScanAmp      Type: ai
-DESC Digilock scan amplitude
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkScanFrq      Type: ai
-DESC Digilock scan frequency
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkScanCh      Type: ai
-DESC Digilock  output channel for scan
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkScanSglType:      Type: ai
-DESC Digilock scan signal type (sine, sawtooth)
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkScanEnbl    Type: bi
-DESC Digilock scan on/off.
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkOfstCh      Type: ai
-DESC Digilock offset channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkOfst      Type: ai
-DESC Digilock offset value
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPDHModFreq      Type: ai
-DESC Digilock PDH modulation frequency
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPDHModAmp      Type: ai
-DESC Digilock PDH modulation amplitude
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPDHOfst      Type: ai
-DESC Digilock PDH offset
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPDHOutCh      Type: ai
-DESC Digilock PDH output channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPDHInCh      Type: ai
-DESC Digilock PDH input channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPDHPhase      Type: ai
-DESC Digilock PDH phase shift
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPDHModEnbl    Type: bi
-DESC Digilock PDH module enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1RstEnbl    Type: bi
-DESC Digilock PID1 reset enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1ManRlk    Type: bi
-DESC Digilock PID1 manual relock
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1AutoRlk    Type: bi
-DESC Digilock PID1 automatic relock
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1RlkEnbl    Type: bi
-DESC Digilock PID1 relock enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1OLEnbl    Type: bi
-DESC Digilock PID1  output limit enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1LWEnbl    Type: bi
-DESC Digilock PID1 lock window enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1LockEnbl    Type: bi
-DESC Digilock PID1 lock enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID1G      Type: ai
-DESC Digilock PID1 Gain
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1D      Type: ai
-DESC Digilock PID1 Differential
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1I      Type: ai
-DESC Digilock PID1 Integral 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1P      Type: ai
-DESC Digilock PID1 Proportional
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1InCh      Type: ai
-DESC Digilock PID1 input channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID1LWCh      Type: ai
-DESC Digilock PID1 lock window channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID1LWMax      Type: ai
-DESC Digilock PID1 lock window maximum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1LWMin      Type: ai
-DESC Digilock PID1 lock window minimum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1OutLmtMax      Type: ai
-DESC Digilock PID1 output limit maximum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1OutLmtMin      Type: ai
-DESC Digilock PID1 output limit minimum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1OutCh      Type: ai
-DESC Digilock PID1 output channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID1RlkFrq      Type: ai
-DESC Digilock PID1 relock frequency
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1RlkAmp      Type: ai
-DESC Digilock PID1 relock amplitude
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1RstRate      Type: ai
-DESC Digilock PID1 reset rate
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1Setpt      Type: ai
-DESC Digilock PID1 setpoint
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1Sign      Type: ai
-DESC Digilock PID1 sign
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID1Slope      Type: ai
-DESC Digilock PID1 slope
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID1FC      Type: ai
-DESC Digilock PID1 cutoff frequency
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID1FCEnbl    Type: bi
-DESC Digilock PID1 frequency cutoff  enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2RstEnbl    Type: bi
-DESC Digilock PID2 reset enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2ManRlk    Type: bi
-DESC Digilock PID2 manual relock
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2AutoRlk    Type: bi
-DESC Digilock PID2 automatic relock
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2RlkEnbl    Type: bi
-DESC Digilock PID2 relock enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2OLEnbl    Type: bi
-DESC Digilock PID2  output limit enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2LWEnbl    Type: bi
-DESC Digilock PID2 lock window enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2LockEnbl    Type: bi
-DESC Digilock PID2 lock enable
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptDgkPID2G      Type: ai
-DESC Digilock PID2 Gain
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2D      Type: ai
-DESC Digilock PID2 Differential
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2I      Type: ai
-DESC Digilock PID2 Integral 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2P      Type: ai
-DESC Digilock PID2 Proportional
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2InCh      Type: ai
-DESC Digilock PID2 input channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID2LWCh      Type: ai
-DESC Digilock PID2 lock window channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID2LWMax      Type: ai
-DESC Digilock PID2 lock window maximum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2LWMin      Type: ai
-DESC Digilock PID2 lock window minimum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2OutLmtMax      Type: ai
-DESC Digilock PID2 output limit maximum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2OutLmtMin      Type: ai
-DESC Digilock PID2 output limit minimum parameter
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2OutCh      Type: ai
-DESC Digilock PID2 output channel
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID2RlkFrq      Type: ai
-DESC Digilock PID2 relock frequency
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2RlkAmp      Type: ai
-DESC Digilock PID2 relock amplitude
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2RstRate      Type: ai
-DESC Digilock PID2 reset rate
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2Setpt      Type: ai
-DESC Digilock PID2 setpoint
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2Sign      Type: ai
-DESC Digilock PID2 sign
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptDgkPID2Slope      Type: ai
-DESC Digilock PID2 slope
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptQPDL1Pow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptQPDL2Pow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptQPDL3Pow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptQPDL4Pow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptRawADC0      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC1      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC2      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC3      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC4      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC5      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC6      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC7      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC8      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC9      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC10      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC11      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC12      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC13      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC14      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRawADC15      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 0
-
-
-PV: cComptRPDPow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptTPDPow      Type: ai
-DESC 
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptScanclean    Type: bi
-DESC cComptScanclean
-SCAN Passive
-DTYP Soft Channel
-ONAM T
-ZNAM F
-
-
-PV: cComptScandata1      Type: ai
-DESC cComptScandata1
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-
-
-PV: cComptDgkPID2Output  Type: ai
-DESC cComptDgkPID2Output
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-
-
-PV: cComptTHWP  Type: ai
-DESC cComptTHWP
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU deg
-
-
-PV: cComptRGL  Type: ai
-DESC cComptRGL
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU deg
-
-
-PV: cComptRRPD  Type: ai
-DESC cComptRRPD
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU mW
-
-
-PV: cComptScannerPosX  Type: ai
-DESC cComptScannerPosX
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU nm
-
-
-PV: cComptScannerPosY  Type: ai
-DESC cComptScannerPosY
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU nm
-
-
-PV: cComptEdetHV1  Type: ai
-DESC cComptEdetHV1
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU V
-
-
-PV: cComptEdetHV2  Type: ai
-DESC cComptEdetHV2
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU V
-
-
-PV: cComptEdetThrV  Type: ai
-DESC cComptEdetThrV
-SCAN Passive
-DTYP Soft Channel
-PREC 3
-EGU V
-
-
-PV: cComptEdetThrI  Type: ai
-DESC cComptEdetThrI
-SCAN Passive
-DTYP Soft Channel
-PREC 4
-EGU A
-
-

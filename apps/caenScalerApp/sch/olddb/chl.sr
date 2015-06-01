@@ -1,276 +1,0 @@
-PV: ecCFI11139     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/s
-
-
-PV: ecCPI671T     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCTD671T     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCPI9521     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCTD9521     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCPI603QC     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCLL675SC     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU %
-
-
-PV: ecCPI6751     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCTP6751     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCPI671SC     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCFI6711C     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/s
-
-
-PV: ecCTD671SC     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCTD671SD     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCLL671SC     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU %
-
-
-PV: ecCPI672     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCTD672     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCFI6010     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/s
-
-
-PV: ecCPI6010     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCPI60DLP     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCFI60DLP     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/s
-
-
-PV: ecCTD673     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU K
-
-
-PV: ecCPI673     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCFI6731C     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/2
-
-
-PV: ecCEV6711C     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU %
-
-
-PV: ecCPI67T     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU atm
-
-
-PV: ecCFI6731A     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/2
-
-
-PV: ecMBSY3CS     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 3
-EGU amps
-LOPR 0.0
-HOPR 100.0
-
-
-PV: ecMBSY3CM      Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 3
-EGU amps
-LOPR 0.0
-HOPR 100.0
-
-
-PV: ecHLCNMRFIELDRBCK      Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 3
-EGU amps
-LOPR 0.09
-HOPR 0.26
-
-
-PV: ecIPM3C07X      Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 6
-EGU amps
-LOPR -2.0
-HOPR 2.0
-
-
-PV: ecIPM3C12X      Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 6
-EGU amps
-LOPR -2.0
-HOPR 2.0
-
-
-PV: ecIPM3C17X      Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 6
-EGU amps
-LOPR -2.0
-HOPR 2.0
-
-
-PV: ecCEV6711C_FLOW     Type: ao
-DESC analog output record
-SCAN Passive
-DTYP Soft Channel
-PREC 2
-EGU g/s
-
-

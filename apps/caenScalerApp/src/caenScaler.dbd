@@ -1,0 +1,3 @@
+include "scalerRecord.dbd"
+
+device(scaler, CONSTANT, devScaler, "Caen Scaler")

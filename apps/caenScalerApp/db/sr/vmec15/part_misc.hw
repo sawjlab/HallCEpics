@@ -1,60 +1,0 @@
-PV: HC:run_number	Type: ao
-DESC Latest Run Number
-SCAN Passive
-DTYPE Soft Channel
-PREC 0
-
-
-PV: vmec15_up  Type: bo
-
-DESC Hold off camonsave after reboots
-DTYPE Soft Channel
-SCAN Passive
-VAL 0
-ZNAM 0
-ONAM 1
-
-
-PV: hcozone		Type: calc
-
-DESC Ozone in ppb
-CALC (A/B)
-SCAN 2 second
-INPA hcrate9 PP
-INPB 1000.0
-PREC 1
-EGU ppb
-
-
-PV: hrozone               Type: ao
-DESC Hampton Roads Ozone
-SCAN Passive
-DTYP Soft Channel
-PREC 1
-EGU ppb
-
-
-PV: hcbend_t1		Type: ao
-DESC Bender Temperature 1
-SCAN Passive
-DTYPE Soft Channel
-PREC 3
-EGU deg
-
-
-PV: hcbend_t2		Type: ao
-DESC Bender Temperature 1
-SCAN Passive
-DTYPE Soft Channel
-PREC 3
-EGU deg
-
-
-PV: hcbend_t3		Type: ao
-DESC Bender Temperature 1
-SCAN Passive
-DTYPE Soft Channel
-PREC 3
-EGU deg
-
-

@@ -1,36 +1,0 @@
-PV: HCDOG_diskwatch     Type: bo ()
-
-DESC binary output record
-DTYP Soft Channel
-SCAN Passive
-HIGH 120
-ONAM Alive
-ZNAM Dead
-ZSV MINOR
-OSV NO_ALARM
-
-
-PV: HCDOG_happyreaper     Type: bo ()
-
-DESC binary output record
-DTYP Soft Channel
-SCAN Passive
-HIGH 600
-ONAM Alive
-ZNAM Dead
-ZSV MINOR
-OSV NO_ALARM
-
-
-PV: HCDOG_happyreaper_long     Type: bo ()
-
-DESC binary output record
-DTYP Soft Channel
-SCAN Passive
-HIGH 1800
-ONAM Alive
-ZNAM Dead
-ZSV MINOR
-OSV NO_ALARM
-
-
