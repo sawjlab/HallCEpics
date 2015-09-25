@@ -13,6 +13,7 @@ Alias4527_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
 dbLoadTemplate "db/SY4527_crate13.substitutions"
+dbLoadTemplate "db/SY4527_crate14.substitutions"
 
 ## Set this to see messages from mySub
 #var mySubDebug 1
