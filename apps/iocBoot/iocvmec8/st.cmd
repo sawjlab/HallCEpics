@@ -2,14 +2,14 @@
 
 ## The following is needed if your board support package doesn't at boot time
 ## automatically cd to the directory containing its startup script
-cd "/net/cdaqfs/home/cvxwrks/saw/mystuff/iocBoot/iocvmec7"
+cd "/net/cdaqfs/home/cvxwrks/EpicsLL/apps/iocBoot/iocvmec8"
 
 < cdCommands
 < ../nfsCommands
 
 cd topbin
 
-## You may have to change vmec7 to something else
+## You may have to change vmec8 to something else
 ## everywhere it appears in this file
 ld 0,0, "vmec8.munch"
 rebootHookAdd(epicsExitCallAtExits)

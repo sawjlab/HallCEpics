@@ -2,7 +2,7 @@
 
 ## The following is needed if your board support package doesn't at boot time
 ## automatically cd to the directory containing its startup script
-cd "/net/cdaqfs/home/cvxwrks/saw/mystuff/iocBoot/iocvmec7"
+cd "/net/cdaqfs/home/cvxwrks/EpicsLL/apps/iocBoot/iocvmec7"
 
 < cdCommands
 < ../nfsCommands
@@ -26,6 +26,7 @@ vmec7_registerRecordDeviceDriver pdbbase
 dbLoadTemplate "db/CaenHV_crate2.substitutions"
 dbLoadTemplate "db/CaenHV_crate3.substitutions"
 dbLoadTemplate "db/CaenHV_crate4.substitutions"
+dbLoadTemplate "db/CaenHV_crate5.substitutions"
 
 ## Set this to see messages from mySub
 #mySubDebug = 1
