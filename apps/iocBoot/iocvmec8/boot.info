@@ -1,0 +1,14 @@
+boot device          : dc0 
+processor number     : 0 
+host name            : cdaql3 
+file name            : ~/KERNELS/5.5/vx2400_bigvme 
+inet on ethernet (e) : 129.57.168.108:fffffc00 
+inet on backplane (b): 
+host inet (h)        : 129.57.168.43 
+gateway inet (g)     : 129.57.168.1 
+user (u)             : cvxwrks 
+ftp password (pw) (blank = use rsh): 
+flags (f)            : 0x0 
+target name (tn)     : vmec8 
+startup script (s)   : ~/SCRIPTS/vmec8.boot 
+other (o)            : 
