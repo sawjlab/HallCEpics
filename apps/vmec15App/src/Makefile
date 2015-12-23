@@ -14,7 +14,8 @@ DBD += vmec15.dbd
 
 # vmec15.dbd will include these files:
 vmec15_DBD += base.dbd
-vmec15_DBD += CaenHV.dbd
+vmec15_DBD += caenScaler.dbd
+vmec15_DBD += bcmSupport.dbd
 
 # Build the main IOC entry point where needed
 vmec15_SRCS_DEFAULT += vmec15Main.cpp
@@ -25,12 +26,13 @@ vmec15_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 
 # Link in the code from our support library
 vmec15_LIBS += caenScaler
+vmec15_LIBS += bcmSupport
 
 # To build SNL programs, SNCSEQ must be defined
 # in the <top>/configure/RELEASE file
-ifneq ($(SNCSEQ),)
-    vmec15_LIBS += seq pv
-endif
+#ifneq ($(SNCSEQ),)
+	vmec15_LIBS += seq pv
+#endif
 
 # Finally link IOC to the EPICS Base libraries
 vmec15_LIBS += $(EPICS_BASE_IOC_LIBS)

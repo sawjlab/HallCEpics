@@ -50,6 +50,7 @@ Modification Log:
 #include	<special.h>
 #include	<module_types.h>
 #include	<scalerRecord.h>
+#include        <epicsExport.h>
 #include	"devScaler.h"
 
 /*** Debug support ***/
@@ -105,7 +106,8 @@ volatile int devScalerdebug=6;
 #define PRESET_0_OFFSET 0xC0
 static long vsc_num_cards = 3;
 #ifdef CAEN
-STATIC void *vsc_addrs = (void *)0xf0da1800;
+/* STATIC void *vsc_addrs = (void *)0xf0da1800;*/
+STATIC void *vsc_addrs = (void *)0xda1800;
 #else
 STATIC void *vsc_addrs = (void *)0x00d00000;
 #endif
@@ -133,6 +135,7 @@ SCALERDSET devScaler = {
 	scaler_arm,
 	scaler_done
 };
+epicsExportAddress(dset,devScaler);
 
 STATIC int scaler_total_cards;
 STATIC struct scaler_state {
@@ -293,7 +296,9 @@ STATIC long scaler_init(int after)
 
 	/* Check out the hardware. */
 	for (card=0; card<vsc_num_cards; card++) {
-		baseAddr = (void *)(vsc_addrs + card*CARD_ADDRESS_SPACE);
+	  sysBusToLocalAdrs(0x39, (vsc_addrs + card*CARD_ADDRESS_SPACE),
+			    &baseAddr);
+	  /*		baseAddr = (void *)(vsc_addrs + card*CARD_ADDRESS_SPACE);*/
 		probeAddr = baseAddr+DATA_0_OFFSET;
 
 #ifndef CAEN

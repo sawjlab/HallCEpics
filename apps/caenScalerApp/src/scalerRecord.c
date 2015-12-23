@@ -55,6 +55,7 @@ Modification Log:
 #include	<scalerRecord.h>
 #undef GEN_SIZE_OFFSET
 #include	<choiceScaler.h>
+#include        <epicsExport.h>
 #include	"devScaler.h"
 
 #ifdef NODEBUG
@@ -74,15 +75,15 @@ volatile int recScalerdebug = 0;
 /* Create RSET - Record Support Entry Table*/
 #define report NULL
 #define initialize NULL
-static long init_record();
-static long process();
-static long special();
+static long init_record(scalerRecord *, int);
+static long process(scalerRecord *);
+static long special(DBADDR *, int);
 #define get_value NULL
 #define cvt_dbaddr NULL
 #define get_array_info NULL
 #define put_array_info NULL
 #define get_units NULL
-static long get_precision();
+static long get_precision(DBADDR *,long *);
 #define get_enum_str NULL
 #define get_enum_strs NULL
 #define put_enum_str NULL
@@ -90,7 +91,7 @@ static long get_precision();
 #define get_control_double NULL
 #define get_alarm_double NULL
 
-struct rset scalerRSET = {
+rset scalerRSET = {
 	RSETNUMBER,
 	report,
 	initialize,
@@ -110,6 +111,7 @@ struct rset scalerRSET = {
 	get_control_double,
 	get_alarm_double
 };
+epicsExportAddress(rset,scalerRSET);
 
 static void alarm();
 static void monitor(scalerRecord *);
@@ -353,9 +355,7 @@ static void updateCounts(scalerRecord *pscal)
 }
 
 
-static long special(paddr,after)
-struct dbAddr *paddr;
-int	after;
+static long special(DBADDR *paddr,int after)
 {
 	struct scalerRecord *pscal = (struct scalerRecord *)(paddr->precord);
 	int special_type = paddr->special;
@@ -437,10 +437,7 @@ int	after;
 
 	return(0);
 }
-
-static long get_precision(paddr, precision)
-struct dbAddr *paddr;
-long          *precision;
+static long get_precision(DBADDR *paddr, long *precision)
 {
 	struct scalerRecord *pscal = (struct scalerRecord *) paddr->precord;
 

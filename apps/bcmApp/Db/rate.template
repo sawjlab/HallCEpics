@@ -1,0 +1,9 @@
+# Template for rate record
+record(ai, "$(P)rate$(C)") {
+    field(DESC, "$(P) rate $(C)")
+    field(SCAN, "Passive")
+    field(DTYP, "Soft Channel")
+    field(PREC, "1")
+    field(EGU, "Hz")
+    field(ASG, "DEFAULT")
+}

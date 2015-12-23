@@ -56,18 +56,18 @@ Alias4527_LIBS += Alias4527Support
 # in the <top>/configure/RELEASE file
 ifneq ($(SNCSEQ),)
     # Build sncExample into Alias4527Support
-    sncExample_SNCFLAGS += +r
-    Alias4527_DBD += sncExample.dbd
-    Alias4527Support_SRCS += sncExample.stt
-    Alias4527Support_LIBS += seq pv
-    Alias4527_LIBS += seq pv
+#    sncExample_SNCFLAGS += +r
+#    Alias4527_DBD += sncExample.dbd
+#    Alias4527Support_SRCS += sncExample.stt
+#    Alias4527Support_LIBS += seq pv
+#    Alias4527_LIBS += seq pv
 
     # Build sncProgram as a standalone program
-    PROD_HOST += sncProgram
-    sncProgram_SNCFLAGS += +m
-    sncProgram_SRCS += sncProgram.st
-    sncProgram_LIBS += seq pv
-    sncProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
+#    PROD_HOST += sncProgram
+#    sncProgram_SNCFLAGS += +m
+#    sncProgram_SRCS += sncProgram.st
+#    sncProgram_LIBS += seq pv
+#    sncProgram_LIBS += $(EPICS_BASE_HOST_LIBS)
 endif
 
 # Finally link IOC to the EPICS Base libraries

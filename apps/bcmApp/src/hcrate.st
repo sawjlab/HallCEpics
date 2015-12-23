@@ -10,7 +10,7 @@ program hcrate
 option -r;
 option +c;
 
-int clock;
+int sclock;
 
 double rate[16];
 int hcscaler[16];
@@ -18,22 +18,22 @@ int hcscaler_last[16];
 
 int hc_update_period;
 
-assign hcscaler[0] to "hcscaler.S1";
-assign hcscaler[1] to "hcscaler.S2";
-assign hcscaler[2] to "hcscaler.S3";
-assign hcscaler[3] to "hcscaler.S4";
-assign hcscaler[4] to "hcscaler.S5";
-assign hcscaler[5] to "hcscaler.S6";
-assign hcscaler[6] to "hcscaler.S7";
-assign hcscaler[7] to "hcscaler.S8";
-assign hcscaler[8] to "hcscaler.S9";
-assign hcscaler[9] to "hcscaler.S10";
-assign hcscaler[10] to "hcscaler.S11";
-assign hcscaler[11] to "hcscaler.S12";
-assign hcscaler[12] to "hcscaler.S13";
-assign hcscaler[13] to "hcscaler.S14";
-assign hcscaler[14] to "hcscaler.S15";
-assign hcscaler[15] to "hcscaler.S16";
+assign hcscaler[0] to "hcscaler0.S1";
+assign hcscaler[1] to "hcscaler0.S2";
+assign hcscaler[2] to "hcscaler0.S3";
+assign hcscaler[3] to "hcscaler0.S4";
+assign hcscaler[4] to "hcscaler0.S5";
+assign hcscaler[5] to "hcscaler0.S6";
+assign hcscaler[6] to "hcscaler0.S7";
+assign hcscaler[7] to "hcscaler0.S8";
+assign hcscaler[8] to "hcscaler0.S9";
+assign hcscaler[9] to "hcscaler0.S10";
+assign hcscaler[10] to "hcscaler0.S11";
+assign hcscaler[11] to "hcscaler0.S12";
+assign hcscaler[12] to "hcscaler0.S13";
+assign hcscaler[13] to "hcscaler0.S14";
+assign hcscaler[14] to "hcscaler0.S15";
+assign hcscaler[15] to "hcscaler0.S16";
 
 assign rate[0] to "hcrate1";
 assign rate[1] to "hcrate2";
@@ -52,31 +52,31 @@ assign rate[13] to "hcrate14";
 assign rate[14] to "hcrate15";
 assign rate[15] to "hcrate16";
 
-assign clock to "hcscaler.S1";  /* 1 MhZ */
-assign hc_update_period to "hcscaler_update_period";
+assign sclock to "hcscaler0.S2";  /* 1 MhZ */
+/* assign hc_update_period to "hcscaler_update_period";*/
 
 
 evflag ef_clock;
-sync clock ef_clock;
+sync sclock ef_clock;
 
 int skipcount;
 int clock_last;
 int clock_dif;
 int i;
 
-monitor clock;
+monitor sclock;
 
 ss hcmon {
   state init {
     when (efTestAndClear(ef_clock)) {
-      clock_last = clock;
+      clock_last = sclock;
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
 	hcscaler_last[i] = hcscaler[i];
 	rate[i] = 0;
 	pvPut(rate[i]);
 	hc_update_period=1;
-	pvPut(hc_update_period);
+	/*	pvPut(hc_update_period);*/
       }
     } state calculate
   }
@@ -86,7 +86,7 @@ ss hcmon {
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
       }
-      clock_dif = scaldif(clock,clock_last);
+      clock_dif = scaldif(sclock,clock_last);
       if(clock_dif > 0) {
 	for(i=0;i<16;i++) {
 	  rate[i] = (scaldif(hcscaler[i],hcscaler_last[i])/(clock_dif/1000000.0));
@@ -97,16 +97,31 @@ ss hcmon {
 	}
       }
 /* printf("%f %d %d %d\n",rhalo, halo, halo_last, clock_dif); */
-      clock_last = clock;
+      clock_last = sclock;
       for(i=0;i<16;i++) {
 	hcscaler_last[i]=hcscaler[i];
 	pvPut(rate[i]);
       }
-      pvGet(hc_update_period);
+      /*      pvGet(hc_update_period);
       if(hc_update_period > 60) {
 	hc_update_period = 60;
 	pvPut(hc_update_period);
-      }
+	}*/
     } state calculate
   }
 }
+%{
+
+  /* Take the difference between two 32 bit scalers */
+  int scaldif(unsigned int new, unsigned int old)
+    {
+      int dif;
+
+      if(new > old) {
+	return((int) (new-old));
+      } else {
+	return((int) (~old + 1 + new));
+      }
+    }
+
+}%
