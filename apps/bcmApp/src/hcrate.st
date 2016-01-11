@@ -10,6 +10,7 @@ program hcrate
 option -r;
 option +c;
 
+
 int sclock;
 
 double rate[16];
@@ -17,6 +18,10 @@ int hcscaler[16];
 int hcscaler_last[16];
 
 int hc_update_period;
+struct epicsTimeStamp timestamp;
+struct epicsTimeStamp last_timestamp;
+int use_timestamp;
+double time_interval;
 
 assign hcscaler[0] to "hcscaler0.S1";
 assign hcscaler[1] to "hcscaler0.S2";
@@ -54,7 +59,7 @@ assign rate[15] to "hcrate16";
 
 assign sclock to "hcscaler0.S2";  /* 1 MhZ */
 /* assign hc_update_period to "hcscaler_update_period";*/
-
+long clockrate;
 
 evflag ef_clock;
 sync sclock ef_clock;
@@ -70,6 +75,7 @@ ss hcmon {
   state init {
     when (efTestAndClear(ef_clock)) {
       clock_last = sclock;
+      clockrate = 1000000;
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
 	hcscaler_last[i] = hcscaler[i];
@@ -78,6 +84,8 @@ ss hcmon {
 	hc_update_period=1;
 	/*	pvPut(hc_update_period);*/
       }
+      last_timestamp = pvTimeStamp(hcscaler[0]);
+      use_timestamp = 1;
     } state calculate
   }
   state calculate {
@@ -86,18 +94,33 @@ ss hcmon {
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
       }
-      clock_dif = scaldif(sclock,clock_last);
-      if(clock_dif > 0) {
-	for(i=0;i<16;i++) {
-	  rate[i] = (scaldif(hcscaler[i],hcscaler_last[i])/(clock_dif/1000000.0));
+      if(use_timestamp) {
+	timestamp = pvTimeStamp(hcscaler[0]);
+	time_interval = timestamp.secPastEpoch-last_timestamp.secPastEpoch+
+	      (timestamp.nsec/1000000000.0
+	       -last_timestamp.nsec/1000000000.0);
+	if(time_interval > 0.0) {
+	  for(i=0;i<16;i++) {
+	    rate[i] = scaldif(hcscaler[i],hcscaler_last[i]);
+	  }
+	} else {
+	  for(i=0;i<16;i++) {
+	    rate[i] = 0;
+	  }
 	}
       } else {
-	for(i=0;i<16;i++) {
-	  rate[i] = 0;
+	clock_dif = scaldif(sclock,clock_last);
+	if(clock_dif > 0) {
+	  for(i=0;i<16;i++) {
+	    rate[i] = (scaldif(hcscaler[i],hcscaler_last[i])/(clock_dif/1000000.0));
+	  }
+	} else {
+	  for(i=0;i<16;i++) {
+	    rate[i] = 0;
+	  }
 	}
+	clock_last = sclock;
       }
-/* printf("%f %d %d %d\n",rhalo, halo, halo_last, clock_dif); */
-      clock_last = sclock;
       for(i=0;i<16;i++) {
 	hcscaler_last[i]=hcscaler[i];
 	pvPut(rate[i]);
