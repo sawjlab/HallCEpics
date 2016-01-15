@@ -10,8 +10,10 @@ program hcrate
 option -r;
 option +c;
 
-
-int sclock;
+#define CLOCKRATE 1000000
+#define CLOCKCHAN 2
+#define TOLERANCE 0.0001
+#define NTIMES 5
 
 double rate[16];
 int hcscaler[16];
@@ -22,7 +24,9 @@ struct epicsTimeStamp timestamp;
 struct epicsTimeStamp last_timestamp;
 int use_timestamp;
 double time_interval;
+int process;
 
+assign process to "hcscaler0";
 assign hcscaler[0] to "hcscaler0.S1";
 assign hcscaler[1] to "hcscaler0.S2";
 assign hcscaler[2] to "hcscaler0.S3";
@@ -57,25 +61,24 @@ assign rate[13] to "hcrate14";
 assign rate[14] to "hcrate15";
 assign rate[15] to "hcrate16";
 
-assign sclock to "hcscaler0.S2";  /* 1 MhZ */
 /* assign hc_update_period to "hcscaler_update_period";*/
 long clockrate;
 
 evflag ef_clock;
-sync sclock ef_clock;
+sync process ef_clock;
+monitor process;
 
 int skipcount;
 int clock_last;
 int clock_dif;
+int good_count;
 int i;
 
-monitor sclock;
 
 ss hcmon {
   state init {
     when (efTestAndClear(ef_clock)) {
-      clock_last = sclock;
-      clockrate = 1000000;
+      clockrate = CLOCKRATE;
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
 	hcscaler_last[i] = hcscaler[i];
@@ -84,8 +87,10 @@ ss hcmon {
 	hc_update_period=1;
 	/*	pvPut(hc_update_period);*/
       }
+      clock_last = hcscaler[CLOCKCHAN];
       last_timestamp = pvTimeStamp(hcscaler[0]);
-      use_timestamp = 1;
+      use_timestamp = 1; /* Use two to never try scaler clock */
+      good_count = 0;
     } state calculate
   }
   state calculate {
@@ -94,7 +99,7 @@ ss hcmon {
       for(i=0;i<16;i++) {
 	pvGet(hcscaler[i]);
       }
-      if(use_timestamp) {
+      if(use_timestamp>0) {
 	timestamp = pvTimeStamp(hcscaler[0]);
 	time_interval = timestamp.secPastEpoch-last_timestamp.secPastEpoch+
 	      (timestamp.nsec/1000000000.0
@@ -108,18 +113,30 @@ ss hcmon {
 	    rate[i] = 0;
 	  }
 	}
+	if(use_timestamp<2) {
+	  if(abs(rate[CLOCKCHAN]/clockrate-1) <= TOLERANCE) {
+	    good_count++;
+	    if(good_count >= NTIMES) {
+	      use_timestamp = 0;
+	      printf("Switching to scaler channel %d as %d Hz clock\n",
+		     CLOCKCHAN, CLOCKRATE);
+	    }
+	  } else {
+	    good_count = 0;
+	  }
+	}
       } else {
-	clock_dif = scaldif(sclock,clock_last);
+	clock_dif = scaldif(hcscaler[CLOCKCHAN],clock_last);
 	if(clock_dif > 0) {
 	  for(i=0;i<16;i++) {
-	    rate[i] = (scaldif(hcscaler[i],hcscaler_last[i])/(clock_dif/1000000.0));
+	    rate[i] = (scaldif(hcscaler[i],hcscaler_last[i])/(clock_dif/clockrate));
 	  }
 	} else {
 	  for(i=0;i<16;i++) {
 	    rate[i] = 0;
 	  }
 	}
-	clock_last = sclock;
+	clock_last = hcscaler[CLOCKCHAN];
       }
       for(i=0;i<16;i++) {
 	hcscaler_last[i]=hcscaler[i];
@@ -135,7 +152,7 @@ ss hcmon {
 }
 %{
 
-  /* Take the difference between two 32 bit scalers */
+  /* Take the difference between two 32 bit scalers */ 
   int scaldif(unsigned int new, unsigned int old)
     {
       int dif;
