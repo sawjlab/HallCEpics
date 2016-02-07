@@ -23,6 +23,7 @@ vmec7_registerRecordDeviceDriver pdbbase
 
 ## Load record instances
 
+dbLoadTemplate "db/CaenHV_crate1.substitutions"
 dbLoadTemplate "db/CaenHV_crate2.substitutions"
 dbLoadTemplate "db/CaenHV_crate3.substitutions"
 dbLoadTemplate "db/CaenHV_crate4.substitutions"
