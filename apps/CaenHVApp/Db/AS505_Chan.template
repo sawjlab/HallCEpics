@@ -1,0 +1,267 @@
+# Macros:
+#   H - Crate Number [0-99]
+#   V - Channel Number [0-63]
+########################################
+# Voltage Controls
+########################################
+record(ai, "$(P)$(H):$(S):$(V):VMon") {
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C21")
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(PREC, "1")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+    field(HOPR, "3000")
+}
+record(ao, "$(P)$(H):$(S):$(V):V0Set") {
+    field(DTYP, "CAEN HV")
+    field(OUT, "@H$(H) S$(S) V$(V) C1")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+}
+record(ai, "$(P)$(H):$(S):$(V):V0Setr") {
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C25")
+    field(SCAN, "2 second")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+}
+record(ao, "$(P)$(H):$(S):$(V):V1Set") {
+    field(DTYP, "CAEN HV")
+    field(OUT,  "@H$(H) S$(S) V$(V) C2")
+    field(PREC, "0")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+    field(DRVH, "3000")
+    field(DRVL, "0.00")
+    field(HOPR, "3000")
+}
+record(ai, "$(P)$(H):$(S):$(V):V1Setr") {
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C26")
+    field(SCAN, "2 second")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+    field(EGU,  "V")
+}
+record(ao, "$(P)$(H):$(S):$(V):SVMax") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C5")
+	field(PREC, "0")
+    field(DRVH, "3000")
+    field(DRVL, "0")
+    field(HOPR, "3000")
+	field(EGU,  "V")
+}
+record(ai, "$(P)$(H):$(S):$(V):SVMaxr") {
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C29")
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(PREC, "0")
+    field(EGU,  "V")
+}
+########################################
+# Current Controls
+########################################
+record(ai, "$(P)$(H):$(S):$(V):IMon") {
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C22")
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(PREC, "0")
+    field(EGU,  "uA")
+}
+record(ao, "$(P)$(H):$(S):$(V):I0Set") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C3")
+    field(DRVH, "200")
+    field(DRVL, "0.00")
+    field(HOPR, "200")
+	field(EGU,  "uA")
+}
+record(ai, "$(P)$(H):$(S):$(V):I0Setr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C27")
+	field(SCAN, "2 second")
+	field(EGU,  "uA")
+}
+record(ao, "$(P)$(H):$(S):$(V):I1Set") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C4")
+    field(DRVH, "200")
+    field(DRVL, "0.00")
+    field(HOPR, "200")
+	field(EGU,  "uA")
+}
+record(ai, "$(P)$(H):$(S):$(V):I1Sretr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C28")
+	field(SCAN, "2 second")
+	field(EGU,  "uA")
+}
+########################################
+# Ramp Controls
+########################################
+record(ao, "$(P)$(H):$(S):$(V):RUp") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C6")
+	field(PREC, "0")
+	field(EGU,  "V/s")
+	field(DRVH, "999")
+	field(DRVL, "1")
+	field(HOPR, "999")
+	field(LOPR, "1")
+}
+record(ai, "$(P)$(H):$(S):$(V):RUpr") {
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C30")
+    field(PREC, "0")
+    field(EGU,  "V/s")
+}
+record(ao, "$(P)$(H):$(S):$(V):RDWn") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C7")
+	field(PREC, "0")
+	field(EGU,  "V/s")
+	field(DRVH, "999")
+	field(DRVL, "1")
+	field(HOPR, "999")
+	field(LOPR, "1")
+}
+record(ai, "$(P)$(H):$(S):$(V):RDWnr") {
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(DTYP, "CAEN HV")
+    field(INP,  "@H$(H) S$(S) V$(V) C31")
+    field(PREC, "0")
+    field(EGU,  "V/s")
+}
+########################################
+# Channel Status
+########################################
+record(ai, "$(P)$(H):$(S):$(V):STAT") {
+    field(DTYP, "CAEN HV")
+    field(SCAN, "2 second")
+    field(PINI, "YES")
+    field(FLNK, "$(P)$(H):$(S):$(V):STAT_SUB")
+    field(INP,  "@H$(H) S$(S) V$(V) C23")
+}
+record(sub, "$(P)$(H):$(S):$(V):STAT_SUB") {
+    field(INPA, "$(P)$(H):$(S):$(V):STAT")
+    field(INAM, "statSubInit")
+    field(SNAM, "statSub")
+    field(FLNK, "$(P)$(H):$(S):$(V):Status")
+}
+record(mbbo, "$(P)$(H):$(S):$(V):Status") {
+    field(DOL,  "$(P)$(H):$(S):$(V):STAT_SUB.VAL")
+    field(OMSL, "closed_loop")
+    field(ZRST, "OFF")
+    field(ZRSV, "MAJOR")
+    field(FRST, "NOT PRESENT")
+    field(FRSV, "MAJOR")
+    field(EIST, "HV Max")
+    field(EISV, "MAJOR")
+    field(NIST, "Tripped")
+    field(NISV, "MAJOR")
+    field(TEST, "Overvoltage")
+    field(TESV, "MAJOR")
+    field(ELST, "Undervoltage")
+    field(ELSV, "MAJOR")
+    field(TVST, "Overcurrent")
+    field(TVSV, "MAJOR")
+    field(TTST, "Rdwn")
+    field(TTSV, "MINOR")
+    field(FTST, "Rup")
+    field(FTSV, "MINOR")
+    field(FFST, "ON")
+    field(FFSV, "NO_ALARM")
+}
+########################################
+# HV
+########################################
+record(bo, "$(P)$(H):$(S):$(V):Pw") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C9")
+	field(ZNAM, "Off")
+	field(ONAM, "On")
+}
+record(bi, "$(P)$(H):$(S):$(V):Pwr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C33")
+	field(SCAN, "2 second")
+	field(ZSV,  "MAJOR")
+	field(OSV,  "NO_ALARM")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+record(bo, "$(P)$(H):$(S):$(V):RESET") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C15")
+	field(HIGH, "1")
+}
+record(ao, "$(P)$(H):$(S):$(V):Trip") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C8")
+	field(PREC, "1")
+	field(DRVH, "1000")
+	field(DRVL, "0")
+	field(HOPR, "1000")
+	field(LOPR, "0")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+	field(EGU,  "sec")
+}
+record(ai, "$(P)$(H):$(S):$(V):Tripr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C32")
+	field(SCAN, "2 second")
+	field(EGU,  "sec")
+	field(PREC, "1")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.1")
+    field(EGUL, "0.0")
+}
+record(bo, "$(P)$(H):$(S):$(V):POn") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C13")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+record(bi, "$(P)$(H):$(S):$(V):POnr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C37")
+	field(SCAN, "2 second")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+record(bo, "$(P)$(H):$(S):$(V):PDwn") {
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S$(S) V$(V) C11")
+    field(ZNAM, "Kill")
+    field(ONAM, "Rdwn")
+}
+record(bi, "$(P)$(H):$(S):$(V):PDwnr") {
+	field(DTYP, "CAEN HV")
+	field(INP,  "@H$(H) S$(S) V$(V) C35")
+	field(SCAN, "2 second")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+
