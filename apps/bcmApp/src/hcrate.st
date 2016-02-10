@@ -26,7 +26,7 @@ int use_timestamp;
 double time_interval;
 int process;
 
-assign process to "hcscaler0";
+assign process to "hcscaler0.S4";
 assign hcscaler[0] to "hcscaler0.S1";
 assign hcscaler[1] to "hcscaler0.S2";
 assign hcscaler[2] to "hcscaler0.S3";
@@ -62,7 +62,7 @@ assign rate[14] to "hcrate15";
 assign rate[15] to "hcrate16";
 
 /* assign hc_update_period to "hcscaler_update_period";*/
-long clockrate;
+double clockrate;
 
 evflag ef_clock;
 sync process ef_clock;
@@ -73,6 +73,7 @@ int clock_last;
 int clock_dif;
 int good_count;
 int i;
+int initted=0;
 
 
 ss hcmon {
@@ -83,7 +84,7 @@ ss hcmon {
 	pvGet(hcscaler[i]);
 	hcscaler_last[i] = hcscaler[i];
 	rate[i] = 0;
-	pvPut(rate[i]);
+	/*	pvPut(rate[i]);*/
 	hc_update_period=1;
 	/*	pvPut(hc_update_period);*/
       }
@@ -91,6 +92,7 @@ ss hcmon {
       last_timestamp = pvTimeStamp(hcscaler[0]);
       use_timestamp = 1; /* Use two to never try scaler clock */
       good_count = 0;
+      initted = 0;
     } state calculate
   }
   state calculate {
@@ -103,7 +105,7 @@ ss hcmon {
 	timestamp = pvTimeStamp(hcscaler[0]);
 	time_interval = timestamp.secPastEpoch-last_timestamp.secPastEpoch+
 	      (timestamp.nsec/1000000000.0
-	       -last_timestamp.nsec/1000000000.0);
+	       -last_timestamp.nsec/10000000.0);
 	if(time_interval > 0.0) {
 	  for(i=0;i<16;i++) {
 	    rate[i] = scaldif(hcscaler[i],hcscaler_last[i]);
@@ -114,7 +116,7 @@ ss hcmon {
 	  }
 	}
 	if(use_timestamp<2) {
-	  if(abs(rate[CLOCKCHAN]/clockrate-1) <= TOLERANCE) {
+	  if(fabs(rate[CLOCKCHAN]/clockrate-1.0) <= TOLERANCE) {
 	    good_count++;
 	    if(good_count >= NTIMES) {
 	      use_timestamp = 0;
@@ -140,7 +142,13 @@ ss hcmon {
       }
       for(i=0;i<16;i++) {
 	hcscaler_last[i]=hcscaler[i];
-	pvPut(rate[i]);
+      }
+      if(initted) {
+        for(i=0;i<16;i++) {
+	pvPut(rate[i]);	       
+	}
+      } else {
+	initted=1;
       }
       /*      pvGet(hc_update_period);
       if(hc_update_period > 60) {
