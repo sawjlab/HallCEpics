@@ -1,0 +1,18 @@
+record(calc, "$(prefix)ozone") {
+  field(DESC, "Ozone in Hall C")
+  field(INPA, "$(prefix)rate$(chan)")
+  field(INPB, "1000.0")
+  field(CALC, "(A/B)")
+  field(PREC, "1")
+  field(EGU, "ppb")
+  field(SCAN, "2 second")
+}
+record(ao, "hrozone") {
+  field(DESC, "Hampton Roads Ozone")
+  field(SCAN, "Passive")
+  field(DTYP, "Soft Channel")
+  field(PREC, "1")
+  field(EGU, "ppb")
+}
+  
+  

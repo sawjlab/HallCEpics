@@ -28,6 +28,7 @@ dbLoadRecords("db/scaler.template","prefix=hc,card=0")
 #dbLoadRecords("db/scaler.template","prefix=hc,card=2")
 
 dbLoadTemplate("db/bcm.substitutions")
+dbLoadRecords("db/ozone.db","prefix=hc,chan=9")
 
 ## Set this to see messages from mySub
 #mySubDebug = 1
