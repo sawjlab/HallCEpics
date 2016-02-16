@@ -1,0 +1,7 @@
+record(ai, "haScatt_Chamber_Vac_R_mirror") {
+  field(DTYP, "Soft Channel")
+  field(INP, "haScatt_Chamber_Vac_R CP")
+  field(EGU, "mbar")
+  field(SCAN, "Passive")
+  field(PREC, "10")
+}
