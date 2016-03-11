@@ -210,11 +210,6 @@ record(bi, "$(P)$(H):$(S):$(V):Pwr") {
     field(ZNAM, "0")
     field(ONAM, "1")
 }
-record(bo, "$(P)$(H):$(S):$(V):RESET") {
-	field(DTYP, "CAEN HV")
-	field(OUT,  "@H$(H) S$(S) V$(V) C15")
-	field(HIGH, "1")
-}
 record(ao, "$(P)$(H):$(S):$(V):Trip") {
 	field(DTYP, "CAEN HV")
 	field(OUT,  "@H$(H) S$(S) V$(V) C8")

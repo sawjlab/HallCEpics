@@ -1,3 +1,8 @@
+file "db/Reset.template" {
+pattern
+    {P,      H}
+    {hchv,   1}
+}
 file "db/AS505_Chan.template" {
 pattern
     {P,      H,  S,   V}

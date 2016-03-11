@@ -1,4 +1,9 @@
 # Third slot omited as no cables are connected to it
+file "db/Reset.template" {
+pattern
+    {P,      H}
+    {hchv,   5}
+}
 file "db/AS503_Chan.template" {
 pattern
     {P,      H,  S,   V}

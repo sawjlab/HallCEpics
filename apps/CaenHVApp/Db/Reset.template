@@ -1,0 +1,6 @@
+record(bo, "$(P)$(H):RESET") {
+	field(DESC, "Reset Trips")
+	field(DTYP, "CAEN HV")
+	field(OUT,  "@H$(H) S0 V0 C15")
+	field(HIGH, "1")
+}

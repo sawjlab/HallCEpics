@@ -1,5 +1,9 @@
 # 11/19/2015: Channel 63 behaves badly
-
+file "db/Reset.template" {
+pattern
+    {P,      H}
+    {hchv,   3}
+}
 # This card is positive HV
 file "db/AS503_Chan.template" {
 pattern
