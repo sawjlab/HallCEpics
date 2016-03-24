@@ -1,5 +1,13 @@
-# Example substitutions file
-
+# Provide a reset signal.
+# This doesn't actually do anything because the SY4527 doesn't have a way
+# to reset via EPICS.  So it provides a No-op for the GUI to attach to.
+# Peraps a future firmware for the SY4527 will have a reset signal, or we can
+# rig up an output register to send a reset signal.
+file "db/Reset4527.template" {
+pattern
+     {P,     H}
+     {hchv, 14}
+}
 # Slot 0
 file db/SY4527_readbacks.template {
     pattern { P, H, S, V}

@@ -1,0 +1,5 @@
+record(bo, "$(P)$(H):RESET") {
+	field(DESC, "Fake Reset Signal")
+	field(DTYP, "Soft Channel")
+	field(HIGH, "1")
+}
