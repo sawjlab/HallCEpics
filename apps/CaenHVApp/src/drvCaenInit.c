@@ -125,6 +125,10 @@ int CAEN_init_channel(int crate, int channel)
   }
   if(!channel_found) {
     if(MAX_NUMBER_OF_HV_CHANNELS-tindex>=2) {
+      /* If this is the last channel, mark next as last */
+      if(caen_table[tindex].crate < 0) {
+	caen_table[tindex+1].crate = -1;
+      }
       caen_table[tindex].crate = crate;
       caen_table[tindex].channel = channel;
       caen_table[tindex].group = 0;
@@ -192,7 +196,6 @@ int CAEN_init_channel(int crate, int channel)
 	CAEN_PARAM_LONG_STALE_OUT_PERIOD;
       caen_table[tindex].param_LAM=5;
 
-      caen_table[tindex+1].crate = -1;
     } else {
       printf("CAEN Dev Sup: Maximum number of channels, %d, exceeded\n",
 	     MAX_NUMBER_OF_HV_CHANNELS-1);
