@@ -82,35 +82,54 @@ record(ai, "$(P)$(H):$(S):$(V):IMon") {
     field(INP,  "@H$(H) S$(S) V$(V) C22")
     field(SCAN, "2 second")
     field(PINI, "YES")
-    field(PREC, "0")
+    field(PREC, "2")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.01")
+    field(EGUL, "0.00")
     field(EGU,  "uA")
 }
 record(ao, "$(P)$(H):$(S):$(V):I0Set") {
 	field(DTYP, "CAEN HV")
 	field(OUT,  "@H$(H) S$(S) V$(V) C3")
+	field(PREC, "2")
+    field(LINR, "LINEAR")
     field(DRVH, "200")
-    field(DRVL, "0.00")
+    field(DRVL, "0.0")
     field(HOPR, "200")
+    field(EGUF, "0.01")
+    field(EGUL, "0.00")
 	field(EGU,  "uA")
 }
 record(ai, "$(P)$(H):$(S):$(V):I0Setr") {
 	field(DTYP, "CAEN HV")
 	field(INP,  "@H$(H) S$(S) V$(V) C27")
 	field(SCAN, "2 second")
+	field(PREC, "2")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.01")
+    field(EGUL, "0.00")
 	field(EGU,  "uA")
 }
 record(ao, "$(P)$(H):$(S):$(V):I1Set") {
 	field(DTYP, "CAEN HV")
 	field(OUT,  "@H$(H) S$(S) V$(V) C4")
+	field(PREC, "2")
+    field(LINR, "LINEAR")
     field(DRVH, "200")
-    field(DRVL, "0.00")
+    field(DRVL, "0.0")
     field(HOPR, "200")
+    field(EGUF, "0.01")
+    field(EGUL, "0.00")
 	field(EGU,  "uA")
 }
 record(ai, "$(P)$(H):$(S):$(V):I1Sretr") {
 	field(DTYP, "CAEN HV")
 	field(INP,  "@H$(H) S$(S) V$(V) C28")
 	field(SCAN, "2 second")
+	field(PREC, "2")
+    field(LINR, "LINEAR")
+    field(EGUF, "0.01")
+    field(EGUL, "0.00")
 	field(EGU,  "uA")
 }
 ########################################
