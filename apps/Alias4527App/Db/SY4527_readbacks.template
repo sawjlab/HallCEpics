@@ -58,3 +58,9 @@ record(ai, "$(P)$(H):$(S):$(V):PDwnr") {
     field(SCAN, "Passive")
     field(EGU,  "V/s")
 }
+record(ai, "$(P)$(H):$(S):$(V):Tripr") {
+    field(DTYP, "Soft Channel")
+    field(INP,  "$(P)$(H):$(S):$(V):Trip CP")
+    field(SCAN, "Passive")
+    field(EGU,  "s/10")
+}
